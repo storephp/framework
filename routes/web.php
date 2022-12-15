@@ -14,4 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/outmart', Home::class);
+Route::prefix('outmart')->group(function () {
+    Route::get('/', Home::class)->name('outmart.dashboard.home');
+});

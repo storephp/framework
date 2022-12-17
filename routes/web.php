@@ -1,6 +1,8 @@
 <?php
 
+use Bidaea\OutMart\Dashboard\Http\Livewire\Customers\CustomersIndex;
 use Bidaea\OutMart\Dashboard\Http\Livewire\Home;
+use Bidaea\OutMart\Dashboard\Http\Middleware\GlobalConfigMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('outmart')->group(function () {
+Route::prefix('outmart')->middleware(GlobalConfigMiddleware::class)->group(function () {
     Route::get('/', Home::class)->name('outmart.dashboard.home');
+
+    // Customers
+    Route::prefix('customers')->group(function () {
+        Route::get('/', CustomersIndex::class)->name('outmart.dashboard.customers.index');
+    });
 });

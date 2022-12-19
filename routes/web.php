@@ -1,5 +1,7 @@
 <?php
 
+use Bidaea\OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoriesIndex;
+use Bidaea\OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoryCreate;
 use Bidaea\OutMart\Dashboard\Http\Livewire\Customers\CustomersIndex;
 use Bidaea\OutMart\Dashboard\Http\Livewire\Home;
 use Bidaea\OutMart\Dashboard\Http\Middleware\GlobalConfigMiddleware;
@@ -16,8 +18,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('outmart')->middleware(GlobalConfigMiddleware::class)->group(function () {
+Route::prefix('outmart')->middleware(['web', GlobalConfigMiddleware::class])->group(function () {
     Route::get('/', Home::class)->name('outmart.dashboard.home');
+
+    // catalog
+    Route::prefix('catalog')->group(function () {
+        Route::prefix('categories')->group(function () {
+            Route::get('/', CategoriesIndex::class)->name('outmart.dashboard.catalog.categories.index');
+            Route::get('/create', CategoryCreate::class)->name('outmart.dashboard.catalog.categories.create');
+        });
+    });
 
     // Customers
     Route::prefix('customers')->group(function () {

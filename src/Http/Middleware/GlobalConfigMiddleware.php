@@ -1,8 +1,7 @@
 <?php
 
-namespace Bidaea\OutMart\Dashboard\Http\Middleware;
+namespace OutMart\Dashboard\Http\Middleware;
 
-use Bidaea\OutMart\Dashboard\Models\Customer;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -17,8 +16,6 @@ class GlobalConfigMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        config(['outmart.customers.model' => Customer::class]);
-
         return $next($request);
     }
 }

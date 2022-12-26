@@ -1,10 +1,11 @@
 <?php
 
-use Bidaea\OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoriesIndex;
-use Bidaea\OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoryCreate;
-use Bidaea\OutMart\Dashboard\Http\Livewire\Customers\CustomersIndex;
-use Bidaea\OutMart\Dashboard\Http\Livewire\Home;
-use Bidaea\OutMart\Dashboard\Http\Middleware\GlobalConfigMiddleware;
+use OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoriesIndex;
+use OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoryCreate;
+use OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoryEdit;
+use OutMart\Dashboard\Http\Livewire\Customers\CustomersIndex;
+use OutMart\Dashboard\Http\Livewire\Home;
+use OutMart\Dashboard\Http\Middleware\GlobalConfigMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/test', function(){
+    throw new Exception('Hi');
+});
+
+
 Route::prefix('outmart')->middleware(['web', GlobalConfigMiddleware::class])->group(function () {
     Route::get('/', Home::class)->name('outmart.dashboard.home');
 
@@ -26,6 +32,7 @@ Route::prefix('outmart')->middleware(['web', GlobalConfigMiddleware::class])->gr
         Route::prefix('categories')->group(function () {
             Route::get('/', CategoriesIndex::class)->name('outmart.dashboard.catalog.categories.index');
             Route::get('/create', CategoryCreate::class)->name('outmart.dashboard.catalog.categories.create');
+            Route::get('/{category}/edit', CategoryEdit::class)->name('outmart.dashboard.catalog.categories.edit');
         });
     });
 

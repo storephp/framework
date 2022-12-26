@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Bidaea\\OutMart\\Dashboard\\": "src/"
+            "OutMart\\Dashboard\\": "src/"
         }
     },
     "config": {
@@ -31,7 +31,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Bidaea\\OutMart\\Dashboard\\OutMartDashboardServiceProvider"
+                "OutMart\\Dashboard\\OutMartDashboardServiceProvider"
             ]
         }
     },

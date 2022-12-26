@@ -29,7 +29,8 @@
                             <div class="mb-3">
                                 <label class="form-label">Parent category</label>
                                 <div>
-                                    <select class="form-select" wire:model="parent_id">
+                                    <select class="form-select @error('parent_id') is-invalid @enderror"
+                                        wire:model="parent_id">
                                         <option value="null">Select category...</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">
@@ -37,14 +38,21 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    @error('parent_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label required">Name category</label>
                                 <div>
-                                    <input class="form-control" aria-describedby="emailHelp" placeholder="Enter name"
-                                        wire:model="name" wire:change="buildSlug()">
+                                    <input class="form-control @error('name') is-invalid @enderror"
+                                        aria-describedby="emailHelp" placeholder="Enter name" wire:model="name"
+                                        wire:change="buildSlug()">
+                                    @error('name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                     <small class="form-hint">We'll never share your email with anyone else.</small>
                                 </div>
                             </div>
@@ -52,8 +60,11 @@
                             <div class="mb-3">
                                 <label class="form-label required">Slug category</label>
                                 <div>
-                                    <input class="form-control" aria-describedby="emailHelp" placeholder="Enter slug"
+                                    <input class="form-control @error('slug') is-invalid @enderror" aria-describedby="emailHelp" placeholder="Enter slug"
                                         wire:model="slug">
+                                    @error('slug')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                     <small class="form-hint">We'll never share your email with anyone else.</small>
                                 </div>
                             </div>

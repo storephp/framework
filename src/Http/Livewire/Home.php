@@ -1,6 +1,6 @@
 <?php
 
-namespace Bidaea\OutMart\Dashboard\Http\Livewire;
+namespace OutMart\Dashboard\Http\Livewire;
 
 use Livewire\Component;
 

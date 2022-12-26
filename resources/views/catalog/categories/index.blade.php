@@ -89,7 +89,8 @@
                                             </td>
                                             <td>
                                                 <div class="btn-list flex-nowrap">
-                                                    <a href="#" class="btn">
+                                                    <a href="{{ route('outmart.dashboard.catalog.categories.edit', [$category]) }}"
+                                                        class="btn">
                                                         Edit
                                                     </a>
                                                     <button class="btn btn-danger"
@@ -122,7 +123,9 @@
                             confirm('Are you sure remove all children?')
                         ) {
                             @this.call('deleteIt', categoryId, false);
-                        } else {
+                        }
+
+                        if (value == 'notHasChildren') {
                             @this.call('deleteIt', categoryId, false);
                         }
                     });

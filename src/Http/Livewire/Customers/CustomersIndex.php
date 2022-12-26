@@ -1,9 +1,9 @@
 <?php
 
-namespace Bidaea\OutMart\Dashboard\Http\Livewire\Customers;
+namespace OutMart\Dashboard\Http\Livewire\Customers;
 
-use Bidaea\OutMart\Facades\Customer;
 use Livewire\Component;
+use OutMart\Dashboard\Models\Customer;
 
 class CustomersIndex extends Component
 {

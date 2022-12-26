@@ -1,11 +1,11 @@
 <?php
 
-namespace Bidaea\OutMart\Dashboard\Models;
+namespace OutMart\Dashboard\Models;
 
-use Bidaea\OutMart\Modules\Customers\Models\Customer as ModelCustomer;
-use Bidaea\OutMart\Modules\Customers\Traits\WithUserData;
+use OutMart\Models\Customer as OurMartCustomer;
+use OutMart\Traits\Customers\WithUserData;
 
-final class Customer extends ModelCustomer
+final class Customer extends OurMartCustomer
 {
     use WithUserData;
 }

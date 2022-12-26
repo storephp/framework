@@ -429,7 +429,11 @@
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 @livewireScripts
+<x-livewire-alert::scripts />
+
 @stack('scripts')
 
 </html>

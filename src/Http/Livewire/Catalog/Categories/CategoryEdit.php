@@ -7,9 +7,11 @@ use Illuminate\Support\Str;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
-class CategoryCreate extends Component
+class CategoryEdit extends Component
 {
     use LivewireAlert;
+
+    public $category;
 
     public $parent_id;
     public $name;
@@ -20,6 +22,15 @@ class CategoryCreate extends Component
         'name' => 'required',
         'slug' => 'required',
     ];
+
+    public function mount(Category $category)
+    {
+        $this->category = $category;
+
+        $this->parent_id = $this->category->parent_id;
+        $this->name = $this->category->name;
+        $this->slug = $this->category->slug;
+    }
 
     public function render()
     {
@@ -41,8 +52,8 @@ class CategoryCreate extends Component
 
         $validatedData['slug'] = Str::slug($validatedData['slug'], '-');
 
-        Category::create($validatedData);
+        $this->category->update($validatedData);
 
-        return $this->alert('success', 'Saved!');
+        return $this->alert('success', 'Updated!');
     }
 }

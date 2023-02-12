@@ -2,7 +2,7 @@
 
 namespace OutMart\Dashboard\Http\Livewire\Catalog\Categories;
 
-use OutMart\Models\Category;
+use OutMart\Models\Product\Category;
 use Illuminate\Support\Str;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;

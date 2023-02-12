@@ -21,9 +21,12 @@
             <div class="row row-deck row-cards">
                 <div class="col-12">
                     <form class="card" wire:submit.prevent="submit">
-                        {{-- <div class="card-header">
+                        <div class="card-header">
                             <h3 class="card-title">Basic form</h3>
-                        </div> --}}
+                            <div class="card-actions">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
                         <div class="card-body">
 
                             <div class="mb-3">
@@ -60,8 +63,8 @@
                             <div class="mb-3">
                                 <label class="form-label required">Slug category</label>
                                 <div>
-                                    <input class="form-control @error('slug') is-invalid @enderror" aria-describedby="emailHelp" placeholder="Enter slug"
-                                        wire:model="slug">
+                                    <input class="form-control @error('slug') is-invalid @enderror"
+                                        aria-describedby="emailHelp" placeholder="Enter slug" wire:model="slug">
                                     @error('slug')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -70,9 +73,9 @@
                             </div>
 
                         </div>
-                        <div class="card-footer text-end">
+                        {{-- <div class="card-footer text-end">
                             <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
+                        </div> --}}
                     </form>
                 </div>
             </div>

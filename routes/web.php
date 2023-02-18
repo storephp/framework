@@ -27,16 +27,16 @@ Route::get('/test', function(){
 Route::prefix('outmart')->middleware(['web', GlobalConfigMiddleware::class])->group(function () {
     Route::get('/', Home::class)->name('outmart.dashboard.home');
 
-    // catalog
-    Route::prefix('catalog')->group(function () {
-        Route::prefix('categories')->group(function () {
-            Route::get('/', CategoriesIndex::class)->name('outmart.dashboard.catalog.categories.index');
-            Route::get('/create', CategoryCreate::class)->name('outmart.dashboard.catalog.categories.create');
-            Route::get('/{category}/edit', CategoryEdit::class)->name('outmart.dashboard.catalog.categories.edit');
-        });
-    });
+    // // catalog
+    // Route::prefix('catalog')->group(function () {
+    //     Route::prefix('categories')->group(function () {
+    //         Route::get('/', CategoriesIndex::class)->name('outmart.dashboard.catalog.categories.index');
+    //         Route::get('/create', CategoryCreate::class)->name('outmart.dashboard.catalog.categories.create');
+    //         Route::get('/{category}/edit', CategoryEdit::class)->name('outmart.dashboard.catalog.categories.edit');
+    //     });
+    // });
 
-    // Customers
+    // // Customers
     Route::prefix('customers')->group(function () {
         Route::get('/', CustomersIndex::class)->name('outmart.dashboard.customers.index');
     });

@@ -22,7 +22,8 @@
     },
     "autoload": {
         "psr-4": {
-            "OutMart\\Dashboard\\": "src/"
+            "OutMart\\Dashboard\\": "src/",
+            "OutMart\\Modules\\": "modules/"
         }
     },
     "config": {
@@ -31,7 +32,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "OutMart\\Dashboard\\OutMartDashboardServiceProvider"
+                "OutMart\\Dashboard\\OutMartDashboardServiceProvider",
+                "OutMart\\Modules\\Catalog\\Providers\\OutMartCatalogServiceProvider"
             ]
         }
     },

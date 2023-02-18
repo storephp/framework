@@ -1,6 +1,6 @@
 <?php
 
-namespace OutMart\Dashboard\Http\Livewire\Catalog\Categories;
+namespace OutMart\Modules\Catalog\Http\Livewire\Categories;
 
 use OutMart\Models\Product\Category;
 use Livewire\Component;

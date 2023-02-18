@@ -2,11 +2,13 @@
 
 namespace OutMart\Dashboard;
 
+use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
 use OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoriesIndex;
 use OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoryCreate;
 use OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoryEdit;
-use Illuminate\Support\ServiceProvider;
-use Livewire\Livewire;
+use OutMart\Dashboard\Views\Form\InputText;
+use OutMart\Dashboard\Views\Form\Select;
 
 class OutMartDashboardServiceProvider extends ServiceProvider
 {
@@ -17,7 +19,7 @@ class OutMartDashboardServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'blogpackage');
+        $this->mergeConfigFrom(__DIR__ . '/../config/core.php', 'outmart.dashboard.core');
     }
 
     /**
@@ -34,5 +36,15 @@ class OutMartDashboardServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'outmart');
+
+        $this->loadViewComponentsAs('outmart', $this->viewComponents());
+    }
+
+    private function viewComponents(): array
+    {
+        return [
+            InputText::class,
+            Select::class,
+        ];
     }
 }

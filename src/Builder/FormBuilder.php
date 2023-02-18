@@ -3,70 +3,70 @@
 namespace OutMart\Dashboard\Builder;
 
 use Livewire\Component;
-use OutMart\Dashboard\Builder\Contracts\hasCreateFields;
+use OutMart\Dashboard\Builder\Contracts\hasGenerateFields;
+use OutMart\Dashboard\Builder\Contracts\hasGenerateTabs;
 use OutMart\Dashboard\Builder\Form\Fields;
 use OutMart\Dashboard\Builder\Form\Tabs;
+use OutMart\Modules\Catalog\Events\AddFieldsToCategoryCreate;
 
 class FormBuilder extends Component
 {
-    protected $form = null;
-    protected $tabs = null;
-    public $formTabs = [];
-    public $fields = [];
-    public $pagePretitle = 'Pre title';
-    public $pageTitle = 'Title';
+    protected $pageTitle = 'Title';
+    protected $pagePretitle = 'Pre title';
+    protected $submitLabel = 'Submit';
+    protected $defaultTab = 'basic';
+    protected $generatePath = null;
 
-    public $submitLabel = 'Submit';
+    private $form = null;
+    private $tabs = null;
+    private $formTabs = [];
+    private $formFields = [];
 
-    public $tab = 'basic';
-    protected $pathFields = null;
-
-    public function __construct($id = null)
+    public function boot()
     {
         $this->tabs = new Tabs;
         $this->form = new Fields;
 
-        config(['outmart.dashboard.core.fields.' . $this->pathFields => []]);
+        if ($this instanceof hasGenerateTabs) {
+            $this->generateTabs($this->tabs);
+        }
 
-        $fields = config('outmart.dashboard.core.fields.' . $this->pathFields);
+        if ($this instanceof hasGenerateFields) {
+            $this->generateFields($this->form);
+            $fields = $this->form->getFields();
 
-        if ($this instanceof hasCreateFields) {
-            $this->createFields();
-            $fields = array_merge($fields, $this->form->getFields());
+            if ($this->generatePath) {
+                AddFieldsToCategoryCreate::dispatch($this->generatePath, $this->form);
+            }
         }
 
         $collection = collect($fields);
         $sorted = $collection->sortBy('order');
-        $this->fields = $sorted->values()->all();
+        $this->formFields = $sorted->values()->all();
 
-        foreach ($this->fields as $field) {
+        foreach ($this->formFields as $field) {
             $this->{$field['model']} = $field['value'] ?? null;
         }
 
         $this->formTabs = $this->tabs->getTabs();
 
-        $ssf = [];
+        $formTabs = [];
         foreach ($this->formTabs as $formTab) {
-            //
-            $ssf[] = [
+            $formTabs[] = [
                 'id' => $formTab['id'],
                 'name' => $formTab['name'],
-                'fields' => collect($this->fields)->where('tab', $formTab['id'])->all(),
+                'fields' => collect($this->formFields)->where('tab', $formTab['id'])->all(),
             ];
         }
 
-        $this->formTabs = $ssf;
-
-        // dd($this->formTabs);
-
-        parent::__construct($id);
+        $this->formTabs = $formTabs;
     }
 
     protected function rules()
     {
         $data = [];
 
-        foreach ($this->fields as $field) {
+        foreach ($this->formFields as $field) {
             $data[$field['model']] = $field['rules'];
         }
 
@@ -79,8 +79,9 @@ class FormBuilder extends Component
             'meta' => [
                 'pageTitle' => $this->pageTitle(),
             ],
+            'tab' => $this->getDefaultTab(),
             'from_tabs' => $this->formTabs,
-            'fileds' => $this->fields,
+            'fileds' => $this->formFields,
         ])->layout('outmart::layouts.dashboard');
     }
 
@@ -89,8 +90,16 @@ class FormBuilder extends Component
         return $this->pageTitle;
     }
 
+    /**
+     * Get the value of defaultTab
+     */
+    public function getDefaultTab()
+    {
+        return $this->defaultTab;
+    }
+
     public function setTab($tab)
     {
-        $this->tab = $tab;
+        $this->defaultTab = $tab;
     }
 }

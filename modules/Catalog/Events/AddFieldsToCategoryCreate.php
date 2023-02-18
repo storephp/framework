@@ -15,6 +15,13 @@ class AddFieldsToCategoryCreate
      *
      * @var \App\Models\Order
      */
+    public $generatePath;
+
+    /**
+     * The order instance.
+     *
+     * @var \App\Models\Order
+     */
     public $form;
 
     /**
@@ -23,8 +30,9 @@ class AddFieldsToCategoryCreate
      * @param  \App\Models\Order  $order
      * @return void
      */
-    public function __construct($form)
+    public function __construct($generatePath, $form)
     {
+        $this->generatePath = $generatePath;
         $this->form = $form;
     }
 }

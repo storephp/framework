@@ -4,41 +4,42 @@ namespace OutMart\Modules\Catalog\Http\Livewire\Categories;
 
 use Illuminate\Support\Str;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use OutMart\Dashboard\Builder\Contracts\hasCreateFields;
+use OutMart\Dashboard\Builder\Contracts\hasGenerateFields;
 use OutMart\Dashboard\Builder\FormBuilder;
 use OutMart\Models\Product\Category;
-use OutMart\Modules\Catalog\Events\AddFieldsToCategoryCreate;
 use OutMart\Modules\Catalog\Events\CategoryCreated;
 
-class CategoryCreate extends FormBuilder implements hasCreateFields
+class CategoryCreate extends FormBuilder implements hasGenerateFields
 {
     use LivewireAlert;
 
     public $pagePretitle = 'Catalog';
     // public $pageTitle = 'Create new category';
 
-    protected $pathFields = 'catalog.categories';
+    // protected $generatePath = 'catalog.categories.create';
 
     public $slug;
 
-    public $tab = 'basic.id';
+    // public $defaultTab = 'basic.id';
 
-    public function buildSlug()
+    // public function buildSlug()
+    // {
+    //     $this->slug = Str::slug($this->name, '-');
+    // }
+
+    // protected function generateTabs($tabs)
+    // {
+    //     // $tabs->addTab([
+    //     //     'id' => 'basic.id',
+    //     //     'name' => 'basic info',
+    //     // ]);
+    // }
+
+    public function generateFields($form)
     {
-        $this->slug = Str::slug($this->name, '-');
-    }
-
-    public function createFields()
-    {
-        $this->tabs->addTab([
-            'id' => 'basic.id',
-            'name' => 'basic info',
-        ]);
-
-        $this->form->addField([
-            'tab' => 'basic.id',
+        $form->addField('select', [
+            // 'tab' => 'basic.id',
             'label' => 'Parent category',
-            'type' => 'select',
             'model' => 'parent_id',
             'options' => Category::pluck('name', 'id'),
             'rules' => 'nullable',
@@ -46,26 +47,24 @@ class CategoryCreate extends FormBuilder implements hasCreateFields
             'hint' => 'You can not select.',
         ]);
 
-        $this->form->addField([
-            'tab' => 'basic.id',
+        $form->addField('text', [
+            // 'tab' => 'basic.id',
             'label' => 'Name category',
-            'type' => 'text',
             'model' => 'name',
             'rules' => 'required',
             'order' => 10,
-            'hint' => 'dsf dsf dsff'
+            'hint' => 'dsf dsf dsff',
         ]);
 
-        $this->form->addField([
-            'tab' => 'basic.id',
+        $form->addField('text', [
+            // 'tab' => 'basic.id',
             'label' => 'Slug category',
-            'type' => 'text',
             'model' => 'slug',
             'rules' => 'required',
             'order' => 20,
         ]);
 
-        AddFieldsToCategoryCreate::dispatch($this->form);
+        // AddFieldsToCategoryCreate::dispatch($this->form);
     }
 
     public function submit()

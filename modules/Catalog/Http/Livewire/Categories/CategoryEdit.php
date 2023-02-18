@@ -4,12 +4,11 @@ namespace OutMart\Modules\Catalog\Http\Livewire\Categories;
 
 use Illuminate\Support\Str;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use OutMart\Dashboard\Builder\Contracts\hasCreateFields;
+use OutMart\Dashboard\Builder\Contracts\hasGenerateFields;
 use OutMart\Dashboard\Builder\FormBuilder;
 use OutMart\Models\Product\Category;
-use OutMart\Modules\Catalog\Events\AddFieldsToCategoryUpdate;
 
-class CategoryEdit extends FormBuilder  implements hasCreateFields
+class CategoryEdit extends FormBuilder implements hasGenerateFields
 {
     use LivewireAlert;
 
@@ -37,36 +36,36 @@ class CategoryEdit extends FormBuilder  implements hasCreateFields
         $this->slug = $this->category->slug;
     }
 
-    public function createFields()
+    public function generateFields($form)
     {
-        $this->form->addField([
+        $form->addField('select', [
+            'tab' => 'basic.id',
             'label' => 'Parent category',
-            'type' => 'select',
             'model' => 'parent_id',
             'options' => Category::pluck('name', 'id'),
             'rules' => 'nullable',
             'order' => 1,
-            'hint' => 'You can not select.'
+            'hint' => 'You can not select.',
         ]);
 
-        $this->form->addField([
+        $form->addField('text', [
+            'tab' => 'basic.id',
             'label' => 'Name category',
-            'type' => 'text',
             'model' => 'name',
             'rules' => 'required',
             'order' => 10,
-            // 'hint' => 'dsf dsf dsff'
+            'hint' => 'dsf dsf dsff',
         ]);
 
-        $this->form->addField([
+        $form->addField('text', [
+            'tab' => 'basic.id',
             'label' => 'Slug category',
-            'type' => 'text',
             'model' => 'slug',
             'rules' => 'required',
             'order' => 20,
         ]);
 
-        AddFieldsToCategoryUpdate::dispatch($this->form);
+        AddFieldsToCategoryCreate::dispatch($this->form);
     }
 
     public function buildSlug()

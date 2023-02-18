@@ -18,8 +18,15 @@ class Tabs
      */
     public function getTabs()
     {
+        if (empty($this->tabs)) {
+            $this->tabs[] = [
+                'id' => 'basic',
+                'name' => 'basic info',
+            ];
+        }
+
         return array_map(function ($attribute) {
-            $attribute['id'] = Str::slug($attribute['id'], '.');
+            $attribute['id'] = (isset($attribute['id'])) ? Str::slug($attribute['id'], '.') : 'basic';
             $attribute['name'] = Str::ucfirst($attribute['name']);
             return $attribute;
         }, $this->tabs);

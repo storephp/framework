@@ -2,7 +2,7 @@
 
 namespace OutMart\Dashboard\Listeners;
 
-use OutMart\Modules\Catalog\Events\CategoryGrad;
+use OutMart\Modules\Catalog\Events\AddFieldsToCategoryCreate;
 
 class SendShipmentNotification
 {
@@ -12,28 +12,39 @@ class SendShipmentNotification
      * @param  \App\Events\OrderShipped $event
      * @return void
      */
-    public function handle(CategoryGrad $event)
+    public function handle(AddFieldsToCategoryCreate $event)
     {
+        if ($event->generatePath == 'catalog.categories') {
+            $event->form->addField('text', [
+                'tab' => 'basic.id',
+                'label' => 'Name category dd',
+                'model' => 'named',
+                'rules' => 'required',
+                'order' => 10,
+                'hint' => 'dsf dsf dsff',
+            ]);
+        }
+
         // dd($event->columns);
         // $event->row->addRow([
         //     'label' => 'slug',
         // ]);
 
-        $event->table->addColumn([
-            'lable' => 'slug',
-            'body' => [
-                'type' => 'model',
-                'value' => 'slug',
-            ],
-        ]);
+        // $event->table->addColumn([
+        //     'lable' => 'slug',
+        //     'body' => [
+        //         'type' => 'model',
+        //         'value' => 'slug',
+        //     ],
+        // ]);
 
-        $event->table->addColumn([
-            'lable' => 'sdsd',
-            'body' => [
-                'type' => 'model',
-                'value' => 'parent->name',
-            ],
-        ]);
+        // $event->table->addColumn([
+        //     'lable' => 'sdsd',
+        //     'body' => [
+        //         'type' => 'model',
+        //         'value' => 'parent->name',
+        //     ],
+        // ]);
     }
 }
 

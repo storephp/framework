@@ -7,6 +7,7 @@ use OutMart\Dashboard\Builder\Contracts\hasGenerateFields;
 use OutMart\Dashboard\Builder\Contracts\hasGenerateTabs;
 use OutMart\Dashboard\Builder\Form\Fields;
 use OutMart\Dashboard\Builder\Form\Tabs;
+use OutMart\Dashboard\Views\Layouts\DashboardLayout;
 use OutMart\Modules\Catalog\Events\AddFieldsToCategoryCreate;
 
 class FormBuilder extends Component
@@ -82,7 +83,7 @@ class FormBuilder extends Component
             'tab' => $this->getDefaultTab(),
             'from_tabs' => $this->formTabs,
             'fileds' => $this->formFields,
-        ])->layout('outmart::layouts.dashboard');
+        ])->layout(DashboardLayout::class);
     }
 
     protected function pageTitle()

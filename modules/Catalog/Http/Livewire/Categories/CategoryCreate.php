@@ -36,7 +36,7 @@ class CategoryCreate extends FormBuilder implements hasGenerateFields
     // }
 
     public function generateFields($form)
-    {
+    {        
         $form->addField('select', [
             // 'tab' => 'basic.id',
             'label' => 'Parent category',

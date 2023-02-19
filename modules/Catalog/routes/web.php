@@ -15,14 +15,8 @@ use OutMart\Modules\Catalog\Http\Livewire\Categories\CategoryEdit;
 | contains the "web" middleware group. Now create something great!
 |
  */
-
-Route::prefix('outmart')->middleware(['web'])->group(function () {
-    // catalog
-    Route::prefix('catalog')->group(function () {
-        Route::prefix('categories')->group(function () {
-            Route::get('/', CategoriesIndex::class)->name('outmart.dashboard.catalog.categories.index');
-            Route::get('/create', CategoryCreate::class)->name('outmart.dashboard.catalog.categories.create');
-            Route::get('/{category}/edit', CategoryEdit::class)->name('outmart.dashboard.catalog.categories.edit');
-        });
-    });
+Route::prefix('categories')->group(function () {
+    Route::get('/', CategoriesIndex::class)->name('outmart.dashboard.catalog.categories.index');
+    Route::get('/create', CategoryCreate::class)->name('outmart.dashboard.catalog.categories.create');
+    Route::get('/{category}/edit', CategoryEdit::class)->name('outmart.dashboard.catalog.categories.edit');
 });

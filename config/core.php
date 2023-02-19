@@ -4,8 +4,9 @@ return [
     'fields' => [
         'catalog' => [
             'categories' => [
-                // 
+                //
             ],
         ],
     ],
+    'modules' => [],
 ];

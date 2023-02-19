@@ -4,6 +4,7 @@ namespace OutMart\Dashboard\Builder;
 
 use Livewire\Component;
 use OutMart\Dashboard\Builder\Grad\Table;
+use OutMart\Dashboard\Views\Layouts\DashboardLayout;
 use OutMart\Models\Product\Category;
 
 class GradBuilder extends Component
@@ -93,7 +94,7 @@ class GradBuilder extends Component
             ],
             'headers' => $headers,
             'columns' => $this->columns,
-        ])->layout('outmart::layouts.dashboard');
+        ])->layout(DashboardLayout::class);
     }
 
     protected function pageTitle()

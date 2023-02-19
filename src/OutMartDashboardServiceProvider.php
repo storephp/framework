@@ -2,6 +2,7 @@
 
 namespace OutMart\Dashboard;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 use OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoriesIndex;
@@ -9,6 +10,7 @@ use OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoryCreate;
 use OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoryEdit;
 use OutMart\Dashboard\Views\Form\InputText;
 use OutMart\Dashboard\Views\Form\Select;
+use OutMart\Dashboard\Views\Layouts\DashboardLayout;
 
 class OutMartDashboardServiceProvider extends ServiceProvider
 {
@@ -29,11 +31,13 @@ class OutMartDashboardServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Blade::component('outmart-dashboard-layout', DashboardLayout::class);
+
         Livewire::component('catalog-categories-index', CategoriesIndex::class);
         Livewire::component('catalog-categories-create', CategoryCreate::class);
         Livewire::component('catalog-categories-edit', CategoryEdit::class);
 
-        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+        // $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'outmart');
 

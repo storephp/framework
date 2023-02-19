@@ -246,7 +246,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="sidebar-menu">
                     <ul class="navbar-nav pt-lg-3">
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('outmart.dashboard.home') }}">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                                     <!-- Download SVG icon from http://tabler-icons.io/i/home -->
@@ -263,8 +263,8 @@
                                     Home
                                 </span>
                             </a>
-                        </li>
-                        <li class="nav-item dropdown">
+                        </li> --}}
+                        {{-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
                                 data-bs-auto-close="false" role="button" aria-expanded="false">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -306,8 +306,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                        <li class="nav-item dropdown">
+                        </li> --}}
+                        {{-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
                                 data-bs-auto-close="false" role="button" aria-expanded="false">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -336,7 +336,36 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
+                        </li> --}}
+
+                        {{-- @dd($modules) --}}
+
+                        @foreach ($modules as $module)
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
+                                    data-bs-auto-close="false" role="button" aria-expanded="false">
+                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                        @svg('tabler-' . $module['icon'])
+                                    </span>
+                                    <span class="nav-link-title">
+                                        {{ $module['name'] }}
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <div class="dropdown-menu-columns">
+                                        <div class="dropdown-menu-column">
+                                            @foreach ($module['menu'] as $link)
+                                                <a class="dropdown-item" href="{{ route($link['route']) }}">
+                                                    {{-- @svg('tabler-' . $link['icon']) --}}
+                                                    {{ $link['name'] }}
+                                                </a>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
+
                     </ul>
                 </div>
             </div>

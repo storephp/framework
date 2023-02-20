@@ -18,6 +18,7 @@ abstract class ServiceProvider extends IlluminateServiceProvider
         $module[$moduleMenuId] = [
             'icon' => $moduleData['icon'] ?? 'puzzle',
             'name' => $moduleData['name'] ?? 'Module',
+            'slug' => $moduleData['slug'] ?? 'sodule',
             'description' => $moduleData['description'] ?? [],
             'menu' => $moduleMenu ?? [],
         ];
@@ -38,7 +39,7 @@ abstract class ServiceProvider extends IlluminateServiceProvider
     private function loadRoutes()
     {
         if (file_exists($this->moduleDir . '/routes/web.php')) {
-            $prefix = Str::slug($this->moduleData['name']);
+            $prefix = Str::slug($this->moduleData['slug']);
             Route::middleware(['web'])
                 ->prefix('outmart/' . $prefix)
                 ->group(function () {

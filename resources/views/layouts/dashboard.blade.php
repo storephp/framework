@@ -348,7 +348,7 @@
                                         @svg('tabler-' . $module['icon'])
                                     </span>
                                     <span class="nav-link-title">
-                                        {{ $module['name'] }}
+                                        {{ str_contains($module['name'], '::') ? __($module['name']) : $module['name'] }}
                                     </span>
                                 </a>
                                 <div class="dropdown-menu">
@@ -356,8 +356,10 @@
                                         <div class="dropdown-menu-column">
                                             @foreach ($module['menu'] as $link)
                                                 <a class="dropdown-item" href="{{ route($link['route']) }}">
-                                                    {{-- @svg('tabler-' . $link['icon']) --}}
-                                                    {{ $link['name'] }}
+                                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                        @svg('tabler-' . $link['icon'])
+                                                    </span>
+                                                    {{ str_contains($link['name'], '::') ? __($link['name']) : $link['name'] }}
                                                 </a>
                                             @endforeach
                                         </div>

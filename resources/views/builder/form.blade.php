@@ -72,7 +72,7 @@
                                 <a href="#" class="btn">
                                     Cancel
                                 </a>
-                                <button type="submit" class="btn btn-primary">{{ $submitLabel ?? 'Submit' }}</button>
+                                <button type="submit" class="btn btn-primary">{{ $meta['submitLabel'] ?? 'Submit' }}</button>
                             </div>
                         </div>
                     </div>

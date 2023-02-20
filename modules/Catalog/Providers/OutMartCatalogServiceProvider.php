@@ -21,11 +21,12 @@ class OutMartCatalogServiceProvider extends ServiceProvider
     {
         $this->bootModuleAPP(__DIR__ . '/../', [
             'icon' => 'clipboard-list',
-            'name' => 'Catalog',
+            'name' => 'OutMartCatalog::menu.catalog',
+            'slug' => 'catalog'
         ], 'outmart_catalog', [
             [
-                'icon' => 'puzzle',
-                'name' => 'Categories',
+                'icon' => 'category',
+                'name' => 'OutMartCatalog::menu.categories',
                 'route' => 'outmart.dashboard.catalog.categories.index',
             ],
         ]);

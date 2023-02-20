@@ -12,8 +12,9 @@ class CategoryEdit extends FormBuilder implements hasGenerateFields
 {
     use LivewireAlert;
 
-    public $pagePretitle = 'Catalog';
-    public $pageTitle = 'Update this category';
+    protected $pagePretitle = 'Catalog';
+    protected $pageTitle = 'Update this category';
+    protected $submitLabel = 'Update';
 
     public $category;
 
@@ -38,18 +39,22 @@ class CategoryEdit extends FormBuilder implements hasGenerateFields
 
     public function generateFields($form)
     {
+        $options = array_merge([
+            'remove' => 'Remove parent category',
+        ], Category::pluck('name', 'id')->toArray());
+
         $form->addField('select', [
-            'tab' => 'basic.id',
+            // 'tab' => 'basic.id',
             'label' => 'Parent category',
             'model' => 'parent_id',
-            'options' => Category::pluck('name', 'id'),
+            'options' => $options,
             'rules' => 'nullable',
             'order' => 1,
             'hint' => 'You can not select.',
         ]);
 
         $form->addField('text', [
-            'tab' => 'basic.id',
+            // 'tab' => 'basic.id',
             'label' => 'Name category',
             'model' => 'name',
             'rules' => 'required',
@@ -58,14 +63,14 @@ class CategoryEdit extends FormBuilder implements hasGenerateFields
         ]);
 
         $form->addField('text', [
-            'tab' => 'basic.id',
+            // 'tab' => 'basic.id',
             'label' => 'Slug category',
             'model' => 'slug',
             'rules' => 'required',
             'order' => 20,
         ]);
 
-        AddFieldsToCategoryCreate::dispatch($this->form);
+        // AddFieldsToCategoryCreate::dispatch($this->form);
     }
 
     public function buildSlug()
@@ -78,6 +83,10 @@ class CategoryEdit extends FormBuilder implements hasGenerateFields
         $validatedData = $this->validate();
 
         $validatedData['slug'] = Str::slug($validatedData['slug'], '-');
+
+        if ($validatedData['parent_id'] == 'remove') {
+            $validatedData['parent_id'] = null;
+        }
 
         $this->category->update($validatedData);
 

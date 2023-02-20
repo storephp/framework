@@ -79,6 +79,7 @@ class FormBuilder extends Component
         return view('outmart::builder.form', [
             'meta' => [
                 'pageTitle' => $this->pageTitle(),
+                'submitLabel' => $this->submitLabel,
             ],
             'tab' => $this->getDefaultTab(),
             'from_tabs' => $this->formTabs,

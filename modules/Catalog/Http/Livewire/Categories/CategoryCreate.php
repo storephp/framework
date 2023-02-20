@@ -7,7 +7,6 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use OutMart\Dashboard\Builder\Contracts\hasGenerateFields;
 use OutMart\Dashboard\Builder\FormBuilder;
 use OutMart\Models\Product\Category;
-use OutMart\Modules\Catalog\Events\CategoryCreated;
 
 class CategoryCreate extends FormBuilder implements hasGenerateFields
 {
@@ -19,6 +18,8 @@ class CategoryCreate extends FormBuilder implements hasGenerateFields
     // protected $generatePath = 'catalog.categories.create';
 
     public $slug;
+
+    // public $form;
 
     // public $defaultTab = 'basic.id';
 
@@ -36,7 +37,7 @@ class CategoryCreate extends FormBuilder implements hasGenerateFields
     // }
 
     public function generateFields($form)
-    {        
+    {
         $form->addField('select', [
             // 'tab' => 'basic.id',
             'label' => 'Parent category',
@@ -75,7 +76,7 @@ class CategoryCreate extends FormBuilder implements hasGenerateFields
 
         $category = Category::create($validatedData);
 
-        CategoryCreated::dispatch($category, $this->form);
+        // CategoryCreated::dispatch($category, $this->form);
 
         return $this->alert('success', 'Saved!');
     }

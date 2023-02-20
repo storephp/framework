@@ -2,41 +2,24 @@
 
 namespace OutMart\Modules\Catalog\Http\Livewire\Categories;
 
-use Livewire\WithPagination;
-use OutMart\Dashboard\Builder\GradBuilder;
 use OutMart\Models\Product\Category;
-use OutMart\Modules\Catalog\Events\CategoryGrad;
+use Livewire\Component;
+use Livewire\WithPagination;
+use OutMart\Dashboard\Views\Layouts\DashboardLayout;
 
-class CategoriesIndex extends GradBuilder
+class CategoriesIndex extends Component
 {
     use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
 
-    protected $pathFields = 'catalog.categories.sdsd';
-    protected $model = Category::class;
-    // protected $paginate = 3;
-
-
-    protected function headers()
+    public function render()
     {
-        $this->table->addColumn([
-            'lable' => 'ID',
-            'body' => [
-                'type' => 'model',
-                'value' => 'id',
-            ],
-        ]);
+        $categories = Category::paginate(15);
 
-        $this->table->addColumn([
-            'lable' => 'Name',
-            'body' => [
-                'type' => 'model',
-                'value' => 'name',
-            ],
-        ]);
-
-        CategoryGrad::dispatch($this->table, $this->columns);
+        return view('outmart::catalog.categories.index', [
+            'categories' => $categories,
+        ])->layout(DashboardLayout::class);
     }
 
     public function deleteIt(Category $category, $checkChildren = true)

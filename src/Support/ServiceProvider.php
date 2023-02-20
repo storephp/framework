@@ -13,9 +13,9 @@ abstract class ServiceProvider extends IlluminateServiceProvider
 
     protected function bootModuleAPP($moduleDir, $moduleData, $moduleMenuId = null, $moduleMenu = null)
     {
-        $module = config('outmart.dashboard.core.modules');
+        $modules = config('outmart.dashboard.core.modules');
 
-        $module[$moduleMenuId] = [
+        $modules[$moduleMenuId] = [
             'icon' => $moduleData['icon'] ?? 'puzzle',
             'name' => $moduleData['name'] ?? 'Module',
             'slug' => $moduleData['slug'] ?? 'sodule',
@@ -23,10 +23,29 @@ abstract class ServiceProvider extends IlluminateServiceProvider
             'menu' => $moduleMenu ?? [],
         ];
 
-        config(['outmart.dashboard.core.modules' => $module]);
+        $modules = array_map(function ($module) {
+
+            $moduleMenu = array_map(function ($menu) {
+                $menu['order'] = $menu['order'] ?? 1000;
+                return $menu;
+            }, $module['menu']);
+
+            $module['menu'] = collect($moduleMenu)->sortBy('order')->all();
+
+            $module['menu'] = array_map(function ($menu) {
+                if (isset($menu['submenu'])) {
+                    $menu['submenu'] = collect($menu['submenu'])->sortBy('order')->all();
+                }
+                return $menu;
+            }, $module['menu']);
+
+            return $module;
+        }, $modules);
+
+        config(['outmart.dashboard.core.modules' => $modules]);
 
         $this->moduleDir = $moduleDir;
-        $this->moduleData = $module[$moduleMenuId];
+        $this->moduleData = $modules[$moduleMenuId];
 
         $this->loadRoutes();
         $this->loadAppViews();
@@ -49,7 +68,52 @@ abstract class ServiceProvider extends IlluminateServiceProvider
 
         config(['outmart.dashboard.core.modules.' . $moduleMenuId . '.menu' => $menu]);
     }
-    
+
+    // $this->addLink(
+    //     icon: 'category',
+    //     name: 'OutMartCatalog::menu.categories',
+    //     route: 'outmart.dashboard.catalog.categories.index',
+    //     order: 100,
+    // ),
+    // $this->addLink(
+    //     name: 'slub',
+    //     submenu: [
+    //         $this->addLink(
+    //             icon: 'category',
+    //             name: 'OutMartCatalog::menu.categories',
+    //             route: 'outmart.dashboard.catalog.categories.index',
+    //             order: 2,
+    //         ),
+    //         $this->addLink(
+    //             icon: 'category',
+    //             name: '123546',
+    //             route: 'outmart.dashboard.catalog.categories.index',
+    //             order: 1,
+    //         ),
+    //     ],
+    // ),
+    protected function addLink($icon = 'link', $name = '', $route = null, $submenu = null, $order = null)
+    {
+        $data = [
+            'icon' => $icon,
+            'name' => $name,
+        ];
+
+        if ($route && !$submenu) {
+            $data['route'] = $route;
+        }
+
+        if ($submenu && !$route) {
+            $data['submenu'] = $submenu;
+        }
+
+        if ($order) {
+            $data['order'] = $order;
+        }
+
+        return $data;
+    }
+
     private function loadRoutes()
     {
         if (file_exists($this->moduleDir . '/routes/web.php')) {

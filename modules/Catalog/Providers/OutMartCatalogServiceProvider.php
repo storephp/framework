@@ -19,16 +19,23 @@ class OutMartCatalogServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->bootModuleAPP(__DIR__ . '/../', [
+        $this->bootModuleAPP(__DIR__ . '/..', [
             'icon' => 'clipboard-list',
             'name' => 'OutMartCatalog::menu.catalog',
             'slug' => 'catalog'
         ], 'outmart_catalog', [
-            [
-                'icon' => 'category',
-                'name' => 'OutMartCatalog::menu.categories',
-                'route' => 'outmart.dashboard.catalog.categories.index',
-            ],
+            $this->addLink(
+                icon: 'category',
+                name: 'OutMartCatalog::menu.categories',
+                route: 'outmart.dashboard.catalog.categories.index',
+                order: 10,
+            ),
+            $this->addLink(
+                icon: 'packages',
+                name: 'Products',
+                route: 'outmart.dashboard.catalog.categories.index',
+                order: 20,
+            ),
         ]);
 
         Livewire::component('catalog-categories-index', CategoriesIndex::class);

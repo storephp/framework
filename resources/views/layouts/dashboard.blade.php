@@ -246,100 +246,6 @@
                 </div>
                 <div class="collapse navbar-collapse" id="sidebar-menu">
                     <ul class="navbar-nav pt-lg-3">
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="{{ route('outmart.dashboard.home') }}">
-                                <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                    <!-- Download SVG icon from http://tabler-icons.io/i/home -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
-                                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <polyline points="5 12 3 12 12 3 21 12 19 12" />
-                                        <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-                                        <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-                                    </svg>
-                                </span>
-                                <span class="nav-link-title">
-                                    Home
-                                </span>
-                            </a>
-                        </li> --}}
-                        {{-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
-                                data-bs-auto-close="false" role="button" aria-expanded="false">
-                                <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="icon icon-tabler icon-tabler-clipboard-list" width="24"
-                                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path
-                                            d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2">
-                                        </path>
-                                        <rect x="9" y="3" width="6" height="4"
-                                            rx="2"></rect>
-                                        <line x1="9" y1="12" x2="9.01" y2="12"></line>
-                                        <line x1="13" y1="12" x2="15" y2="12"></line>
-                                        <line x1="9" y1="16" x2="9.01" y2="16"></line>
-                                        <line x1="13" y1="16" x2="15" y2="16"></line>
-                                    </svg>
-                                </span>
-                                <span class="nav-link-title">
-                                    Catalog
-                                </span>
-                            </a>
-                            <div class="dropdown-menu">
-                                <div class="dropdown-menu-columns">
-                                    <div class="dropdown-menu-column">
-                                        <a class="dropdown-item"
-                                            href="{{ route('outmart.dashboard.catalog.categories.index') }}">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                class="icon icon-tabler icon-tabler-bookmark" width="24"
-                                                height="24" viewBox="0 0 24 24" stroke-width="2"
-                                                stroke="currentColor" fill="none" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M9 4h6a2 2 0 0 1 2 2v14l-5 -3l-5 3v-14a2 2 0 0 1 2 -2"></path>
-                                            </svg>
-                                            Categories
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li> --}}
-                        {{-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
-                                data-bs-auto-close="false" role="button" aria-expanded="false">
-                                <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users"
-                                        width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                                        stroke="currentColor" fill="none" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <circle cx="9" cy="7" r="4"></circle>
-                                        <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                        <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
-                                    </svg>
-                                </span>
-                                <span class="nav-link-title">
-                                    Customers
-                                </span>
-                            </a>
-                            <div class="dropdown-menu">
-                                <div class="dropdown-menu-columns">
-                                    <div class="dropdown-menu-column">
-                                        <a class="dropdown-item"
-                                            href="{{ route('outmart.dashboard.customers.index') }}">
-                                            Customers List
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li> --}}
-
-                        {{-- @dd($modules) --}}
-
                         @foreach ($modules as $module)
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
@@ -355,12 +261,38 @@
                                     <div class="dropdown-menu-columns">
                                         <div class="dropdown-menu-column">
                                             @foreach ($module['menu'] as $link)
-                                                <a class="dropdown-item" href="{{ route($link['route']) }}">
-                                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                                        @svg('tabler-' . $link['icon'])
-                                                    </span>
-                                                    {{ str_contains($link['name'], '::') ? __($link['name']) : $link['name'] }}
-                                                </a>
+                                                @if (isset($link['route']))
+                                                    <a class="dropdown-item" href="{{ route($link['route']) }}">
+                                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                            @svg('tabler-' . $link['icon'])
+                                                        </span>
+                                                        {{ str_contains($link['name'], '::') ? __($link['name']) : $link['name'] }}
+                                                    </a>
+                                                @endif
+
+                                                @if (isset($link['submenu']))
+                                                    <a class="dropdown-item dropdown-toggle"
+                                                        href="#" data-bs-toggle="dropdown"
+                                                        data-bs-auto-close="false" role="button"
+                                                        aria-expanded="false">
+                                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                            @svg('tabler-' . $link['icon'])
+                                                        </span>
+                                                        {{ str_contains($link['name'], '::') ? __($link['name']) : $link['name'] }}
+                                                    </a>
+                                                    <div class="dropdown-menu">
+                                                        @foreach ($link['submenu'] as $_link)
+                                                            <a href="{{ route($_link['route']) }}"
+                                                                class="dropdown-item">
+                                                                <span
+                                                                    class="nav-link-icon d-md-none d-lg-inline-block">
+                                                                    @svg('tabler-' . $link['icon'])
+                                                                </span>
+                                                                {{ str_contains($_link['name'], '::') ? __($_link['name']) : $_link['name'] }}
+                                                            </a>
+                                                        @endforeach
+                                                    </div>
+                                                @endif
                                             @endforeach
                                         </div>
                                     </div>

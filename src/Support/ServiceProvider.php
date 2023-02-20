@@ -11,7 +11,7 @@ abstract class ServiceProvider extends IlluminateServiceProvider
     private $moduleDir = null;
     private $moduleData = null;
 
-    public function bootModuleAPP($moduleDir, $moduleData, $moduleMenuId = null, $moduleMenu = null)
+    protected function bootModuleAPP($moduleDir, $moduleData, $moduleMenuId = null, $moduleMenu = null)
     {
         $module = config('outmart.dashboard.core.modules');
 
@@ -34,6 +34,20 @@ abstract class ServiceProvider extends IlluminateServiceProvider
         // dd(config('outmart.dashboard.core.modules.' . $moduleMenuId . '.menu'));
 
         // array_push(config('outmart.dashboard.core.modules.' . $moduleMenuId . '.menu'), []);
+    }
+
+    // $this->appendToMenu('outmart_catalog', [
+    //     'icon' => 'user',
+    //     'name' => 'User',
+    //     'route' => 'route',
+    // ]);
+    protected function appendToMenu($moduleMenuId, $addMenu)
+    {
+        $menu = config('outmart.dashboard.core.modules.' . $moduleMenuId . '.menu');
+
+        $menu[] = $addMenu;
+
+        config(['outmart.dashboard.core.modules.' . $moduleMenuId . '.menu' => $menu]);
     }
     
     private function loadRoutes()

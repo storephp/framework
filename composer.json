@@ -34,7 +34,8 @@
         "laravel": {
             "providers": [
                 "OutMart\\Dashboard\\OutMartDashboardServiceProvider",
-                "OutMart\\Modules\\Catalog\\Providers\\OutMartCatalogServiceProvider"
+                "OutMart\\Modules\\Catalog\\Providers\\OutMartCatalogServiceProvider",
+                "OutMart\\Modules\\Customers\\Providers\\OutMartCustomersServiceProvider"
             ]
         }
     },

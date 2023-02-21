@@ -28,35 +28,44 @@
                                 @foreach ($from_tabs as $from_tab)
                                     <a href="#"
                                         class="list-group-item list-group-item-action d-flex align-items-center @if ($from_tab['id'] == $tab) active @endif"
-                                        wire:click="setTab('{{ $from_tab['id'] }}')">{{ $from_tab['name'] }}</a>
-                                @endforeach
-                            </div>
+                                        wire:click="setTab('{{ $from_tab['id'] }}')">
+                                        {{ $from_tab['name'] }}
+
+                                        @foreach ($from_tab['tabs_validate'] as $item)
+                                            @if ($errors->has($item))
+                                                <span class="badge bg-red ms-auto"></span>
+                                                @break
+                                            @endif
+                                    @endforeach
+                                </a>
+                            @endforeach
                         </div>
                     </div>
-                    <div class="col d-flex flex-column">
+                </div>
+                <div class="col d-flex flex-column">
 
-                        @foreach ($from_tabs as $from_tab)
-                            @if ($tab == $from_tab['id'])
-                                <div class="card-body">
-                                    <h2 class="mb-4">{{ $from_tab['name'] }}</h2>
-                                    @foreach ($from_tab['fields'] as $field)
-                                        @if ($field['type'] == 'select')
-                                            <x-outmart-select label="{{ $field['label'] }}"
-                                                model="{{ $field['model'] }}" :options="$field['options']" :hint="$field['hint']" />
-                                        @endif
+                    @foreach ($from_tabs as $from_tab)
+                        @if ($tab == $from_tab['id'])
+                            <div class="card-body">
+                                <h2 class="mb-4">{{ $from_tab['name'] }}</h2>
+                                @foreach ($from_tab['fields'] as $field)
+                                    @if ($field['type'] == 'select')
+                                        <x-outmart-select label="{{ $field['label'] }}"
+                                            model="{{ $field['model'] }}" :options="$field['options']" :hint="$field['hint']" />
+                                    @endif
 
-                                        @if ($field['type'] == 'text')
-                                            <x-outmart-input-text label="{{ $field['label'] }}"
-                                                model="{{ $field['model'] }}" :hint="$field['hint']" />
-                                        @endif
-                                    @endforeach
+                                    @if ($field['type'] == 'text')
+                                        <x-outmart-input-text label="{{ $field['label'] }}"
+                                            model="{{ $field['model'] }}" :hint="$field['hint']" />
+                                    @endif
+                                @endforeach
 
-                                </div>
-                            @endif
-                        @endforeach
+                            </div>
+                        @endif
+                    @endforeach
 
 
-                        {{-- @if ($tab == 'dd')
+                    {{-- @if ($tab == 'dd')
                             <div class="card-body">
                                 <h2 class="mb-4">Basic info dd</h2>
                                 @foreach ($fileds as $filed)
@@ -67,18 +76,21 @@
                             </div>
                         @endif --}}
 
-                        <div class="card-footer bg-transparent mt-auto">
-                            <div class="btn-list justify-content-end">
-                                <a href="#" class="btn">
-                                    Cancel
-                                </a>
-                                <button type="submit" class="btn btn-primary">{{ $meta['submitLabel'] ?? 'Submit' }}</button>
-                            </div>
+                    <div class="card-footer bg-transparent mt-auto">
+                        <div class="btn-list justify-content-end">
+                            <a href="#" class="btn">
+                                Cancel
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <span class="spinner-border spinner-border-sm me-2" wire:loading></span>
+                                {{ $meta['submitLabel'] ?? 'Submit' }}
+                            </button>
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
+        </form>
 
-        </div>
     </div>
+</div>
 </div>

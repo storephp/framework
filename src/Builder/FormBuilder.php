@@ -53,10 +53,13 @@ class FormBuilder extends Component
 
         $formTabs = [];
         foreach ($this->formTabs as $formTab) {
+            $fields = collect($this->formFields)->where('tab', $formTab['id']);
+
             $formTabs[] = [
                 'id' => $formTab['id'],
                 'name' => $formTab['name'],
-                'fields' => collect($this->formFields)->where('tab', $formTab['id'])->all(),
+                'fields' => $fields->all(),
+                'tabs_validate' => $fields->pluck('model')->all(),
             ];
         }
 
@@ -83,7 +86,7 @@ class FormBuilder extends Component
             ],
             'tab' => $this->getDefaultTab(),
             'from_tabs' => $this->formTabs,
-            'fileds' => $this->formFields,
+            // 'fileds' => $this->formFields,
         ])->layout(DashboardLayout::class);
     }
 

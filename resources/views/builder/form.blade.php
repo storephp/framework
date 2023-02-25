@@ -34,8 +34,8 @@
                                         @foreach ($from_tab['tabs_validate'] as $item)
                                             @if ($errors->has($item))
                                                 <span class="badge bg-red ms-auto"></span>
-                                                @break
-                                            @endif
+                                            @break
+                                        @endif
                                     @endforeach
                                 </a>
                             @endforeach
@@ -51,12 +51,13 @@
                                 @foreach ($from_tab['fields'] as $field)
                                     @if ($field['type'] == 'select')
                                         <x-outmart-select label="{{ $field['label'] }}"
-                                            model="{{ $field['model'] }}" :options="$field['options']" :hint="$field['hint']" />
+                                            model="{{ $field['model'] }}" :options="$field['options']" :hint="$field['hint']"
+                                            :required="str_contains($field['rules'], 'required')" />
                                     @endif
 
                                     @if ($field['type'] == 'text')
                                         <x-outmart-input-text label="{{ $field['label'] }}"
-                                            model="{{ $field['model'] }}" :hint="$field['hint']" />
+                                            model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
                                     @endif
                                 @endforeach
 
@@ -88,6 +89,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="progress progress-sm" wire:loading>
+                <div class="progress-bar progress-bar-indeterminate" wire:loading></div>
             </div>
         </form>
 

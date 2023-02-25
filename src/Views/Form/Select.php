@@ -12,6 +12,7 @@ class Select extends Component
         public $model = 'set name',
         public $options = [],
         public $hint = null,
+        public $required = false,
     ) {
     }
 

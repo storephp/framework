@@ -27,7 +27,7 @@
                             <div class="list-group list-group-transparent">
                                 @foreach ($from_tabs as $from_tab)
                                     <a href="#"
-                                        class="list-group-item list-group-item-action d-flex align-items-center @if ($from_tab['id'] == $tab) active @endif"
+                                        class="list-group-item list-group-item-action d-flex align-items-center @if ($from_tab['id'] == $selectedTab) active @endif"
                                         wire:click="setTab('{{ $from_tab['id'] }}')">
                                         {{ $from_tab['name'] }}
 
@@ -45,7 +45,7 @@
                 <div class="col d-flex flex-column">
 
                     @foreach ($from_tabs as $from_tab)
-                        @if ($tab == $from_tab['id'])
+                        @if ($selectedTab == $from_tab['id'])
                             <div class="card-body">
                                 <h2 class="mb-4">{{ $from_tab['name'] }}</h2>
                                 @foreach ($from_tab['fields'] as $field)

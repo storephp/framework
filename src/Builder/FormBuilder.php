@@ -12,10 +12,11 @@ use OutMart\Modules\Catalog\Events\AddFieldsToCategoryCreate;
 
 class FormBuilder extends Component
 {
+    public $selectedTab = 'basic';
+
     protected $pageTitle = 'Title';
     protected $pagePretitle = 'Pre title';
     protected $submitLabel = 'Submit';
-    protected $defaultTab = 'basic';
     protected $generatePath = null;
 
     private $form = null;
@@ -84,7 +85,6 @@ class FormBuilder extends Component
                 'pageTitle' => $this->pageTitle(),
                 'submitLabel' => $this->submitLabel,
             ],
-            'tab' => $this->getDefaultTab(),
             'from_tabs' => $this->formTabs,
             // 'fileds' => $this->formFields,
         ])->layout(DashboardLayout::class);
@@ -95,16 +95,8 @@ class FormBuilder extends Component
         return $this->pageTitle;
     }
 
-    /**
-     * Get the value of defaultTab
-     */
-    public function getDefaultTab()
-    {
-        return $this->defaultTab;
-    }
-
     public function setTab($tab)
     {
-        $this->defaultTab = $tab;
+        $this->selectedTab = $tab;
     }
 }

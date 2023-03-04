@@ -12,6 +12,7 @@ class Fields
     {
         $attributes = match($type) {
             'text' => $this->handleText($attributes),
+            'price' => $this->handlePrice($attributes),
             'file' => $this->handleFile($attributes),
             'select' => $this->handleSelect($attributes),
         };
@@ -33,6 +34,12 @@ class Fields
     private function handleText($attributes)
     {
         $attributes['type'] = 'text';
+        return $this->falterAttributes($attributes);
+    }
+
+    private function handlePrice($attributes)
+    {
+        $attributes['type'] = 'price';
         return $this->falterAttributes($attributes);
     }
 

@@ -3,8 +3,8 @@
     <div class="col">
         <select class="form-select @error($model) is-invalid @enderror" wire:model.defer="{{ $model }}">
             <option value="null">Select...</option>
-            @foreach ($options as $key => $value)
-                <option value="{{ $key }}">{{ $value }}</option>
+            @foreach ($options as $option)
+                <option value="{{ $option['value'] }}">{{ $option['label'] }}</option>
             @endforeach
         </select>
         @error($model)

@@ -9,9 +9,11 @@ use OutMart\Dashboard\Builder\Form\Fields;
 use OutMart\Dashboard\Builder\Form\Tabs;
 use OutMart\Dashboard\Views\Layouts\DashboardLayout;
 use OutMart\Modules\Catalog\Events\AddFieldsToCategoryCreate;
+use OutMart\Models\Store;
 
 class FormBuilder extends Component
 {
+    public $storeViewId = null;
     public $selectedTab = 'basic';
 
     protected $pageTitle = 'Title';
@@ -80,11 +82,16 @@ class FormBuilder extends Component
 
     public function render()
     {
+        $stores = Store::with('views')->get();
+
+        // dd($stores);
+
         return view('outmart::builder.form', [
             'meta' => [
                 'pageTitle' => $this->pageTitle(),
                 'submitLabel' => $this->submitLabel,
             ],
+            'stores' => $stores,
             'from_tabs' => $this->formTabs,
             // 'fileds' => $this->formFields,
         ])->layout(DashboardLayout::class);

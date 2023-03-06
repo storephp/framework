@@ -30,7 +30,7 @@ class CategoryEdit extends FormBuilder implements hasGenerateFields
 
     public function mount(Category $category)
     {
-        $this->category = $category;
+        $this->category = $category->setStoreViewId($this->storeViewId);
 
         $this->parent_id = $this->category->parent_id;
         $this->name = $this->category->name;
@@ -39,15 +39,16 @@ class CategoryEdit extends FormBuilder implements hasGenerateFields
 
     public function generateFields($form)
     {
-        $options = array_merge([
-            'remove' => 'Remove parent category',
-        ], Category::pluck('name', 'id')->toArray());
-
         $form->addField('select', [
             // 'tab' => 'basic.id',
             'label' => 'Parent category',
             'model' => 'parent_id',
-            'options' => $options,
+            'options' => Category::get()->map(function ($category) {
+                return [
+                    'label' => $category->name,
+                    'value' => $category->id,
+                ];
+            }),
             'rules' => 'nullable',
             'order' => 1,
             'hint' => 'You can not select.',

@@ -42,7 +42,12 @@ class CategoryCreate extends FormBuilder implements hasGenerateFields
             // 'tab' => 'basic.id',
             'label' => 'Parent category',
             'model' => 'parent_id',
-            'options' => Category::pluck('name', 'id'),
+            'options' => Category::get()->map(function ($category) {
+                return [
+                    'label' => $category->name,
+                    'value' => $category->id,
+                ];
+            }),
             'rules' => 'nullable',
             'order' => 1,
             'hint' => 'You can not select.',
@@ -74,7 +79,11 @@ class CategoryCreate extends FormBuilder implements hasGenerateFields
 
         $validatedData['slug'] = Str::slug($validatedData['slug'], '-');
 
-        $category = Category::create($validatedData);
+        $category = Category::create([
+            'parent_id' => $validatedData['parent_id'],
+            'slug' => $validatedData['slug'],
+        ]);
+        $category->setEntry('name', $validatedData['name']);
 
         // CategoryCreated::dispatch($category, $this->form);
 

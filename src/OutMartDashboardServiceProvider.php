@@ -8,6 +8,8 @@ use Livewire\Livewire;
 use OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoriesIndex;
 use OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoryCreate;
 use OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoryEdit;
+use OutMart\Dashboard\Views\Form\InputFile;
+use OutMart\Dashboard\Views\Form\InputPrice;
 use OutMart\Dashboard\Views\Form\InputText;
 use OutMart\Dashboard\Views\Form\Select;
 use OutMart\Dashboard\Views\Layouts\DashboardLayout;
@@ -48,6 +50,8 @@ class OutMartDashboardServiceProvider extends ServiceProvider
     {
         return [
             InputText::class,
+            InputPrice::class,
+            InputFile::class,
             Select::class,
         ];
     }

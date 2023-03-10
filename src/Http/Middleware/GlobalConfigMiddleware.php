@@ -4,6 +4,8 @@ namespace OutMart\Dashboard\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\View;
 
 class GlobalConfigMiddleware
 {
@@ -16,6 +18,11 @@ class GlobalConfigMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        $locale = config('outmart.dashboard.core.languages.english');
+
+        App::setLocale($locale['lang_code']);
+        View::share('langDirection', $locale['direction']);
+
         return $next($request);
     }
 }

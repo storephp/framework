@@ -5,6 +5,7 @@ namespace OutMart\Dashboard\Support;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 use Illuminate\Support\Str;
+use OutMart\Dashboard\Http\Middleware\GlobalConfigMiddleware;
 
 abstract class ServiceProvider extends IlluminateServiceProvider
 {
@@ -49,6 +50,7 @@ abstract class ServiceProvider extends IlluminateServiceProvider
 
         $this->loadRoutes();
         $this->loadAppViews();
+        $this->loadAppTranslations();
 
         // dd(config('outmart.dashboard.core.modules.' . $moduleMenuId . '.menu'));
 
@@ -118,7 +120,7 @@ abstract class ServiceProvider extends IlluminateServiceProvider
     {
         if (file_exists($this->moduleDir . '/routes/web.php')) {
             $prefix = Str::slug($this->moduleData['slug']);
-            Route::middleware(['web'])
+            Route::middleware(['web', GlobalConfigMiddleware::class])
                 ->prefix('outmart/' . $prefix)
                 ->group(function () {
                     $this->loadRoutesFrom($this->moduleDir . '/routes/web.php');
@@ -129,7 +131,14 @@ abstract class ServiceProvider extends IlluminateServiceProvider
     private function loadAppViews()
     {
         if (is_dir($this->moduleDir . '/resources/views')) {
-            $this->loadViewsFrom($this->moduleDir . '/resources/views', 'outmart' . Str::ucfirst($this->moduleData['name']));
+            $this->loadViewsFrom($this->moduleDir . '/resources/views', 'outmart' . Str::ucfirst($this->moduleData['slug']));
+        }
+    }
+
+    private function loadAppTranslations()
+    {
+        if (is_dir($this->moduleDir . '/lang')) {
+            $this->loadTranslationsFrom($this->moduleDir . '/lang', 'outmart' . Str::ucfirst($this->moduleData['slug']));
         }
     }
 }

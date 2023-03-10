@@ -37,6 +37,13 @@ class CategoryEdit extends FormBuilder implements hasGenerateFields
         $this->slug = $this->category->slug;
     }
 
+    public function changeStoreViewId()
+    {
+        $this->category = $this->category->setStoreViewId($this->storeViewId);
+
+        $this->name = $this->category->name;
+    }
+
     public function generateFields($form)
     {
         $form->addField('select', [

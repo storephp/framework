@@ -83,7 +83,8 @@ class CategoryCreate extends FormBuilder implements hasGenerateFields
             'parent_id' => $validatedData['parent_id'],
             'slug' => $validatedData['slug'],
         ]);
-        $category->setEntry('name', $validatedData['name']);
+        $category->name = $validatedData['name'];
+        $category->save();
 
         // CategoryCreated::dispatch($category, $this->form);
 

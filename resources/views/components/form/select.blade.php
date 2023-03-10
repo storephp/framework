@@ -1,7 +1,7 @@
-<div {{ $attributes->merge(['class' => 'mb-3 row']) }} {{ $attributes }}>
+<div {{ $attributes->merge(['class' => 'mb-3 row']) }}>
     <label class="col-3 col-form-label @if($required) required @endif">{{ $label }}</label>
     <div class="col">
-        <select class="form-select @error($model) is-invalid @enderror" wire:model.defer="{{ $model }}">
+        <select class="form-select @error($model) is-invalid @enderror" wire:model.defer="{{ $model }}" {{ $attributes }}>
             <option value="null">Select...</option>
             @foreach ($options as $option)
                 <option value="{{ $option['value'] }}">{{ $option['label'] }}</option>

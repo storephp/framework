@@ -36,6 +36,7 @@
             "providers": [
                 "OutMart\\Dashboard\\OutMartDashboardServiceProvider",
                 "OutMart\\Modules\\Catalog\\Providers\\OutMartCatalogServiceProvider",
+                "OutMart\\Modules\\Sales\\Providers\\OutMartSalesServiceProvider",
                 "OutMart\\Modules\\Customers\\Providers\\OutMartCustomersServiceProvider"
             ]
         }

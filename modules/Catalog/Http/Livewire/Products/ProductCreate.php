@@ -150,6 +150,17 @@ class ProductCreate extends FormBuilder implements hasGenerateFields, hasGenerat
             'sku' => $validatedData['sku'],
         ]);
 
+        $product->categories = $validatedData['categories'];
+        $product->name = $validatedData['name'];
+        $product->slug = $validatedData['slug'];
+        $product->description = $validatedData['description'];
+        $product->price = $validatedData['price'];
+        $product->discount_price = $validatedData['discount_price'];
+        $product->thumbnail_path = $this->images_thumbnail->store('products', 'public');
+        $product->save();
+
+        dd($product);
+
         $product->setEntry('categories', $validatedData['categories']);
         $product->setEntry('name', $validatedData['name']);
         $product->setEntry('slug', $validatedData['slug']);

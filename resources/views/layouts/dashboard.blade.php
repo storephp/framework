@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html dir="{{ $langDirection }}">
 
 <head>
     <meta charset="utf-8" />
@@ -7,7 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Dashboard - OutMart</title>
     <!-- CSS files -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
+    @if ($langDirection != 'rtl')
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
+    @endif
+    @if ($langDirection == 'rtl')
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.rtl.min.css">
+    @endif
     @livewireStyles
 </head>
 
@@ -271,10 +276,9 @@
                                                 @endif
 
                                                 @if (isset($link['submenu']))
-                                                    <a class="dropdown-item dropdown-toggle"
-                                                        href="#" data-bs-toggle="dropdown"
-                                                        data-bs-auto-close="false" role="button"
-                                                        aria-expanded="false">
+                                                    <a class="dropdown-item dropdown-toggle" href="#"
+                                                        data-bs-toggle="dropdown" data-bs-auto-close="false"
+                                                        role="button" aria-expanded="false">
                                                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                                                             @svg('tabler-' . $link['icon'])
                                                         </span>
@@ -313,6 +317,21 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-nav flex-row order-md-last">
+                    <div class="d-none d-md-flex">
+                        <a class="nav-link px-0 hide-theme-dark" data-bs-toggle="tooltip"
+                            data-bs-placement="bottom" aria-label="Enable dark mode"
+                            data-bs-original-title="Enable dark mode">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/moon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path
+                                    d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
                             aria-label="Open user menu">

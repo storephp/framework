@@ -6,10 +6,10 @@
                 <div class="col">
                     <!-- Page pre-title -->
                     <div class="page-pretitle">
-                        Customers
+                        {{ __('outmartCustomers::main.grid.pretitle') }}
                     </div>
                     <h2 class="page-title">
-                        Customers List
+                        {{ __('outmartCustomers::main.grid.title') }}
                     </h2>
                 </div>
                 <!-- Page title actions -->
@@ -25,7 +25,7 @@
                                 <line x1="12" y1="5" x2="12" y2="19" />
                                 <line x1="5" y1="12" x2="19" y2="12" />
                             </svg>
-                            Create new customer
+                            {{ __('outmartCustomers::main.grid.buttonCreate') }}
                         </a>
                         <a href="{{ route('outmart.dashboard.customers.create') }}"
                             class="btn btn-primary d-sm-none btn-icon">

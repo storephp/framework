@@ -46,4 +46,9 @@ class CustomerCreate extends FormBuilder implements hasGenerateFields
 
         return $this->alert('success', 'Saved!');
     }
+
+    protected function pageTitle()
+    {
+        return __('outmartCustomers::main.create.title');
+    }
 }

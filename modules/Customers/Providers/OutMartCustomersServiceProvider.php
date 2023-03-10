@@ -17,12 +17,12 @@ class OutMartCustomersServiceProvider extends ServiceProvider
     {
         $this->bootModuleAPP(__DIR__ . '/..', [
             'icon' => 'users',
-            'name' => 'Customers',
+            'name' => 'outmartCustomers::main.sidebar.customers',
             'slug' => 'customers',
         ], 'outmart_customers', [
             $this->addLink(
                 icon:'list',
-                name:'Customers list',
+                name:'outmartCustomers::main.sidebar.customersList',
                 route:'outmart.dashboard.customers.index',
                 order:10,
             ),

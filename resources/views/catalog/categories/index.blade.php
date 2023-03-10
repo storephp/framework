@@ -49,59 +49,95 @@
             <div class="row row-deck row-cards">
                 <div class="col-12">
                     <div class="card">
-                        <div class="table-responsive">
-                            <table class="table table-vcenter table-mobile-md card-table">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Parent</th>
-                                        <th>Products count</th>
-                                        <th class="w-1"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($categories as $category)
+                        @if ($categories->isEmpty())
+                            <div class="empty">
+                                <div class="empty-icon">
+                                    <!-- Download SVG icon from http://tabler-icons.io/i/mood-sad -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                        <path d="M9 10l.01 0" />
+                                        <path d="M15 10l.01 0" />
+                                        <path d="M9.5 15.25a3.5 3.5 0 0 1 5 0" />
+                                    </svg>
+                                </div>
+                                <p class="empty-title">No results found</p>
+                                <p class="empty-subtitle text-muted">
+                                    Try adjusting your search or filter to find what you're looking for.
+                                </p>
+                                <div class="empty-action">
+                                    <a href="#" class="btn btn-primary">
+                                        <!-- Download SVG icon from http://tabler-icons.io/i/search -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
+                                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+                                            <path d="M21 21l-6 -6" />
+                                        </svg>
+                                        Search again
+                                    </a>
+                                </div>
+                            </div>
+                        @endif
+
+                        @if ($categories->isNotEmpty())
+                            <div class="table-responsive">
+                                <table class="table table-vcenter table-mobile-md card-table">
+                                    <thead>
                                         <tr>
-                                            <td data-label="Name">
-                                                <div class="d-flex py-1 align-items-center">
-                                                    <span class="avatar me-2"
-                                                        style="background-image: url(./static/avatars/006f.jpg)"></span>
-                                                    <div class="flex-fill">
-                                                        <div class="font-weight-medium">{{ $category->name }}</div>
-                                                        <div class="text-muted"><a
-                                                                class="text-reset">{{ $category->slug }}</a></div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="text-muted">
-                                                <div class="d-flex py-1 align-items-center">
-                                                    <div class="flex-fill">
-                                                        <div class="font-weight-medium">
-                                                            {{ $category->parent->name ?? '-' }}</div>
-                                                        <div class="text-muted"><a
-                                                                class="text-reset">{{ $category->parent->slug ?? '-' }}</a>
+                                            <th>Name</th>
+                                            <th>Parent</th>
+                                            <th>Products count</th>
+                                            <th class="w-1"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($categories as $category)
+                                            <tr>
+                                                <td data-label="Name">
+                                                    <div class="d-flex py-1 align-items-center">
+                                                        <span class="avatar me-2"
+                                                            style="background-image: url(./static/avatars/006f.jpg)"></span>
+                                                        <div class="flex-fill">
+                                                            <div class="font-weight-medium">{{ $category->name }}</div>
+                                                            <div class="text-muted"><a
+                                                                    class="text-reset">{{ $category->slug }}</a></div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="text-muted" data-label="Role">
-                                                0
-                                            </td>
-                                            <td>
-                                                <div class="btn-list flex-nowrap">
-                                                    <a href="{{ route('outmart.dashboard.catalog.categories.edit', [$category]) }}"
-                                                        class="btn">
-                                                        Edit
-                                                    </a>
-                                                    <button class="btn btn-danger"
-                                                        wire:click="$emit('triggerDelete', {{ $category->id }})">Delete</button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                                </td>
+                                                <td class="text-muted">
+                                                    <div class="d-flex py-1 align-items-center">
+                                                        <div class="flex-fill">
+                                                            <div class="font-weight-medium">
+                                                                {{ $category->parent->name ?? '-' }}</div>
+                                                            <div class="text-muted"><a
+                                                                    class="text-reset">{{ $category->parent->slug ?? '-' }}</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-muted" data-label="Role">
+                                                    0
+                                                </td>
+                                                <td>
+                                                    <div class="btn-list flex-nowrap">
+                                                        <a href="{{ route('outmart.dashboard.catalog.categories.edit', [$category]) }}"
+                                                            class="btn">
+                                                            Edit
+                                                        </a>
+                                                        <button class="btn btn-danger"
+                                                            wire:click="$emit('triggerDelete', {{ $category->id }})">Delete</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endif
                     </div>
                 </div>
 

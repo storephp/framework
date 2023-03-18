@@ -1,5 +1,5 @@
 {
-    "name": "outmart/laravel-dashboard",
+    "name": "outmart/dashboard",
     "description": "eCommerce dashboard to help you manage your eCommerce based on laravel.",
     "type": "library",
     "license": "MIT",

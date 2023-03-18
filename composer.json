@@ -20,7 +20,7 @@
         "jantinnerezo/livewire-alert": "^2.2",
         "laravel/framework": "^10.0",
         "livewire/livewire": "^2.10",
-        "outmart/laravel-core": "dev-develop",
+        "outmart/core": "dev-develop",
         "ryangjchandler/blade-tabler-icons": "^2.0"
     },
     "autoload": {

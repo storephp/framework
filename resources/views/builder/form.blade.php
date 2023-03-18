@@ -21,19 +21,21 @@
 
             <form class="card" wire:submit.prevent="submit">
                 <div class="card-header">
-                    <h3 class="card-title">Products list</h3>
-                    <div class="card-actions">
-                        <select class="form-select" wire:model="storeViewId" wire:change="changeStoreViewId()">
-                            <option value="null">Select store view...</option>
-                            @foreach ($stores as $store)
-                                <optgroup label="{{ $store->name }}">
-                                    @foreach ($store->views as $view)
-                                        <option value="{{ $view->id }}">{{ $view->name }}</option>
-                                    @endforeach
-                                </optgroup>
-                            @endforeach
-                        </select>
-                    </div>
+                    <h3 class="card-title">Enter the data</h3>
+                    @if ($setup['selectStoreView'])
+                        <div class="card-actions">
+                            <select class="form-select" wire:model="storeViewId" wire:change="changeStoreViewId()">
+                                <option value="null">Select store view...</option>
+                                @foreach ($stores as $store)
+                                    <optgroup label="{{ $store->name }}">
+                                        @foreach ($store->views as $view)
+                                            <option value="{{ $view->id }}">{{ $view->name }}</option>
+                                        @endforeach
+                                    </optgroup>
+                                @endforeach
+                            </select>
+                        </div>
+                    @endif
                 </div>
                 <div class="row g-0">
                     <div class="col-3 d-none d-md-block border-end">

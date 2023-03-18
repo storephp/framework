@@ -20,6 +20,7 @@ class FormBuilder extends Component
     protected $pagePretitle = 'Pre title';
     protected $submitLabel = 'Submit';
     protected $generatePath = null;
+    protected $selectStoreView = false;
 
     private $form = null;
     private $tabs = null;
@@ -87,6 +88,9 @@ class FormBuilder extends Component
         // dd($stores);
 
         return view('outmart::builder.form', [
+            'setup' => [
+                'selectStoreView' => $this->selectStoreView,
+            ],
             'meta' => [
                 'pageTitle' => $this->pageTitle(),
                 'submitLabel' => $this->submitLabel,

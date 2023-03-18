@@ -20,6 +20,7 @@ abstract class ServiceProvider extends IlluminateServiceProvider
             'icon' => $moduleData['icon'] ?? 'puzzle',
             'name' => $moduleData['name'] ?? 'Module',
             'slug' => $moduleData['slug'] ?? 'sodule',
+            'order' => $moduleData['order'] ?? null,
             'description' => $moduleData['description'] ?? [],
             'menu' => $moduleMenu ?? [],
         ];

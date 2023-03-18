@@ -23,7 +23,7 @@ class DashboardLayout extends Component
      */
     public function __construct()
     {
-        $this->modules = config('outmart.dashboard.core.modules');
+        $this->modules = collect(config('outmart.dashboard.core.modules'))->sortBy('order')->all();
     }
 
     /**

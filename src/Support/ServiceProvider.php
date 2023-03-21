@@ -49,7 +49,7 @@ abstract class ServiceProvider extends IlluminateServiceProvider
         $this->moduleDir = $moduleDir;
         $this->moduleData = $modules[$moduleMenuId];
 
-        $this->loadRoutes();
+        $this->loadRoutes($moduleDir);
         $this->loadAppViews();
         $this->loadAppTranslations();
 
@@ -67,7 +67,9 @@ abstract class ServiceProvider extends IlluminateServiceProvider
     {
         $menu = config('outmart.dashboard.core.modules.' . $moduleMenuId . '.menu');
 
-        $menu[] = $addMenu;
+        // dd(gettype($addMenu), $addMenu);
+
+        $menu = array_merge($menu, $addMenu);
 
         config(['outmart.dashboard.core.modules.' . $moduleMenuId . '.menu' => $menu]);
     }
@@ -117,14 +119,15 @@ abstract class ServiceProvider extends IlluminateServiceProvider
         return $data;
     }
 
-    private function loadRoutes()
+    protected function loadRoutes($moduleDir, $prefix = null)
     {
-        if (file_exists($this->moduleDir . '/routes/web.php')) {
-            $prefix = Str::slug($this->moduleData['slug']);
+        // dd($dir);
+        if (file_exists($moduleDir . '/routes/web.php')) {
+            $prefix = Str::slug($this->moduleData['slug'] ?? $prefix);
             Route::middleware(['web', GlobalConfigMiddleware::class])
                 ->prefix('outmart/' . $prefix)
-                ->group(function () {
-                    $this->loadRoutesFrom($this->moduleDir . '/routes/web.php');
+                ->group(function () use ($moduleDir) {
+                    $this->loadRoutesFrom($moduleDir . '/routes/web.php');
                 });
         }
     }

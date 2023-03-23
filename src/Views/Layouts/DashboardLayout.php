@@ -2,6 +2,7 @@
 
 namespace OutMart\Dashboard\Views\Layouts;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 use Illuminate\View\View;
 
@@ -13,7 +14,7 @@ class DashboardLayout extends Component
      * @var string
      */
     public $modules;
- 
+
     /**
      * Create the component instance.
      *
@@ -23,7 +24,17 @@ class DashboardLayout extends Component
      */
     public function __construct()
     {
-        $this->modules = collect(config('outmart.dashboard.core.modules'))->sortBy('order')->all();
+        $permissions = auth::user()->membership->rule->permissions;
+        $modules = collect(config('outmart.dashboard.core.modules'))->sortBy('order')->all();
+        $this->modules = array_filter($modules, function ($module) use ($permissions) {
+            if (!in_array('*', $permissions)) {
+                if (in_array($module['rule'], $permissions)) {
+                    return $module;
+                }
+            } else {
+                return $module;
+            }
+        });
     }
 
     /**

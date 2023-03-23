@@ -22,6 +22,7 @@ abstract class ServiceProvider extends IlluminateServiceProvider
             'slug' => $moduleData['slug'] ?? 'sodule',
             'order' => $moduleData['order'] ?? null,
             'description' => $moduleData['description'] ?? [],
+            'rule' => $moduleData['rule'] ?? '*',
             'menu' => $moduleMenu ?? [],
         ];
 
@@ -50,7 +51,7 @@ abstract class ServiceProvider extends IlluminateServiceProvider
         $this->moduleData = $modules[$moduleMenuId];
 
         $this->loadRoutes($moduleDir);
-        $this->loadAppViews();
+        $this->loadAppViews($moduleDir, $moduleData['slug']);
         $this->loadAppTranslations();
 
         // dd(config('outmart.dashboard.core.modules.' . $moduleMenuId . '.menu'));
@@ -132,10 +133,10 @@ abstract class ServiceProvider extends IlluminateServiceProvider
         }
     }
 
-    private function loadAppViews()
+    protected function loadAppViews($moduleDir, $prefix = null)
     {
-        if (is_dir($this->moduleDir . '/resources/views')) {
-            $this->loadViewsFrom($this->moduleDir . '/resources/views', 'outmart' . Str::ucfirst($this->moduleData['slug']));
+        if (is_dir($moduleDir . '/resources/views')) {
+            $this->loadViewsFrom($moduleDir . '/resources/views', 'outmart' . Str::ucfirst($prefix));
         }
     }
 

@@ -5,7 +5,8 @@ namespace OutMart\Modules\Catalog\Http\Livewire\Products;
 use Livewire\Component;
 use Livewire\WithPagination;
 use OutMart\Dashboard\Views\Layouts\DashboardLayout;
-use OutMart\Modules\Catalog\Models\Product;
+// use OutMart\Modules\Catalog\Models\Product;
+use OutMart\Support\Facades\Product;
 
 class ProductsIndex extends Component
 {
@@ -17,7 +18,7 @@ class ProductsIndex extends Component
 
     public function render()
     {
-        $products = Product::where(function ($q) {
+        $products = Product::query()->where(function ($q) {
             if ($this->search) {
                 $q->where('sku', 'like', '%' . $this->search . '%')
                     ->orByEntry('name', 'like', '%' . $this->search . '%');

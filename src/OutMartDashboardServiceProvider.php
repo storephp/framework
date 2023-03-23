@@ -33,6 +33,8 @@ class OutMartDashboardServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        
         Blade::component('outmart-dashboard-layout', DashboardLayout::class);
 
         Livewire::component('catalog-categories-index', CategoriesIndex::class);

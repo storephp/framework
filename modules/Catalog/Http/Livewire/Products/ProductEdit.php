@@ -9,6 +9,8 @@ use OutMart\Dashboard\Builder\Contracts\hasGenerateFields;
 use OutMart\Dashboard\Builder\Contracts\hasGenerateTabs;
 use OutMart\Dashboard\Builder\FormBuilder;
 use OutMart\Models\Product\Category;
+use OutMart\Modules\Catalog\Events\AddFieldsToUpdatingProduct;
+use OutMart\Modules\Catalog\Events\ProductUpdating;
 use OutMart\Modules\Catalog\Models\Product;
 
 class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateTabs
@@ -39,6 +41,10 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
         $this->description = $this->product->description;
         $this->price = $this->product->price;
         $this->discount_price = $this->product->discount_price;
+
+        foreach (config('outmart.catalog.products.external_fillable_entry') as $entry) {
+            $this->{$entry} = $this->product->{$entry};
+        }
     }
 
     public function changeStoreViewId()
@@ -147,6 +153,8 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
             'order' => 10,
             'hint' => 'dsf dsf dsff',
         ]);
+
+        AddFieldsToUpdatingProduct::dispatch($form);
     }
 
     public function submit()
@@ -169,6 +177,8 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
         }
 
         $product->save();
+
+        ProductUpdating::dispatch($product, $validatedData);
 
         return $this->alert('success', 'Saved!');
     }

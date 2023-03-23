@@ -10,7 +10,9 @@ use OutMart\Dashboard\Builder\Contracts\hasGenerateTabs;
 use OutMart\Dashboard\Builder\FormBuilder;
 use OutMart\Enums\Catalog\ProductType;
 use OutMart\Models\Product\Category;
-use OutMart\Modules\Catalog\Models\Product;
+use OutMart\Modules\Catalog\Events\AddFieldsToCreatingProduct;
+use OutMart\Modules\Catalog\Events\ProductCreated;
+use OutMart\Support\Facades\Product;
 
 class ProductCreate extends FormBuilder implements hasGenerateFields, hasGenerateTabs
 {
@@ -138,6 +140,8 @@ class ProductCreate extends FormBuilder implements hasGenerateFields, hasGenerat
             'order' => 10,
             'hint' => 'dsf dsf dsff',
         ]);
+
+        AddFieldsToCreatingProduct::dispatch($form);
     }
 
     public function submit()
@@ -158,6 +162,8 @@ class ProductCreate extends FormBuilder implements hasGenerateFields, hasGenerat
         $product->discount_price = $validatedData['discount_price'];
         $product->thumbnail_path = $this->images_thumbnail->store('products', 'public');
         $product->save();
+
+        ProductCreated::dispatch($product, $validatedData);
 
         dd($product);
 

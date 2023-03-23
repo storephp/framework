@@ -2,23 +2,18 @@
 
 namespace OutMart\Modules\Catalog\Events;
 
+use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
 
-class CategoryCreated
+class AddFieldsToCreatingProduct
 {
-    use Dispatchable;
+    use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
      * The order instance.
      *
-     * @var $category
-     */
-    public $category;
-
-    /**
-     * The order instance.
-     *
-     * @var $form
+     * @var \App\Models\Order
      */
     public $form;
 
@@ -28,9 +23,8 @@ class CategoryCreated
      * @param  \App\Models\Order  $order
      * @return void
      */
-    public function __construct($category, $form)
+    public function __construct($form)
     {
-        $this->category = $category;
         $this->form = $form;
     }
 }

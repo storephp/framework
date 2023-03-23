@@ -4,7 +4,7 @@ namespace OutMart\Modules\Catalog\Events;
 
 use Illuminate\Foundation\Events\Dispatchable;
 
-class CategoryGrad
+class ProductUpdating
 {
     use Dispatchable;
 
@@ -13,8 +13,14 @@ class CategoryGrad
      *
      * @var $category
      */
-    public $table;
-    public $columns;
+    public $product;
+
+    /**
+     * The order instance.
+     *
+     * @var $form
+     */
+    public $data;
 
     /**
      * Create a new event instance.
@@ -22,9 +28,9 @@ class CategoryGrad
      * @param  \App\Models\Order  $order
      * @return void
      */
-    public function __construct($table, $columns)
+    public function __construct($product, $data)
     {
-        $this->table = $table;
-        $this->columns = $columns;
+        $this->product = $product;
+        $this->data = $data;
     }
 }

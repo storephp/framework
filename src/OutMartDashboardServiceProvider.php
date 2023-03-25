@@ -8,6 +8,7 @@ use Livewire\Livewire;
 use OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoriesIndex;
 use OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoryCreate;
 use OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoryEdit;
+use OutMart\Dashboard\Views\Components\Widgets\WidgetEmptyData;
 use OutMart\Dashboard\Views\Form\InputFile;
 use OutMart\Dashboard\Views\Form\InputPrice;
 use OutMart\Dashboard\Views\Form\InputText;
@@ -55,6 +56,7 @@ class OutMartDashboardServiceProvider extends ServiceProvider
             InputPrice::class,
             InputFile::class,
             Select::class,
+            WidgetEmptyData::class,
         ];
     }
 }

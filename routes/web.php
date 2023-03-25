@@ -15,6 +15,6 @@ use OutMart\Dashboard\Http\Middleware\GlobalConfigMiddleware;
 |
 */
 
-Route::prefix('outmart')->middleware(['web', 'auth', GlobalConfigMiddleware::class])->group(function () {
+Route::prefix('outmart')->middleware(['web', 'auth', 'oTeam', GlobalConfigMiddleware::class])->group(function () {
     Route::get('/', Home::class)->name('outmart.dashboard.home');
 });

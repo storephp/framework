@@ -125,7 +125,7 @@ abstract class ServiceProvider extends IlluminateServiceProvider
         // dd($dir);
         if (file_exists($moduleDir . '/routes/web.php')) {
             $prefix = Str::slug($this->moduleData['slug'] ?? $prefix);
-            Route::middleware(['web', 'auth', 'oTeam', GlobalConfigMiddleware::class])
+            Route::middleware(['web', 'martTeam', GlobalConfigMiddleware::class])
                 ->prefix('outmart/' . $prefix)
                 ->group(function () use ($moduleDir) {
                     $this->loadRoutesFrom($moduleDir . '/routes/web.php');

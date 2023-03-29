@@ -24,7 +24,7 @@ class DashboardLayout extends Component
      */
     public function __construct()
     {
-        $permissions = auth::user()->membership->rule->permissions;
+        $permissions = Auth::guard('outmart')->user()->membership->rule->permissions;
         $modules = collect(config('outmart.dashboard.core.modules'))->sortBy('order')->all();
         $this->modules = array_filter($modules, function ($module) use ($permissions) {
             if (!in_array('*', $permissions)) {

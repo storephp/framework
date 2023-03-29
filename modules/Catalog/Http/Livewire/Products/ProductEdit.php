@@ -21,6 +21,7 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
     public $product;
 
     public $product_type;
+    public $categories;
     public $name;
     public $slug;
     public $sku;
@@ -35,6 +36,7 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
     {
         $this->product = $product->setStoreViewId($this->storeViewId);
 
+        $this->categories = $this->product->categories;
         $this->name = $this->product->name;
         $this->slug = $this->product->slug;
         $this->sku = $this->product->sku;
@@ -51,6 +53,7 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
     {
         $this->product = $this->product->setStoreViewId($this->storeViewId);
 
+        $this->categories = $this->product->categories;
         $this->name = $this->product->name;
         $this->slug = $this->product->slug;
         $this->sku = $this->product->sku;
@@ -91,6 +94,7 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
             'rules' => 'nullable',
             'order' => 1,
             'hint' => 'You can not select.',
+            'multiple' => true,
         ]);
 
         $form->addField('text', [
@@ -148,7 +152,7 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
         $form->addField('file', [
             'tab' => 'images',
             'label' => 'Product thumbnail',
-            'model' => 'images_thumbnail',
+            'model' => 'thumbnail_path',
             'rules' => 'nullable',
             'order' => 10,
             'hint' => 'dsf dsf dsff',
@@ -172,8 +176,8 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
         $product->price = $validatedData['price'];
         $product->discount_price = $validatedData['discount_price'];
 
-        if ($this->images_thumbnail) {
-            $product->images_thumbnail = $this->images_thumbnail->store('products', 'public');
+        if ($this->thumbnail_path) {
+            $product->thumbnail_path = $this->thumbnail_path->store('products', 'public');
         }
 
         $product->save();

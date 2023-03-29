@@ -77,6 +77,11 @@
                                             model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
                                     @endif
 
+                                    @if ($field['type'] == 'textarea')
+                                        <x-outmart-input-textarea label="{{ $field['label'] }}"
+                                            model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
+                                    @endif
+
                                     @if ($field['type'] == 'price')
                                         <x-outmart-input-price label="{{ $field['label'] }}"
                                             model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />

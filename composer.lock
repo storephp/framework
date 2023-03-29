@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "417ae06f50faee46282ea27b646ca4ea",
+    "content-hash": "697d1546286d893bbe22902236e3b51b",
     "packages": [
         {
             "name": "blade-ui-kit/blade-icons",
@@ -1903,118 +1903,6 @@
                 }
             ],
             "time": "2023-02-08T01:06:31+00:00"
-        },
-        {
-            "name": "outmart/laravel-core",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/outmart/laravel-core.git",
-                "reference": "2c3658fac6e7ebd83017ad24669d6282885f1932"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/outmart/laravel-core/zipball/2c3658fac6e7ebd83017ad24669d6282885f1932",
-                "reference": "2c3658fac6e7ebd83017ad24669d6282885f1932",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": ">=9.0",
-                "outmart/php-pricing-rules": "^0.1.0",
-                "php": ">=8.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^7.17",
-                "pestphp/pest-plugin-laravel": "^1.4",
-                "phpunit/phpunit": "^9.5"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "OutMart\\OutMartServiceProvider",
-                        "OutMart\\Providers\\EventServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "OutMart\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Karim Mohamed (Komtcho)",
-                    "email": "komicho1996@gmail.com"
-                }
-            ],
-            "description": "eCommerce Core to help you build your eCommerce based on laravel.",
-            "keywords": [
-                "baskets",
-                "customers",
-                "ecommerce",
-                "laravel",
-                "modules",
-                "outmart"
-            ],
-            "support": {
-                "issues": "https://github.com/outmart/laravel-core/issues",
-                "source": "https://github.com/outmart/laravel-core/tree/develop"
-            },
-            "time": "2023-03-06T17:44:41+00:00"
-        },
-        {
-            "name": "outmart/php-pricing-rules",
-            "version": "0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/outmart/php-pricing-rules.git",
-                "reference": "e2a843577d4e4a7ac39174258e01533012d647f0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/outmart/php-pricing-rules/zipball/e2a843577d4e4a7ac39174258e01533012d647f0",
-                "reference": "e2a843577d4e4a7ac39174258e01533012d647f0",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^9.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "OutMart\\PricingRules\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Karim Mohamed (Komtcho)",
-                    "email": "komicho1996@gmail.com"
-                }
-            ],
-            "description": "Create pricing rules that apply if the specified case matches.",
-            "keywords": [
-                "ecommerce",
-                "module",
-                "outmart",
-                "pricing-rules"
-            ],
-            "support": {
-                "issues": "https://github.com/outmart/php-pricing-rules/issues",
-                "source": "https://github.com/outmart/php-pricing-rules/tree/0.1.0"
-            },
-            "time": "2022-11-30T17:22:01+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -5002,13 +4890,67 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "zaoob/laravel-team",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zaoub/laravel-team.git",
+                "reference": "4e7bae1074439f86501bafdd3e45b9452b34d4f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zaoub/laravel-team/zipball/4e7bae1074439f86501bafdd3e45b9452b34d4f5",
+                "reference": "4e7bae1074439f86501bafdd3e45b9452b34d4f5",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": ">=8.0",
+                "php": ">=7.4"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Zaoob\\Laravel\\Team\\TeamServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zaoob\\Laravel\\Team\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Karim Mohamed (Komtcho)",
+                    "email": "komicho1996@gmail.com"
+                }
+            ],
+            "description": "You can create and mange team member for any model",
+            "keywords": [
+                "Team",
+                "laravel",
+                "zaoob"
+            ],
+            "support": {
+                "issues": "https://github.com/zaoub/laravel-team/issues",
+                "source": "https://github.com/zaoub/laravel-team/tree/main"
+            },
+            "time": "2022-10-08T21:33:28+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "outmart/laravel-core": 20
+        "zaoob/laravel-team": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

@@ -12,6 +12,7 @@ class Fields
     {
         $attributes = match($type) {
             'text' => $this->handleText($attributes),
+            'textarea' => $this->handleTextArea($attributes),
             'price' => $this->handlePrice($attributes),
             'file' => $this->handleFile($attributes),
             'select' => $this->handleSelect($attributes),
@@ -30,10 +31,16 @@ class Fields
             return $field;
         }, $this->fields);
     }
-
+    
     private function handleText($attributes)
     {
         $attributes['type'] = 'text';
+        return $this->falterAttributes($attributes);
+    }
+
+    private function handleTextArea($attributes)
+    {
+        $attributes['type'] = 'textarea';
         return $this->falterAttributes($attributes);
     }
 

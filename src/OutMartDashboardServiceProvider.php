@@ -12,6 +12,7 @@ use OutMart\Dashboard\Views\Components\Widgets\WidgetEmptyData;
 use OutMart\Dashboard\Views\Form\InputFile;
 use OutMart\Dashboard\Views\Form\InputPrice;
 use OutMart\Dashboard\Views\Form\InputText;
+use OutMart\Dashboard\Views\Form\InputTextarea;
 use OutMart\Dashboard\Views\Form\Select;
 use OutMart\Dashboard\Views\Layouts\DashboardLayout;
 
@@ -53,6 +54,7 @@ class OutMartDashboardServiceProvider extends ServiceProvider
     {
         return [
             InputText::class,
+            InputTextarea::class,
             InputPrice::class,
             InputFile::class,
             Select::class,

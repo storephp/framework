@@ -13,6 +13,7 @@ class Select extends Component
         public $options = [],
         public $hint = null,
         public $required = false,
+        public $multiple = false,
     ) {
     }
 

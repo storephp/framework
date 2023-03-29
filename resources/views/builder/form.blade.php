@@ -69,7 +69,7 @@
                                     @if ($field['type'] == 'select')
                                         <x-outmart-select label="{{ $field['label'] }}"
                                             model="{{ $field['model'] }}" :options="$field['options']" :hint="$field['hint']"
-                                            :required="str_contains($field['rules'], 'required')" />
+                                            :required="str_contains($field['rules'], 'required')" :multiple="$field['multiple']" />
                                     @endif
 
                                     @if ($field['type'] == 'text')

@@ -58,6 +58,7 @@ class Fields
         }
 
         $attributes['type'] = 'select';
+        $attributes['multiple'] = $attributes['multiple'] ?? false;
         return $this->falterAttributes($attributes);
     }
 

@@ -48,75 +48,86 @@
         <div class="container-xl">
             <div class="row row-deck row-cards">
                 <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Orders list</h3>
-                            <div class="card-actions">
-                                <input type="text" class="form-control" placeholder="Search Name, SKU"
-                                    wire:model="search" />
+                    @if ($orders->isEmpty())
+                        <x-outmart-widget-empty-data icon="ticket-off" title="There are no orders"
+                            subtitle="You can create new order"
+                            actionRoute="{{ route('outmart.dashboard.sales.orders.create') }}" />
+                    @endif
+
+                    @if (!$orders->isEmpty())
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Orders list</h3>
+                                <div class="card-actions">
+                                    <input type="text" class="form-control" placeholder="Search Name, SKU"
+                                        wire:model="search" />
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-vcenter table-mobile-md card-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Customer</th>
+                                            <th>Total</th>
+                                            <th>Status</th>
+                                            <th class="w-1"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($orders as $order)
+                                            <tr>
+                                                <td data-label="Name">
+                                                    <div class="d-flex py-1 align-items-center">
+                                                        {{-- <span class="avatar me-2"
+                                                        style="background-image: url({{ asset($product->thumbnail_path) }})"></span> --}}
+                                                        <div class="flex-fill">
+                                                            <div class="font-weight-medium">#{{ $order->id }}</div>
+                                                            <div class="text-muted"><a class="text-reset">dsd</a></div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex py-1 align-items-center">
+                                                        <div class="flex-fill">
+                                                            <div class="font-weight-medium">
+                                                                {{ $order->customer->first_name }}
+                                                                {{ $order->customer->last_name }}</div>
+                                                            <div class="text-muted"><a class="text-reset">View
+                                                                    profile</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex py-1 align-items-center">
+                                                        <div class="flex-fill">
+                                                            <div class="font-weight-medium">
+                                                                Grand total: {{ $order->grand_total }}</div>
+                                                            <div class="text-muted">
+                                                                Sub total: {{ $order->sub_total }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-muted">
+                                                    {{ $order->status->status_label }}
+                                                </td>
+                                                <td>
+                                                    <div class="btn-list flex-nowrap">
+                                                        <a href="{{ route('outmart.dashboard.sales.orders.show', [$order]) }}"
+                                                            class="btn">
+                                                            Open
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="table-responsive">
-                            <table class="table table-vcenter table-mobile-md card-table">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Customer</th>
-                                        <th>Total</th>
-                                        <th>Status</th>
-                                        <th class="w-1"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($orders as $order)
-                                        <tr>
-                                            <td data-label="Name">
-                                                <div class="d-flex py-1 align-items-center">
-                                                    {{-- <span class="avatar me-2"
-                                                        style="background-image: url({{ asset($product->thumbnail_path) }})"></span> --}}
-                                                    <div class="flex-fill">
-                                                        <div class="font-weight-medium">#{{ $order->id }}</div>
-                                                        <div class="text-muted"><a class="text-reset">dsd</a></div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex py-1 align-items-center">
-                                                    <div class="flex-fill">
-                                                        <div class="font-weight-medium">{{ $order->customer->first_name }} {{ $order->customer->last_name }}</div>
-                                                        <div class="text-muted"><a class="text-reset">View profile</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex py-1 align-items-center">
-                                                    <div class="flex-fill">
-                                                        <div class="font-weight-medium">
-                                                            Grand total: {{ $order->grand_total }}</div>
-                                                        <div class="text-muted">
-                                                            Sub total: {{ $order->sub_total }}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="text-muted">
-                                                {{ $order->status->status_label }}
-                                            </td>
-                                            <td>
-                                                <div class="btn-list flex-nowrap">
-                                                    <a href="{{ route('outmart.dashboard.sales.orders.show', [$order]) }}"
-                                                        class="btn">
-                                                        Open
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    @endif
                 </div>
 
                 {{ $orders->links() }}

@@ -120,6 +120,41 @@ abstract class ServiceProvider extends IlluminateServiceProvider
         return $data;
     }
 
+    protected function configurationCreateTab($tabKey, $tabName)
+    {
+        config([
+            'outmart.system.configurations.tabs' => array_merge([
+                $tabKey => [
+                    'name' => $tabName,
+                    'sub_tabs' => [],
+                ],
+            ], config('outmart.system.configurations.tabs')),
+        ]);
+    }
+
+    protected function configurationCreateSubTab($tabKey, $subTabKey, $subTabName, $fields = [])
+    {
+        config([
+            'outmart.system.configurations.tabs.' . $tabKey . '.sub_tabs' => array_merge([
+                $subTabKey => [
+                    'name' => $subTabName,
+                    'fields' => $fields,
+                ],
+            ], config('outmart.system.configurations.tabs.' . $tabKey . '.sub_tabs')),
+        ]);
+    }
+
+    protected function configurationAddField($type = 'string', $label, $path)
+    {
+        $data = [
+            'type' => $type,
+            'label' => $label,
+            'path' => $path,
+        ];
+
+        return $data;
+    }
+
     protected function loadRoutes($moduleDir, $prefix = null)
     {
         // dd($dir);

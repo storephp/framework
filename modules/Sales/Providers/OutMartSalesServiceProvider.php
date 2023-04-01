@@ -4,7 +4,6 @@ namespace OutMart\Modules\Sales\Providers;
 
 use Livewire\Livewire;
 use OutMart\Dashboard\Support\ServiceProvider;
-use OutMart\Modules\Customers\Http\Livewire\Categories\CustomerCreate;
 use OutMart\Modules\Sales\Http\Livewire\Orders\OrderCreate;
 
 class OutMartSalesServiceProvider extends ServiceProvider

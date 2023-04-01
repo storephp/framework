@@ -111,7 +111,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="text-muted">
-                                                    {{ $order->status->status_label }}
+                                                    {{ $order->status->status_label ?? '-'}}
                                                 </td>
                                                 <td>
                                                     <div class="btn-list flex-nowrap">

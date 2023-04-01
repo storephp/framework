@@ -3,20 +3,24 @@
 namespace OutMart\Modules\Sales\Http\Livewire\Orders;
 
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Validator;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use OutMart\Dashboard\Views\Layouts\DashboardLayout;
-use OutMart\DataType\ProductSku;
-use OutMart\Models\Basket;
 use OutMart\Models\Basket\Quote;
 use OutMart\Models\Customer\Address;
 use OutMart\Modules\Catalog\Models\Product;
 use OutMart\Modules\Customers\Models\Customer;
+use OutMart\Services\BasketService;
+use OutMart\Services\CustomerService;
+use OutMart\Services\OrderService;
 
 class OrderCreate extends Component
 {
     use LivewireAlert;
+
+    private $basket = null;
+    private $orderService = null;
+    private $customerService = null;
 
     public $customer_id = null;
     public $customer = null;
@@ -27,7 +31,6 @@ class OrderCreate extends Component
     public $promoCode = null;
     public $AppledpromoCode = null;
 
-    public $basket = null;
     public $basketUlid = null;
     public $basketQuotes = [];
     public $basketSubTotal = 0.00;
@@ -46,21 +49,32 @@ class OrderCreate extends Component
                 'label' => '#' . $address->label . ' - ' . $address->street_line_1,
             ];
         });
+    }
 
-        $this->keyCache = md5($customer->id);
-
+    public function booted(BasketService $basketService, OrderService $orderService, CustomerService $customerService)
+    {
+        $this->keyCache = md5($this->customer_id);
         $this->basketUlid = Cache::get($this->keyCache, null);
 
+        $this->basket = $basketService->initBasket($this->basketUlid);
         if (is_null($this->basketUlid)) {
-            $this->basket = $customer->currentBasket();
-            Cache::put($this->keyCache, $this->basket->ulid);
+            Cache::put($this->keyCache, $this->basket->getUlid());
         }
 
-        if (!is_null($this->basketUlid)) {
-            $this->basket = $customer->currentBasket($this->basketUlid);
+        $this->UpdateBasket($this->basket);
 
-            $this->UpdateBasket($this->basket);
-        }
+        $this->orderService = $orderService;
+        $this->customerService = $customerService;
+        $this->customerService->setCustomerId($this->customer_id);
+
+        // dd($this->basket->getUlid());
+
+        // $this->basket->setShippingTotal(30);
+
+        // $this->total = $this->basket->getTotal();
+        // $this->subTotal = $this->basket->getSubTotal();
+        // $this->discountTotal = $this->basket->getDiscountTotal();
+        // $this->shippingTotal = $this->basket->getShippingTotal();
     }
 
     public function render()
@@ -82,19 +96,17 @@ class OrderCreate extends Component
 
     public function addToBacket($sku)
     {
-        $this->basket->addQuotes(new ProductSku($sku));
+        $this->basket->addQuotes($sku);
         $this->UpdateBasket($this->basket);
     }
 
     public function UpdateBasket($basket)
     {
-        $basket = Basket::whereUlid($this->basketUlid)->first();
-
         if ($basket) {
-            $this->promoCode = $basket->coupon_code;
-            $this->AppledpromoCode = $basket->coupon_code;
+            $this->promoCode = $basket->getCoupon()?->coupon_code;
+            $this->AppledpromoCode = $basket->getCoupon()?->coupon_code;
 
-            $this->basketQuotes = $basket->quotes;
+            $this->basketQuotes = $basket->getQuotes();
             $this->basketSubTotal = $basket->getSubTotal();
             $this->basketDiscountTotal = $basket->getDiscountTotal();
             $this->basketTotal = $basket->getTotal();
@@ -151,13 +163,13 @@ class OrderCreate extends Component
 
     public function increase(Quote $quote)
     {
-        $quote->increase(1);
+        $this->basket->increase($quote, 1);
         $this->UpdateBasket($this->basket);
     }
 
     public function decrease(Quote $quote)
     {
-        $quote->decrease(1);
+        $this->basket->decrease($quote, 1);
         $this->UpdateBasket($this->basket);
     }
 
@@ -171,9 +183,13 @@ class OrderCreate extends Component
             'customerIntreAddresses.street_line_1' => 'required',
             'customerIntreAddresses.telephone_number' => 'required',
         ]);
-        
-        $order = $this->basket->placeOrder($this->customerAddress);
+
+        $initOrder = $this->orderService->initOrder($this->basket, $this->customerService);
+
+        $orderPlaced = $initOrder->placeOrder();
+        $orderPlaced->updateStatus('pending');
         Cache::delete($this->keyCache);
+        $order = $orderPlaced->getOrder();
 
         return redirect()->route('outmart.dashboard.sales.orders.show', [$order]);
     }

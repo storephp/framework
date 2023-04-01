@@ -15,6 +15,7 @@ class Fields
             'textarea' => $this->handleTextArea($attributes),
             'price' => $this->handlePrice($attributes),
             'file' => $this->handleFile($attributes),
+            'date' => $this->handleDate($attributes),
             'select' => $this->handleSelect($attributes),
         };
 
@@ -55,6 +56,13 @@ class Fields
         $attributes['type'] = 'file';
         return $this->falterAttributes($attributes);
     }
+
+    private function handleDate($attributes)
+    {
+        $attributes['type'] = 'date';
+        return $this->falterAttributes($attributes);
+    }
+
 
     private function handleSelect($attributes)
     {

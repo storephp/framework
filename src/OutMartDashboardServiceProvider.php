@@ -14,6 +14,7 @@ use OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoryCreate;
 use OutMart\Dashboard\Http\Livewire\Catalog\Categories\CategoryEdit;
 use OutMart\Dashboard\Http\Middleware\OutMartAuthenticated;
 use OutMart\Dashboard\Views\Components\Widgets\WidgetEmptyData;
+use OutMart\Dashboard\Views\Form\InputDate;
 use OutMart\Dashboard\Views\Form\InputFile;
 use OutMart\Dashboard\Views\Form\InputPrice;
 use OutMart\Dashboard\Views\Form\InputText;
@@ -89,6 +90,7 @@ class OutMartDashboardServiceProvider extends ServiceProvider
             InputTextarea::class,
             InputPrice::class,
             InputFile::class,
+            InputDate::class,
             Select::class,
             WidgetEmptyData::class,
         ];

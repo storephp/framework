@@ -87,10 +87,12 @@
                                             model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
                                     @endif
 
-                                    @if ($field['type'] == 'file')
-                                        <x-outmart-input-file label="{{ $field['label'] }}"
+                                    @if ($field['type'] == 'date')
+                                        <x-outmart-input-date label="{{ $field['label'] }}"
                                             model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
                                     @endif
+
+                                    
                                 @endforeach
 
                             </div>

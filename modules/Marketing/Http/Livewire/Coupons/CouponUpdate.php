@@ -30,6 +30,8 @@ class CouponUpdate extends FormBuilder implements hasGenerateFields
         $this->coupon_code = $coupon->coupon_code;
         $this->discount_type = $coupon->discount_type;
         $this->discount_value = $coupon->discount_value;
+        $this->start_at = $coupon->start_at;
+        $this->ends_at = $coupon->ends_at;
         $this->is_active = $coupon->is_active;
     }
 
@@ -73,7 +75,21 @@ class CouponUpdate extends FormBuilder implements hasGenerateFields
             'rules' => 'required',
             'order' => 40,
         ]);
-        
+
+        $form->addField('date', [
+            'label' => 'From date',
+            'model' => 'start_at',
+            'rules' => 'nullable',
+            'order' => 50,
+        ]);
+
+        $form->addField('date', [
+            'label' => 'To date',
+            'model' => 'ends_at',
+            'rules' => 'nullable',
+            'order' => 60,
+        ]);
+
         $form->addField('select', [
             'label' => 'Activity status',
             'model' => 'is_active',
@@ -88,13 +104,16 @@ class CouponUpdate extends FormBuilder implements hasGenerateFields
                 ],
             ],
             'rules' => 'required',
-            'order' => 50,
+            'order' => 70,
         ]);
     }
 
     public function submit()
     {
         $validatedData = $this->validate();
+
+        $validatedData['start_at'] = (!empty($validatedData['start_at'])) ? $validatedData['start_at'] : null;
+        $validatedData['ends_at'] = (!empty($validatedData['ends_at'])) ? $validatedData['ends_at'] : null;
 
         Coupon::updateCouponById($this->coupon_id, $validatedData);
 

@@ -56,6 +56,20 @@ class CouponCreate extends FormBuilder implements hasGenerateFields
             'order' => 40,
         ]);
 
+        $form->addField('date', [
+            'label' => 'From date',
+            'model' => 'start_at',
+            'rules' => 'nullable',
+            'order' => 50,
+        ]);
+
+        $form->addField('date', [
+            'label' => 'To date',
+            'model' => 'ends_at',
+            'rules' => 'nullable',
+            'order' => 60,
+        ]);
+
         $form->addField('select', [
             'label' => 'Activity status',
             'model' => 'is_active',
@@ -70,7 +84,7 @@ class CouponCreate extends FormBuilder implements hasGenerateFields
                 ],
             ],
             'rules' => 'required',
-            'order' => 50,
+            'order' => 70,
         ]);
     }
 

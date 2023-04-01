@@ -20,8 +20,15 @@ class OrderShow extends Component
 
     public function render()
     {
+        $components = array_map(function ($component) {
+            return $component['component'];
+        }, config('outmart.dashboard.orders.actions', []));
+
+        // dd($components);
+
         return view('outmartSales::orders.show', [
             'order' => $this->order,
+            'componentButtonActions' => $components,
         ])->layout(DashboardLayout::class);
     }
 

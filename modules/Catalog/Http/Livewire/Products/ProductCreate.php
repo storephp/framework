@@ -27,6 +27,7 @@ class ProductCreate extends FormBuilder implements hasGenerateFields, hasGenerat
     public function mount($productType)
     {
         $this->productType = $productType;
+        $this->status = 1;
     }
 
     public function generateTabs($tabs)
@@ -113,6 +114,23 @@ class ProductCreate extends FormBuilder implements hasGenerateFields, hasGenerat
             'hint' => 'dsf dsf dsff',
         ]);
 
+        $form->addField('select', [
+            'label' => 'Status',
+            'model' => 'status',
+            'options' => [
+                [
+                    'label' => 'Enabled',
+                    'value' => 1,
+                ],
+                [
+                    'label' => 'Disabled',
+                    'value' => 0,
+                ],
+            ],
+            'rules' => 'required',
+            'order' => 50,
+        ]);
+
         // priceing
         $form->addField('price', [
             'tab' => 'priceing',
@@ -161,6 +179,7 @@ class ProductCreate extends FormBuilder implements hasGenerateFields, hasGenerat
         $product->price = $validatedData['price'];
         $product->discount_price = $validatedData['discount_price'];
         $product->thumbnail_path = $this->images_thumbnail->store('products', 'public');
+        $product->status = $validatedData['status'];
         $product->save();
 
         ProductCreated::dispatch($product, $validatedData);

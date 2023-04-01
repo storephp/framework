@@ -28,6 +28,7 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
     public $description;
     public $price;
     public $discount_price;
+    public $status;
 
     protected $pagePretitle = 'Catalog';
     protected $pageTitle = 'Update product';
@@ -43,6 +44,7 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
         $this->description = $this->product->description;
         $this->price = $this->product->price;
         $this->discount_price = $this->product->discount_price;
+        $this->status = $this->product->status;
 
         foreach (config('outmart.catalog.products.external_fillable_entry') as $entry) {
             $this->{$entry} = $this->product->{$entry};
@@ -60,6 +62,7 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
         $this->description = $this->product->description;
         $this->price = $this->product->price;
         $this->discount_price = $this->product->discount_price;
+        $this->status = $this->product->status;
     }
 
     public function generateTabs($tabs)
@@ -129,6 +132,23 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
             'hint' => 'dsf dsf dsff',
         ]);
 
+        $form->addField('select', [
+            'label' => 'Status',
+            'model' => 'status',
+            'options' => [
+                [
+                    'label' => 'Enabled',
+                    'value' => 1,
+                ],
+                [
+                    'label' => 'Disabled',
+                    'value' => 0,
+                ],
+            ],
+            'rules' => 'required',
+            'order' => 50,
+        ]);
+
         // priceing
         $form->addField('price', [
             'tab' => 'priceing',
@@ -175,6 +195,7 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
         $product->description = $validatedData['description'];
         $product->price = $validatedData['price'];
         $product->discount_price = $validatedData['discount_price'];
+        $product->status = $validatedData['status'];
 
         if ($this->thumbnail_path) {
             $product->thumbnail_path = $this->thumbnail_path->store('products', 'public');

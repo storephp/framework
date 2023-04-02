@@ -4,10 +4,11 @@ namespace OutMart\Modules\Marketing\Http\Livewire\Coupons;
 
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use OutMart\Dashboard\Builder\Contracts\hasGenerateFields;
+use OutMart\Dashboard\Builder\Contracts\hasGenerateTabs;
 use OutMart\Dashboard\Builder\FormBuilder;
 use OutMart\Support\Facades\Coupon;
 
-class CouponUpdate extends FormBuilder implements hasGenerateFields
+class CouponUpdate extends FormBuilder implements hasGenerateTabs, hasGenerateFields
 {
     use LivewireAlert;
 
@@ -35,6 +36,19 @@ class CouponUpdate extends FormBuilder implements hasGenerateFields
         $this->is_active = $coupon->is_active;
     }
 
+    public function generateTabs($tabs)
+    {
+        $tabs->addTab([
+            'id' => 'basic',
+            'name' => 'Basic info',
+        ]);
+
+        $tabs->addTab([
+            'id' => 'action',
+            'name' => 'Action',
+        ]);
+    }
+
     public function generateFields($form)
     {
         $form->addField('text', [
@@ -52,6 +66,7 @@ class CouponUpdate extends FormBuilder implements hasGenerateFields
         ]);
 
         $form->addField('select', [
+            'tab' => 'action',
             'label' => 'Discount Type',
             'model' => 'discount_type',
             'options' => [
@@ -70,6 +85,7 @@ class CouponUpdate extends FormBuilder implements hasGenerateFields
         ]);
 
         $form->addField('text', [
+            'tab' => 'action',
             'label' => 'Discount Value',
             'model' => 'discount_value',
             'rules' => 'required',

@@ -4,16 +4,36 @@ namespace OutMart\Modules\Marketing\Http\Livewire\Coupons;
 
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use OutMart\Dashboard\Builder\Contracts\hasGenerateFields;
+use OutMart\Dashboard\Builder\Contracts\hasGenerateTabs;
 use OutMart\Dashboard\Builder\FormBuilder;
 use OutMart\Services\Exceptions\Coupon\CouponAlreadyExists;
 use OutMart\Support\Facades\Coupon;
 
-class CouponCreate extends FormBuilder implements hasGenerateFields
+class CouponCreate extends FormBuilder implements hasGenerateTabs, hasGenerateFields
 {
     use LivewireAlert;
 
     protected $pagePretitle = 'Marketing';
     protected $pageTitle = 'Create new coupon';
+
+    public function generateTabs($tabs)
+    {
+        $tabs->addTab([
+            'id' => 'basic',
+            'name' => 'Basic info',
+        ]);
+
+        $tabs->addTab([
+            'id' => 'action',
+            'name' => 'Action',
+        ]);
+
+        $tabs->addTab([
+            'id' => 'Report',
+            'name' => 'Report',
+            'render' => 'outmartMarketing::coupons.coubon'
+        ]);
+    }
 
     public function generateFields($form)
     {
@@ -32,6 +52,7 @@ class CouponCreate extends FormBuilder implements hasGenerateFields
         ]);
 
         $form->addField('select', [
+            'tab' => 'action',
             'label' => 'Discount Type',
             'model' => 'discount_type',
             'options' => [
@@ -50,6 +71,7 @@ class CouponCreate extends FormBuilder implements hasGenerateFields
         ]);
 
         $form->addField('text', [
+            'tab' => 'action',
             'label' => 'Discount Value',
             'model' => 'discount_value',
             'rules' => 'required',

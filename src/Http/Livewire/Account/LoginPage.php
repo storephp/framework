@@ -1,10 +1,10 @@
 <?php
 
-namespace OutMart\Dashboard\Http\Livewire\Account;
+namespace Basketin\Dashboard\Http\Livewire\Account;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use OutMart\Dashboard\Views\Layouts\AuthLayout;
+use Basketin\Dashboard\Views\Layouts\AuthLayout;
 
 class LoginPage extends Component
 {
@@ -23,15 +23,15 @@ class LoginPage extends Component
 
     public function render()
     {
-        return view('outmart::account.login')->layout(AuthLayout::class);
+        return view('basketin::account.login')->layout(AuthLayout::class);
     }
 
     public function submit()
     {
         $validatedData = $this->validate();
 
-        if (Auth::guard('outmart')->attempt(['email' => $validatedData['email'], 'password' => $validatedData['password']], $validatedData['remember'])) {
-            return redirect(route('outmart.dashboard.home'));
+        if (Auth::guard('basketin')->attempt(['email' => $validatedData['email'], 'password' => $validatedData['password']], $validatedData['remember'])) {
+            return redirect(route('basketin.dashboard.home'));
         }
     }
 }

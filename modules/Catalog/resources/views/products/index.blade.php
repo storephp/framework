@@ -28,7 +28,7 @@
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item"
-                                    href="{{ route('outmart.dashboard.catalog.products.create', ['simple']) }}">
+                                    href="{{ route('basketin.dashboard.catalog.products.create', ['simple']) }}">
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         class="icon icon-tabler icon-tabler-box-seam me-1" width="24" height="24"
                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -43,7 +43,7 @@
                                     Create simple product
                                 </a>
                                 <a class="dropdown-item"
-                                    href="{{ route('outmart.dashboard.catalog.products.create', ['configurable']) }}">
+                                    href="{{ route('basketin.dashboard.catalog.products.create', ['configurable']) }}">
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         class="icon icon-tabler icon-tabler-packages me-1" width="24" height="24"
                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -121,7 +121,7 @@
                                             </td>
                                             <td>
                                                 <div class="btn-list flex-nowrap">
-                                                    <a href="{{ route('outmart.dashboard.catalog.products.edit', [$product]) }}"
+                                                    <a href="{{ route('basketin.dashboard.catalog.products.edit', [$product]) }}"
                                                         class="btn">
                                                         Edit
                                                     </a>

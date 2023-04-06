@@ -1,11 +1,11 @@
 <?php
 
-namespace OutMart\Modules\Catalog\Models;
+namespace Basketin\Modules\Catalog\Models;
 
-use OutMart\Models\Product as OutMartProduct;
-// use OutMart\Modules\Attributes\Traits\HasProperties;
+use Basketin\Models\Product as BasketinProduct;
+// use Basketin\Modules\Attributes\Traits\HasProperties;
 
-class Product extends OutMartProduct
+class Product extends BasketinProduct
 {
     // use HasProperties;
 

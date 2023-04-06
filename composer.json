@@ -1,12 +1,12 @@
 {
-    "name": "outmart/dashboard",
+    "name": "basketin/dashboard",
     "description": "eCommerce dashboard to help you manage your eCommerce based on laravel.",
     "type": "library",
     "license": "MIT",
     "keywords": [
         "laravel",
         "ecommerce",
-        "outmart",
+        "basketin",
         "dashboard"
     ],
     "authors": [
@@ -20,14 +20,14 @@
         "jantinnerezo/livewire-alert": "^2.2",
         "laravel/framework": "^10.0",
         "livewire/livewire": "^2.10",
-        "outmart/core": "dev-develop",
+        "basketin/core": "dev-develop",
         "outmart/team": "dev-main",
         "ryangjchandler/blade-tabler-icons": "^2.0"
     },
     "autoload": {
         "psr-4": {
-            "OutMart\\Dashboard\\": "src/",
-            "OutMart\\Modules\\": "modules/"
+            "Basketin\\Dashboard\\": "src/",
+            "Basketin\\Modules\\": "modules/"
         }
     },
     "config": {
@@ -36,13 +36,13 @@
     "extra": {
         "laravel": {
             "providers": [
-                "OutMart\\Dashboard\\OutMartDashboardServiceProvider",
-                "OutMart\\Modules\\Catalog\\Providers\\OutMartCatalogServiceProvider",
-                "OutMart\\Modules\\Sales\\Providers\\OutMartSalesServiceProvider",
-                "OutMart\\Modules\\Customers\\Providers\\OutMartCustomersServiceProvider",
-                "OutMart\\Modules\\Marketing\\Providers\\OutMartMarketingServiceProvider",
-                "OutMart\\Modules\\System\\Providers\\OutMartSystemServiceProvider",
-                "OutMart\\Modules\\System\\Configuration\\Providers\\OutMartConfigurationServiceProvider"
+                "Basketin\\Dashboard\\BasketinDashboardServiceProvider",
+                "Basketin\\Modules\\Catalog\\Providers\\BasketinCatalogServiceProvider",
+                "Basketin\\Modules\\Sales\\Providers\\BasketinSalesServiceProvider",
+                "Basketin\\Modules\\Customers\\Providers\\BasketinCustomersServiceProvider",
+                "Basketin\\Modules\\Marketing\\Providers\\BasketinMarketingServiceProvider",
+                "Basketin\\Modules\\System\\Providers\\BasketinSystemServiceProvider",
+                "Basketin\\Modules\\System\\Configuration\\Providers\\BasketinConfigurationServiceProvider"
             ]
         }
     },

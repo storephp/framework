@@ -1,6 +1,6 @@
 <?php
 
-namespace OutMart\Dashboard\Http\Middleware;
+namespace Basketin\Dashboard\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
@@ -18,7 +18,7 @@ class GlobalConfigMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $locale = config('outmart.dashboard.core.languages.english');
+        $locale = config('basketin.dashboard.core.languages.english');
 
         App::setLocale($locale['lang_code']);
         View::share('langDirection', $locale['direction']);

@@ -1,6 +1,6 @@
 <?php
 
-namespace OutMart\Dashboard\Builder\Form;
+namespace Basketin\Dashboard\Builder\Form;
 
 use Exception;
 

@@ -25,8 +25,8 @@
                                 <h4 class="subheader @if(!$loop->first) mt-3 @endif">{{ $tab['name'] }}</h4>
                                 <div class="list-group list-group-transparent">
                                     @foreach ($tab['sub_tabs'] as $_tabKey => $_tab)
-                                        <a href="{{ route('outmart.dashboard.system.configurations', [$tabKey, $_tabKey]) }}"
-                                            class="list-group-item list-group-item-action {{ request()->is('outmart/system/configurations/' . $tabKey . '/' . $_tabKey) ? 'active' : '' }}">{{ $_tab['name'] }}</a>
+                                        <a href="{{ route('basketin.dashboard.system.configurations', [$tabKey, $_tabKey]) }}"
+                                            class="list-group-item list-group-item-action {{ request()->is('basketin/system/configurations/' . $tabKey . '/' . $_tabKey) ? 'active' : '' }}">{{ $_tab['name'] }}</a>
                                     @endforeach
                                 </div>
                             @endforeach
@@ -39,7 +39,7 @@
 
                             @foreach ($fields as $field)
                                 @if ($field['type'] == 'string')
-                                    <x-outmart-input-text label="{{ $field['label'] }}" model="{{ $field['path'] }}" />
+                                    <x-basketin-input-text label="{{ $field['label'] }}" model="{{ $field['path'] }}" />
                                 @endif
                             @endforeach
                         </div>

@@ -1,12 +1,12 @@
 <?php
 
-namespace OutMart\Modules\Catalog\Http\Livewire\Categories;
+namespace Basketin\Modules\Catalog\Http\Livewire\Categories;
 
 use Illuminate\Support\Str;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use OutMart\Dashboard\Builder\Contracts\hasGenerateFields;
-use OutMart\Dashboard\Builder\FormBuilder;
-use OutMart\Models\Product\Category;
+use Basketin\Dashboard\Builder\Contracts\hasGenerateFields;
+use Basketin\Dashboard\Builder\FormBuilder;
+use Basketin\Models\Product\Category;
 
 class CategoryEdit extends FormBuilder implements hasGenerateFields
 {

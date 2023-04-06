@@ -1,6 +1,6 @@
 <?php
 
-namespace OutMart\Dashboard\Builder\Grad;
+namespace Basketin\Dashboard\Builder\Grad;
 
 class Table
 {

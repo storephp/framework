@@ -1,8 +1,8 @@
 <?php
 
-namespace OutMart\Dashboard\Listeners;
+namespace Basketin\Dashboard\Listeners;
 
-use OutMart\Modules\Catalog\Events\AddFieldsToCategoryCreate;
+use Basketin\Modules\Catalog\Events\AddFieldsToCategoryCreate;
 
 class SendShipmentNotification
 {

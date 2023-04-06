@@ -1,17 +1,17 @@
 <?php
 
-namespace OutMart\Modules\Catalog\Providers;
+namespace Basketin\Modules\Catalog\Providers;
 
 use Livewire\Livewire;
-use OutMart\Dashboard\Support\ServiceProvider;
-use OutMart\Modules\Catalog\Http\Livewire\Categories\CategoriesIndex;
-use OutMart\Modules\Catalog\Http\Livewire\Categories\CategoryCreate;
-use OutMart\Modules\Catalog\Http\Livewire\Categories\CategoryEdit;
-use OutMart\Modules\Catalog\Http\Livewire\Products\ProductCreate;
-use OutMart\Modules\Catalog\Http\Livewire\Products\ProductEdit;
-use OutMart\Modules\Catalog\Http\Livewire\Products\ProductsIndex;
+use Basketin\Dashboard\Support\ServiceProvider;
+use Basketin\Modules\Catalog\Http\Livewire\Categories\CategoriesIndex;
+use Basketin\Modules\Catalog\Http\Livewire\Categories\CategoryCreate;
+use Basketin\Modules\Catalog\Http\Livewire\Categories\CategoryEdit;
+use Basketin\Modules\Catalog\Http\Livewire\Products\ProductCreate;
+use Basketin\Modules\Catalog\Http\Livewire\Products\ProductEdit;
+use Basketin\Modules\Catalog\Http\Livewire\Products\ProductsIndex;
 
-class OutMartCatalogServiceProvider extends ServiceProvider
+class BasketinCatalogServiceProvider extends ServiceProvider
 {
     protected $moduleName = 'NAme';
 
@@ -24,19 +24,19 @@ class OutMartCatalogServiceProvider extends ServiceProvider
     {
         $this->bootModuleAPP(__DIR__ . '/..', [
             'icon' => 'clipboard-list',
-            'name' => 'OutMartCatalog::menu.catalog',
+            'name' => 'BasketinCatalog::menu.catalog',
             'slug' => 'catalog'
-        ], 'outmart_catalog', [
+        ], 'basketin_catalog', [
             $this->addLink(
                 icon: 'category',
-                name: 'OutMartCatalog::menu.categories',
-                route: 'outmart.dashboard.catalog.categories.index',
+                name: 'BasketinCatalog::menu.categories',
+                route: 'basketin.dashboard.catalog.categories.index',
                 order: 10,
             ),
             $this->addLink(
                 icon: 'packages',
                 name: 'Products',
-                route: 'outmart.dashboard.catalog.products.index',
+                route: 'basketin.dashboard.catalog.products.index',
                 order: 20,
             ),
         ]);
@@ -49,6 +49,6 @@ class OutMartCatalogServiceProvider extends ServiceProvider
         Livewire::component('catalog-products-create', ProductCreate::class);
         Livewire::component('catalog-products-edit', ProductEdit::class);
 
-        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'OutMartCatalog');
+        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'BasketinCatalog');
     }
 }

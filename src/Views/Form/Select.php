@@ -1,6 +1,6 @@
 <?php
 
-namespace OutMart\Dashboard\Views\Form;
+namespace Basketin\Dashboard\Views\Form;
 
 use Illuminate\View\Component;
 
@@ -19,6 +19,6 @@ class Select extends Component
 
     public function render()
     {
-        return view('outmart::components.form.select');
+        return view('basketin::components.form.select');
     }
 }

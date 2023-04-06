@@ -1,11 +1,11 @@
 <?php
 
-namespace OutMart\Modules\Marketing\Http\Livewire\Coupons;
+namespace Basketin\Modules\Marketing\Http\Livewire\Coupons;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use OutMart\Dashboard\Views\Layouts\DashboardLayout;
-use OutMart\Support\Facades\Coupon;
+use Basketin\Dashboard\Views\Layouts\DashboardLayout;
+use Basketin\Support\Facades\Coupon;
 
 class CouponsIndex extends Component
 {
@@ -19,7 +19,7 @@ class CouponsIndex extends Component
     {
         $coupons = Coupon::getList();
 
-        return view('outmartMarketing::coupons.index', [
+        return view('basketinMarketing::coupons.index', [
             'coupons' => $coupons,
         ])->layout(DashboardLayout::class);
     }

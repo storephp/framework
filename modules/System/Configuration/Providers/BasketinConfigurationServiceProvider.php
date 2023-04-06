@@ -1,12 +1,12 @@
 <?php
 
-namespace OutMart\Modules\System\Configuration\Providers;
+namespace Basketin\Modules\System\Configuration\Providers;
 
 use Livewire\Livewire;
-use OutMart\Dashboard\Support\ServiceProvider;
-use OutMart\Modules\System\Configuration\Http\Livewire\Configurations;
+use Basketin\Dashboard\Support\ServiceProvider;
+use Basketin\Modules\System\Configuration\Http\Livewire\Configurations;
 
-class OutMartConfigurationServiceProvider extends ServiceProvider
+class BasketinConfigurationServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -33,7 +33,7 @@ class OutMartConfigurationServiceProvider extends ServiceProvider
     public function boot()
     {
         // config([
-        //     'outmart.system.configurations.tabs' => array_merge([
+        //     'basketin.system.configurations.tabs' => array_merge([
         //         'general' => [
         //             'name' => 'General',
         //             'sub_tabs' => [
@@ -71,16 +71,16 @@ class OutMartConfigurationServiceProvider extends ServiceProvider
         //                 ],
         //             ],
         //         ],
-        //     ], config('outmart.system.configurations.tabs', [])),
+        //     ], config('basketin.system.configurations.tabs', [])),
         // ]);
 
         // dd(config(''));
 
-        $this->appendToMenu('outmart_system', [
+        $this->appendToMenu('basketin_system', [
             $this->addLink(
                 icon:'adjustments-alt',
                 name:'Configurations',
-                route:'outmart.dashboard.system.configurations',
+                route:'basketin.dashboard.system.configurations',
                 order:10,
             ),
         ]);
@@ -88,6 +88,6 @@ class OutMartConfigurationServiceProvider extends ServiceProvider
         $this->loadRoutes(__DIR__ . '/..', 'system');
         $this->loadAppViews(__DIR__ . '/..', 'configurations');
 
-        Livewire::component('outmart-system-configurations', Configurations::class);
+        Livewire::component('basketin-system-configurations', Configurations::class);
     }
 }

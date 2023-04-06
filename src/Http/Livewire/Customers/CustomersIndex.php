@@ -1,9 +1,9 @@
 <?php
 
-namespace OutMart\Dashboard\Http\Livewire\Customers;
+namespace Basketin\Dashboard\Http\Livewire\Customers;
 
 use Livewire\Component;
-use OutMart\Dashboard\Models\Customer;
+use Basketin\Dashboard\Models\Customer;
 
 class CustomersIndex extends Component
 {
@@ -11,8 +11,8 @@ class CustomersIndex extends Component
     {
         $customers = Customer::query()->paginate(15);
 
-        return view('outmart::customers.index', [
+        return view('basketin::customers.index', [
             'customers' => $customers,
-        ])->layout('outmart::layouts.dashboard');
+        ])->layout('basketin::layouts.dashboard');
     }
 }

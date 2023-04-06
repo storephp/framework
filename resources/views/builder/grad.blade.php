@@ -15,7 +15,7 @@
                 <!-- Page title actions -->
                 <div class="col-auto ms-auto d-print-none">
                     <div class="btn-list">
-                        <a href="{{ route('outmart.dashboard.catalog.categories.create') }}"
+                        <a href="{{ route('basketin.dashboard.catalog.categories.create') }}"
                             class="btn btn-primary d-none d-sm-inline-block">
                             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -27,7 +27,7 @@
                             </svg>
                             Create new category
                         </a>
-                        <a href="{{ route('outmart.dashboard.catalog.categories.create') }}"
+                        <a href="{{ route('basketin.dashboard.catalog.categories.create') }}"
                             class="btn btn-primary d-sm-none btn-icon">
                             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"

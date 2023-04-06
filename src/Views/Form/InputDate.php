@@ -1,6 +1,6 @@
 <?php
 
-namespace OutMart\Dashboard\Views\Form;
+namespace Basketin\Dashboard\Views\Form;
 
 use Illuminate\View\Component;
 
@@ -17,6 +17,6 @@ class InputDate extends Component
 
     public function render()
     {
-        return view('outmart::components.form.inputDate');
+        return view('basketin::components.form.inputDate');
     }
 }

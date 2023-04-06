@@ -1,10 +1,10 @@
 <?php
 
-namespace OutMart\Modules\System\Providers;
+namespace Basketin\Modules\System\Providers;
 
-use OutMart\Dashboard\Support\ServiceProvider;
+use Basketin\Dashboard\Support\ServiceProvider;
 
-class OutMartSystemServiceProvider extends ServiceProvider
+class BasketinSystemServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -14,9 +14,9 @@ class OutMartSystemServiceProvider extends ServiceProvider
     public function register()
     {
         config([
-            'outmart.system.configurations' => array_merge([
+            'basketin.system.configurations' => array_merge([
                 'tabs' => [],
-            ], config('outmart.system.configurations', [])),
+            ], config('basketin.system.configurations', [])),
         ]);
     }
 
@@ -32,6 +32,6 @@ class OutMartSystemServiceProvider extends ServiceProvider
             'name' => 'System',
             'slug' => 'system',
             'order' => 1000,
-        ], 'outmart_system');
+        ], 'basketin_system');
     }
 }

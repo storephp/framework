@@ -1,12 +1,12 @@
 <?php
 
-namespace OutMart\Modules\Catalog\Http\Livewire\Products;
+namespace Basketin\Modules\Catalog\Http\Livewire\Products;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use OutMart\Dashboard\Views\Layouts\DashboardLayout;
-// use OutMart\Modules\Catalog\Models\Product;
-use OutMart\Support\Facades\Product;
+use Basketin\Dashboard\Views\Layouts\DashboardLayout;
+// use Basketin\Modules\Catalog\Models\Product;
+use Basketin\Support\Facades\Product;
 
 class ProductsIndex extends Component
 {
@@ -25,7 +25,7 @@ class ProductsIndex extends Component
             }
         })->paginate(15);
 
-        return view('outmartCatalog::products.index', [
+        return view('basketinCatalog::products.index', [
             'products' => $products,
         ])->layout(DashboardLayout::class);
     }

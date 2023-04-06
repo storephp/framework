@@ -1,5 +1,5 @@
 <?php
-namespace OutMart\Dashboard\Views\Components\Widgets;
+namespace Basketin\Dashboard\Views\Components\Widgets;
 
 use Illuminate\View\Component;
 
@@ -17,6 +17,6 @@ class WidgetEmptyData extends Component
 
     public function render()
     {
-        return view('outmart::components.widgets.emptyData');
+        return view('basketin::components.widgets.emptyData');
     }
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace OutMart\Modules\Marketing\Http\Livewire\Coupons;
+namespace Basketin\Modules\Marketing\Http\Livewire\Coupons;
 
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use OutMart\Dashboard\Builder\Contracts\hasGenerateFields;
-use OutMart\Dashboard\Builder\Contracts\hasGenerateTabs;
-use OutMart\Dashboard\Builder\FormBuilder;
-use OutMart\Support\Facades\Coupon;
+use Basketin\Dashboard\Builder\Contracts\hasGenerateFields;
+use Basketin\Dashboard\Builder\Contracts\hasGenerateTabs;
+use Basketin\Dashboard\Builder\FormBuilder;
+use Basketin\Support\Facades\Coupon;
 
 class CouponUpdate extends FormBuilder implements hasGenerateTabs, hasGenerateFields
 {

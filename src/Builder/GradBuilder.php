@@ -1,11 +1,11 @@
 <?php
 
-namespace OutMart\Dashboard\Builder;
+namespace Basketin\Dashboard\Builder;
 
 use Livewire\Component;
-use OutMart\Dashboard\Builder\Grad\Table;
-use OutMart\Dashboard\Views\Layouts\DashboardLayout;
-use OutMart\Models\Product\Category;
+use Basketin\Dashboard\Builder\Grad\Table;
+use Basketin\Dashboard\Views\Layouts\DashboardLayout;
+use Basketin\Models\Product\Category;
 
 class GradBuilder extends Component
 {
@@ -23,9 +23,9 @@ class GradBuilder extends Component
     {
         $this->table = new Table;
 
-        config(['outmart.dashboard.core.fields.' . $this->pathFields => []]);
+        config(['basketin.dashboard.core.fields.' . $this->pathFields => []]);
 
-        $columns = config('outmart.dashboard.core.fields.' . $this->pathFields);
+        $columns = config('basketin.dashboard.core.fields.' . $this->pathFields);
 
         // if ($this instanceof hasCreateFields) {
         $this->headers();
@@ -88,7 +88,7 @@ class GradBuilder extends Component
         //     dd($column);
         // }
 
-        return view('outmart::builder.grad', [
+        return view('basketin::builder.grad', [
             'meta' => [
                 'pageTitle' => $this->pageTitle(),
             ],

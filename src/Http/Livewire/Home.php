@@ -1,14 +1,14 @@
 <?php
 
-namespace OutMart\Dashboard\Http\Livewire;
+namespace Basketin\Dashboard\Http\Livewire;
 
 use Livewire\Component;
-use OutMart\Dashboard\Views\Layouts\DashboardLayout;
+use Basketin\Dashboard\Views\Layouts\DashboardLayout;
 
 class Home extends Component
 {
     public function render()
     {
-        return view('outmart::home')->layout(DashboardLayout::class);
+        return view('basketin::home')->layout(DashboardLayout::class);
     }
 }

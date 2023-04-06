@@ -15,7 +15,7 @@
                 <!-- Page title actions -->
                 <div class="col-auto ms-auto d-print-none">
                     <div class="btn-list">
-                        <a href="{{ route('outmart.dashboard.sales.orders.create') }}"
+                        <a href="{{ route('basketin.dashboard.sales.orders.create') }}"
                             class="btn btn-primary d-none d-sm-inline-block">
                             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -27,7 +27,7 @@
                             </svg>
                             Create new order
                         </a>
-                        <a href="{{ route('outmart.dashboard.sales.orders.create') }}"
+                        <a href="{{ route('basketin.dashboard.sales.orders.create') }}"
                             class="btn btn-primary d-sm-none btn-icon">
                             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -49,9 +49,9 @@
             <div class="row row-deck row-cards">
                 <div class="col-12">
                     @if ($orders->isEmpty())
-                        <x-outmart-widget-empty-data icon="ticket-off" title="There are no orders"
+                        <x-basketin-widget-empty-data icon="ticket-off" title="There are no orders"
                             subtitle="You can create new order"
-                            actionRoute="{{ route('outmart.dashboard.sales.orders.create') }}" />
+                            actionRoute="{{ route('basketin.dashboard.sales.orders.create') }}" />
                     @endif
 
                     @if (!$orders->isEmpty())
@@ -115,7 +115,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="btn-list flex-nowrap">
-                                                        <a href="{{ route('outmart.dashboard.sales.orders.show', [$order]) }}"
+                                                        <a href="{{ route('basketin.dashboard.sales.orders.show', [$order]) }}"
                                                             class="btn">
                                                             Open
                                                         </a>

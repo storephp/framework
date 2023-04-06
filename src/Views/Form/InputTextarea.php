@@ -1,6 +1,6 @@
 <?php
 
-namespace OutMart\Dashboard\Views\Form;
+namespace Basketin\Dashboard\Views\Form;
 
 use Illuminate\View\Component;
 
@@ -17,6 +17,6 @@ class InputTextarea extends Component
 
     public function render()
     {
-        return view('outmart::components.form.inputTextarea');
+        return view('basketin::components.form.inputTextarea');
     }
 }

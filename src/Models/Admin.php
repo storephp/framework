@@ -1,6 +1,6 @@
 <?php
 
-namespace OutMart\Dashboard\Models;
+namespace Basketin\Dashboard\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -10,5 +10,15 @@ class Admin extends Authenticatable
 {
     use Notifiable, IsMember;
 
-    protected $table = 'outmart_admins';
+    /**
+     * Create a new instance of the Model.
+     *
+     * @param array $attributes
+     */
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->setTable(config('basketin.database.table_prefix') . $this->getTable());
+    }
 }

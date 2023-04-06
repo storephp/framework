@@ -127,7 +127,7 @@
                             <h3 class="card-title">Customer info</h3>
                         </div>
                         <div class="card-body">
-                            <x-outmart-select label="Customer name" model="customer_id" :options="$customers"
+                            <x-basketin-select label="Customer name" model="customer_id" :options="$customers"
                                 :required="true" wire:change="selectCustomer()" />
                         </div>
                     </div>
@@ -136,30 +136,30 @@
                             <h3 class="card-title">Customer Address</h3>
                         </div>
                         <div class="card-body">
-                            <x-outmart-select label="Select Address" model="customerAddress" :options="$customerAddresses"
+                            <x-basketin-select label="Select Address" model="customerAddress" :options="$customerAddresses"
                                 :required="true" wire:change="selectAddress()" />
 
                             <div class="hr-text">Shhping also</div>
 
-                            <x-outmart-input-text label="label" model="customerIntreAddresses.label"
+                            <x-basketin-input-text label="label" model="customerIntreAddresses.label"
                                 :required="true" />
 
-                            <x-outmart-input-text label="country_code" model="customerIntreAddresses.country_code"
+                            <x-basketin-input-text label="country_code" model="customerIntreAddresses.country_code"
                                 :required="true" />
 
-                            <x-outmart-input-text label="city_id" model="customerIntreAddresses.city_id"
+                            <x-basketin-input-text label="city_id" model="customerIntreAddresses.city_id"
                                 :required="true" />
 
-                            <x-outmart-input-text label="postcode" model="customerIntreAddresses.postcode"
+                            <x-basketin-input-text label="postcode" model="customerIntreAddresses.postcode"
                                 :required="true" />
 
-                            <x-outmart-input-text label="street_line_1" model="customerIntreAddresses.street_line_1"
+                            <x-basketin-input-text label="street_line_1" model="customerIntreAddresses.street_line_1"
                                 :required="true" />
 
-                            <x-outmart-input-text label="street_line_2" model="customerIntreAddresses.street_line_2"
+                            <x-basketin-input-text label="street_line_2" model="customerIntreAddresses.street_line_2"
                                 :required="true" />
 
-                            <x-outmart-input-text label="telephone_number"
+                            <x-basketin-input-text label="telephone_number"
                                 model="customerIntreAddresses.telephone_number" :required="true" />
 
                             {{-- <input type="text" wire:model="customerIntreAddresses.label"> --}}

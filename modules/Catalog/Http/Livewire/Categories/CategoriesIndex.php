@@ -1,11 +1,11 @@
 <?php
 
-namespace OutMart\Modules\Catalog\Http\Livewire\Categories;
+namespace Basketin\Modules\Catalog\Http\Livewire\Categories;
 
-use OutMart\Models\Product\Category;
+use Basketin\Models\Product\Category;
 use Livewire\Component;
 use Livewire\WithPagination;
-use OutMart\Dashboard\Views\Layouts\DashboardLayout;
+use Basketin\Dashboard\Views\Layouts\DashboardLayout;
 
 class CategoriesIndex extends Component
 {
@@ -17,7 +17,7 @@ class CategoriesIndex extends Component
     {
         $categories = Category::paginate(15);
 
-        return view('outmart::catalog.categories.index', [
+        return view('basketin::catalog.categories.index', [
             'categories' => $categories,
         ])->layout(DashboardLayout::class);
     }

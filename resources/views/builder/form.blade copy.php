@@ -51,11 +51,11 @@
                                         </div>
                                     </div> --}}
 
-                                    <x-outmart-select label="{{ $filed['label'] }}" model="{{ $filed['model'] }}" :options="$filed['options']" />
+                                    <x-basketin-select label="{{ $filed['label'] }}" model="{{ $filed['model'] }}" :options="$filed['options']" />
                                 @endif
 
                                 @if ($filed['type'] == 'text')
-                                    <x-outmart-input-text label="{{ $filed['label'] }}" model="{{ $filed['model'] }}" />
+                                    <x-basketin-input-text label="{{ $filed['label'] }}" model="{{ $filed['model'] }}" />
                                     {{-- <div class="mb-3">
                                         <label class="form-label required">{{ $filed['label'] }}</label>
                                         <div>

@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use OutMart\Modules\Sales\Http\Livewire\Orders\OrderCreate;
-use OutMart\Modules\Sales\Http\Livewire\Orders\OrderShow;
-use OutMart\Modules\Sales\Http\Livewire\Orders\OrdersIndex;
+use Basketin\Modules\Sales\Http\Livewire\Orders\OrderCreate;
+use Basketin\Modules\Sales\Http\Livewire\Orders\OrderShow;
+use Basketin\Modules\Sales\Http\Livewire\Orders\OrdersIndex;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +16,7 @@ use OutMart\Modules\Sales\Http\Livewire\Orders\OrdersIndex;
 |
  */
 Route::prefix('orders')->group(function () {
-    Route::get('/', OrdersIndex::class)->name('outmart.dashboard.sales.orders.index');
-    Route::get('/create/{customer?}', OrderCreate::class)->name('outmart.dashboard.sales.orders.create');
-    Route::get('/{order}', OrderShow::class)->name('outmart.dashboard.sales.orders.show');
+    Route::get('/', OrdersIndex::class)->name('basketin.dashboard.sales.orders.index');
+    Route::get('/create/{customer?}', OrderCreate::class)->name('basketin.dashboard.sales.orders.create');
+    Route::get('/{order}', OrderShow::class)->name('basketin.dashboard.sales.orders.show');
 });

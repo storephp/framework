@@ -1,13 +1,13 @@
 <?php
 
-namespace OutMart\Modules\Marketing\Http\Livewire\Coupons;
+namespace Basketin\Modules\Marketing\Http\Livewire\Coupons;
 
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use OutMart\Dashboard\Builder\Contracts\hasGenerateFields;
-use OutMart\Dashboard\Builder\Contracts\hasGenerateTabs;
-use OutMart\Dashboard\Builder\FormBuilder;
-use OutMart\Services\Exceptions\Coupon\CouponAlreadyExists;
-use OutMart\Support\Facades\Coupon;
+use Basketin\Dashboard\Builder\Contracts\hasGenerateFields;
+use Basketin\Dashboard\Builder\Contracts\hasGenerateTabs;
+use Basketin\Dashboard\Builder\FormBuilder;
+use Basketin\Services\Exceptions\Coupon\CouponAlreadyExists;
+use Basketin\Support\Facades\Coupon;
 
 class CouponCreate extends FormBuilder implements hasGenerateTabs, hasGenerateFields
 {
@@ -31,7 +31,7 @@ class CouponCreate extends FormBuilder implements hasGenerateTabs, hasGenerateFi
         $tabs->addTab([
             'id' => 'Report',
             'name' => 'Report',
-            'render' => 'outmartMarketing::coupons.coubon'
+            'render' => 'basketinMarketing::coupons.coubon'
         ]);
     }
 

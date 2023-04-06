@@ -1,12 +1,12 @@
 <?php
 
-namespace OutMart\Dashboard\Http\Middleware;
+namespace Basketin\Dashboard\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class OutMartAuthenticated
+class BasketinAuthenticated
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class OutMartAuthenticated
      */
     public function handle(Request $request, Closure $next, $permission = false)
     {
-        if ($user = Auth::guard('outmart')->user()) {
+        if ($user = Auth::guard('basketin')->user()) {
 
             abort_if(!$user->membership, 404);
 
@@ -30,6 +30,6 @@ class OutMartAuthenticated
             return $next($request);
         }
 
-        return redirect(route('outmart.admin.login'));
+        return redirect(route('basketin.admin.login'));
     }
 }

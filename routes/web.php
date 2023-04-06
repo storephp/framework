@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use OutMart\Dashboard\Http\Livewire\Account\LoginPage;
-use OutMart\Dashboard\Http\Livewire\Home;
-use OutMart\Dashboard\Http\Middleware\GlobalConfigMiddleware;
+use Basketin\Dashboard\Http\Livewire\Account\LoginPage;
+use Basketin\Dashboard\Http\Livewire\Home;
+use Basketin\Dashboard\Http\Middleware\GlobalConfigMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +16,9 @@ use OutMart\Dashboard\Http\Middleware\GlobalConfigMiddleware;
 |
  */
 
-Route::prefix('outmart')->middleware(['web', GlobalConfigMiddleware::class])->group(function () {
-    Route::get('/login', LoginPage::class)->name('outmart.admin.login');
+Route::prefix('basketin')->middleware(['web', GlobalConfigMiddleware::class])->group(function () {
+    Route::get('/login', LoginPage::class)->name('basketin.admin.login');
     Route::middleware(['martTeam'])->group(function () {
-        Route::get('/', Home::class)->name('outmart.dashboard.home');
+        Route::get('/', Home::class)->name('basketin.dashboard.home');
     });
 });

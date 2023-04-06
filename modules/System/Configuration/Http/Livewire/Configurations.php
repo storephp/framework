@@ -1,11 +1,11 @@
 <?php
 
-namespace OutMart\Modules\System\Configuration\Http\Livewire;
+namespace Basketin\Modules\System\Configuration\Http\Livewire;
 
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
-use OutMart\Dashboard\Views\Layouts\DashboardLayout;
-use OutMart\Facades\Configuration;
+use Basketin\Dashboard\Views\Layouts\DashboardLayout;
+use Basketin\Facades\Configuration;
 
 class Configurations extends Component
 {
@@ -18,7 +18,7 @@ class Configurations extends Component
 
     public function mount($currentTab = 'general', $currentSubTab = 'public')
     {
-        $configuration = config('outmart.system.configurations.tabs.' . $currentTab . '.sub_tabs.' . $currentSubTab);
+        $configuration = config('basketin.system.configurations.tabs.' . $currentTab . '.sub_tabs.' . $currentSubTab);
 
         if (!$configuration) {
             abort(404);
@@ -33,11 +33,11 @@ class Configurations extends Component
 
     public function render()
     {
-        $tabs = config('outmart.system.configurations.tabs');
+        $tabs = config('basketin.system.configurations.tabs');
 
-        return view('outmartConfigurations::configurations', [
+        return view('basketinConfigurations::configurations', [
             'tabs' => $tabs,
-            'currentTabName' => config('outmart.system.configurations.tabs.' . $this->currentTab . '.sub_tabs.' . $this->currentSubTab . '.name'),
+            'currentTabName' => config('basketin.system.configurations.tabs.' . $this->currentTab . '.sub_tabs.' . $this->currentSubTab . '.name'),
             'fields' => $this->fields,
         ])->layout(DashboardLayout::class);
     }

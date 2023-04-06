@@ -1,6 +1,6 @@
 <?php
 
-namespace OutMart\Dashboard\Views\Form;
+namespace Basketin\Dashboard\Views\Form;
 
 use Illuminate\View\Component;
 
@@ -18,6 +18,6 @@ class InputPrice extends Component
 
     public function render()
     {
-        return view('outmart::components.form.inputPrice');
+        return view('basketin::components.form.inputPrice');
     }
 }

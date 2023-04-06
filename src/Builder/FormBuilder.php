@@ -1,15 +1,15 @@
 <?php
 
-namespace OutMart\Dashboard\Builder;
+namespace Basketin\Dashboard\Builder;
 
 use Livewire\Component;
-use OutMart\Dashboard\Builder\Contracts\hasGenerateFields;
-use OutMart\Dashboard\Builder\Contracts\hasGenerateTabs;
-use OutMart\Dashboard\Builder\Form\Fields;
-use OutMart\Dashboard\Builder\Form\Tabs;
-use OutMart\Dashboard\Views\Layouts\DashboardLayout;
-use OutMart\Modules\Catalog\Events\AddFieldsToCategoryCreate;
-use OutMart\Models\Store;
+use Basketin\Dashboard\Builder\Contracts\hasGenerateFields;
+use Basketin\Dashboard\Builder\Contracts\hasGenerateTabs;
+use Basketin\Dashboard\Builder\Form\Fields;
+use Basketin\Dashboard\Builder\Form\Tabs;
+use Basketin\Dashboard\Views\Layouts\DashboardLayout;
+use Basketin\Modules\Catalog\Events\AddFieldsToCategoryCreate;
+use Basketin\Models\Store;
 
 class FormBuilder extends Component
 {
@@ -87,7 +87,7 @@ class FormBuilder extends Component
 
         // dd($stores);
 
-        return view('outmart::builder.form', [
+        return view('basketin::builder.form', [
             'setup' => [
                 'selectStoreView' => $this->selectStoreView,
             ],

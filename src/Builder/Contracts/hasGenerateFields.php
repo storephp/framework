@@ -1,6 +1,6 @@
 <?php
 
-namespace OutMart\Dashboard\Builder\Contracts;
+namespace Basketin\Dashboard\Builder\Contracts;
 
 interface hasGenerateFields
 {

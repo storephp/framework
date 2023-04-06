@@ -1,11 +1,11 @@
 <?php
 
-namespace OutMart\Modules\Sales\Http\Livewire\Orders;
+namespace Basketin\Modules\Sales\Http\Livewire\Orders;
 
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
-use OutMart\Dashboard\Views\Layouts\DashboardLayout;
-use OutMart\Models\Order;
+use Basketin\Dashboard\Views\Layouts\DashboardLayout;
+use Basketin\Models\Order;
 
 class OrderShow extends Component
 {
@@ -22,11 +22,11 @@ class OrderShow extends Component
     {
         $components = array_map(function ($component) {
             return $component['component'];
-        }, config('outmart.dashboard.orders.actions', []));
+        }, config('basketin.dashboard.orders.actions', []));
 
         // dd($components);
 
-        return view('outmartSales::orders.show', [
+        return view('basketinSales::orders.show', [
             'order' => $this->order,
             'componentButtonActions' => $components,
         ])->layout(DashboardLayout::class);

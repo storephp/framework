@@ -1,6 +1,6 @@
 <?php
 
-namespace OutMart\Modules\Catalog\Events;
+namespace Basketin\Modules\Catalog\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;

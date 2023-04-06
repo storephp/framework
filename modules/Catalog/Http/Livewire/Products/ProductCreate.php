@@ -1,18 +1,18 @@
 <?php
 
-namespace OutMart\Modules\Catalog\Http\Livewire\Products;
+namespace Basketin\Modules\Catalog\Http\Livewire\Products;
 
 use Illuminate\Support\Str;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;
-use OutMart\Dashboard\Builder\Contracts\hasGenerateFields;
-use OutMart\Dashboard\Builder\Contracts\hasGenerateTabs;
-use OutMart\Dashboard\Builder\FormBuilder;
-use OutMart\Enums\Catalog\ProductType;
-use OutMart\Models\Product\Category;
-use OutMart\Modules\Catalog\Events\AddFieldsToCreatingProduct;
-use OutMart\Modules\Catalog\Events\ProductCreated;
-use OutMart\Support\Facades\Product;
+use Basketin\Dashboard\Builder\Contracts\hasGenerateFields;
+use Basketin\Dashboard\Builder\Contracts\hasGenerateTabs;
+use Basketin\Dashboard\Builder\FormBuilder;
+use Basketin\Enums\Catalog\ProductType;
+use Basketin\Models\Product\Category;
+use Basketin\Modules\Catalog\Events\AddFieldsToCreatingProduct;
+use Basketin\Modules\Catalog\Events\ProductCreated;
+use Basketin\Support\Facades\Product;
 
 class ProductCreate extends FormBuilder implements hasGenerateFields, hasGenerateTabs
 {

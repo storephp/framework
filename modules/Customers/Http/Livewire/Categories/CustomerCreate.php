@@ -1,11 +1,11 @@
 <?php
 
-namespace OutMart\Modules\Customers\Http\Livewire\Categories;
+namespace Basketin\Modules\Customers\Http\Livewire\Categories;
 
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use OutMart\Dashboard\Builder\Contracts\hasGenerateFields;
-use OutMart\Dashboard\Builder\FormBuilder;
-use OutMart\Modules\Customers\Models\Customer;
+use Basketin\Dashboard\Builder\Contracts\hasGenerateFields;
+use Basketin\Dashboard\Builder\FormBuilder;
+use Basketin\Modules\Customers\Models\Customer;
 
 class CustomerCreate extends FormBuilder implements hasGenerateFields
 {
@@ -49,6 +49,6 @@ class CustomerCreate extends FormBuilder implements hasGenerateFields
 
     protected function pageTitle()
     {
-        return __('outmartCustomers::main.create.title');
+        return __('basketinCustomers::main.create.title');
     }
 }

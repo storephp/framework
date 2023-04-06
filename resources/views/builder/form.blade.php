@@ -92,13 +92,14 @@
                                             model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
                                     @endif
 
-                                    
+                                    @if ($field['type'] == 'file')
+                                        <x-basketin-input-file label="{{ $field['label'] }}"
+                                            model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
+                                    @endif
                                 @endforeach
-
                             </div>
                         @endif
                     @endforeach
-
 
                     {{-- @if ($tab == 'dd')
                             <div class="card-body">

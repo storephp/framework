@@ -12,7 +12,7 @@ class Updates extends Component
     public function render()
     {
         return <<<'blade'
-            <a href="#" class="nav-link px-0 mx-2" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            <a href="#" class="nav-link px-0" data-bs-toggle="tooltip" data-bs-placement="bottom"
             aria-label="{{ $titleUpdate }}" data-bs-original-title="{{ $titleUpdate }}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-refresh"
                     width="24" height="24" viewBox="0 0 24 24" stroke-width="2"

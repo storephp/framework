@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Basketin\Dashboard\Http\Livewire\Account\LoginPage;
+use Basketin\Dashboard\Http\Livewire\Admin\Home as AdminHome;
 use Basketin\Dashboard\Http\Livewire\Home;
 use Basketin\Dashboard\Http\Middleware\GlobalConfigMiddleware;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +21,9 @@ Route::prefix('basketin')->middleware(['web', GlobalConfigMiddleware::class])->g
     Route::get('/login', LoginPage::class)->name('basketin.admin.login');
     Route::middleware(['martTeam'])->group(function () {
         Route::get('/', Home::class)->name('basketin.dashboard.home');
+
+        Route::prefix('admin-area')->group(function () {
+            Route::get('/', AdminHome::class)->name('basketin.dashboard.admin-area.home');
+        });
     });
 });

@@ -6,6 +6,7 @@ use Basketin\Dashboard\Http\Livewire\Account\LoginPage;
 use Basketin\Dashboard\Http\Livewire\Catalog\Categories\CategoriesIndex;
 use Basketin\Dashboard\Http\Livewire\Catalog\Categories\CategoryCreate;
 use Basketin\Dashboard\Http\Livewire\Catalog\Categories\CategoryEdit;
+use Basketin\Dashboard\Http\Livewire\System\Updates;
 use Basketin\Dashboard\Http\Middleware\BasketinAuthenticated;
 use Basketin\Dashboard\Views\Components\Widgets\WidgetEmptyData;
 use Basketin\Dashboard\Views\Form\InputDate;
@@ -64,6 +65,8 @@ class BasketinDashboardServiceProvider extends ServiceProvider
         $router->aliasMiddleware('martTeam', BasketinAuthenticated::class);
 
         Blade::component('basketin-dashboard-layout', DashboardLayout::class);
+
+        Livewire::component('basketin-system-updates', Updates::class);
 
         Livewire::component('basketin-account-login', LoginPage::class);
 

@@ -2,9 +2,6 @@
 
 namespace Basketin\Modules\Catalog\Http\Livewire\Products;
 
-use Illuminate\Support\Str;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\WithFileUploads;
 use Basketin\Dashboard\Builder\Contracts\hasGenerateFields;
 use Basketin\Dashboard\Builder\Contracts\hasGenerateTabs;
 use Basketin\Dashboard\Builder\FormBuilder;
@@ -12,6 +9,10 @@ use Basketin\Models\Product\Category;
 use Basketin\Modules\Catalog\Events\AddFieldsToUpdatingProduct;
 use Basketin\Modules\Catalog\Events\ProductUpdating;
 use Basketin\Modules\Catalog\Models\Product;
+use Basketin\Modules\Catalog\Support\AddFieldToProduct;
+use Illuminate\Support\Str;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Livewire\WithFileUploads;
 
 class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateTabs
 {
@@ -178,6 +179,8 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
             'hint' => 'dsf dsf dsff',
         ]);
 
+        $form->mergeFields(AddFieldToProduct::getFields());
+
         AddFieldsToUpdatingProduct::dispatch($form);
     }
 
@@ -196,6 +199,10 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
         $product->price = $validatedData['price'];
         $product->discount_price = $validatedData['discount_price'];
         $product->status = $validatedData['status'];
+
+        foreach (AddFieldToProduct::getFields() as $field) {
+            $product->{$field['model']} = $this->{$field['model']};
+        }
 
         if ($this->thumbnail_path) {
             $product->thumbnail_path = $this->thumbnail_path->store('products', 'public');

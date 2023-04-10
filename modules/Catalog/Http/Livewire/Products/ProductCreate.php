@@ -2,9 +2,6 @@
 
 namespace Basketin\Modules\Catalog\Http\Livewire\Products;
 
-use Illuminate\Support\Str;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\WithFileUploads;
 use Basketin\Dashboard\Builder\Contracts\hasGenerateFields;
 use Basketin\Dashboard\Builder\Contracts\hasGenerateTabs;
 use Basketin\Dashboard\Builder\FormBuilder;
@@ -12,7 +9,11 @@ use Basketin\Enums\Catalog\ProductType;
 use Basketin\Models\Product\Category;
 use Basketin\Modules\Catalog\Events\AddFieldsToCreatingProduct;
 use Basketin\Modules\Catalog\Events\ProductCreated;
+use Basketin\Modules\Catalog\Support\AddFieldToProduct;
 use Basketin\Support\Facades\Product;
+use Illuminate\Support\Str;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Livewire\WithFileUploads;
 
 class ProductCreate extends FormBuilder implements hasGenerateFields, hasGenerateTabs
 {
@@ -159,6 +160,8 @@ class ProductCreate extends FormBuilder implements hasGenerateFields, hasGenerat
             'hint' => 'dsf dsf dsff',
         ]);
 
+        $form->mergeFields(AddFieldToProduct::getFields());
+
         AddFieldsToCreatingProduct::dispatch($form);
     }
 
@@ -180,11 +183,16 @@ class ProductCreate extends FormBuilder implements hasGenerateFields, hasGenerat
         $product->discount_price = $validatedData['discount_price'];
         $product->thumbnail_path = $this->images_thumbnail->store('products', 'public');
         $product->status = $validatedData['status'];
+
+        foreach (AddFieldToProduct::getFields() as $field) {
+            $product->{$field['model']} = $this->{$field['model']};
+        }
+
         $product->save();
 
         ProductCreated::dispatch($product, $validatedData);
 
-        dd($product);
+        return $this->alert('success', 'Saved!');
 
         $product->setEntry('categories', $validatedData['categories']);
         $product->setEntry('name', $validatedData['name']);

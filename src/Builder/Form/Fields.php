@@ -22,6 +22,11 @@ class Fields
         $this->fields[] = $attributes;
     }
 
+    public function mergeFields($fields)
+    {
+        $this->fields = array_merge($this->fields, $fields);
+    }
+
     /**
      * Get the value of fields
      */
@@ -32,7 +37,7 @@ class Fields
             return $field;
         }, $this->fields);
     }
-    
+
     private function handleText($attributes)
     {
         $attributes['type'] = 'text';
@@ -62,7 +67,6 @@ class Fields
         $attributes['type'] = 'date';
         return $this->falterAttributes($attributes);
     }
-
 
     private function handleSelect($attributes)
     {

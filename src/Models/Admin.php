@@ -11,6 +11,17 @@ class Admin extends Authenticatable
     use Notifiable, IsMember;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
+
+    /**
      * Create a new instance of the Model.
      *
      * @param array $attributes

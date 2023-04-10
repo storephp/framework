@@ -2,6 +2,7 @@
 
 namespace Basketin\Dashboard;
 
+use Basketin\Dashboard\Console\CreateNewAdmin;
 use Basketin\Dashboard\Http\Livewire\Account\LoginPage;
 use Basketin\Dashboard\Http\Livewire\Catalog\Categories\CategoriesIndex;
 use Basketin\Dashboard\Http\Livewire\Catalog\Categories\CategoryCreate;
@@ -16,6 +17,7 @@ use Basketin\Dashboard\Views\Form\InputText;
 use Basketin\Dashboard\Views\Form\InputTextarea;
 use Basketin\Dashboard\Views\Form\Select;
 use Basketin\Dashboard\Views\Layouts\DashboardLayout;
+use Basketin\Support\Traits\HasSetupBasketin;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
@@ -25,6 +27,8 @@ use Livewire\Livewire;
 
 class BasketinDashboardServiceProvider extends ServiceProvider
 {
+    use HasSetupBasketin;
+
     /**
      * Register services.
      *
@@ -82,7 +86,13 @@ class BasketinDashboardServiceProvider extends ServiceProvider
         $this->loadViewComponentsAs('basketin', $this->viewComponents());
 
         if ($this->app->runningInConsole()) {
+            $this->appendCommandToSetup(CreateNewAdmin::class);
+
             $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
+            $this->commands([
+                CreateNewAdmin::class,
+            ]);
         }
     }
 

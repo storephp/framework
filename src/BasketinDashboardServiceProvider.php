@@ -4,6 +4,8 @@ namespace Basketin\Dashboard;
 
 use Basketin\Dashboard\Console\CreateNewAdmin;
 use Basketin\Dashboard\Http\Livewire\Account\LoginPage;
+use Basketin\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminCreate;
+use Basketin\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminUpdate;
 use Basketin\Dashboard\Http\Livewire\Catalog\Categories\CategoriesIndex;
 use Basketin\Dashboard\Http\Livewire\Catalog\Categories\CategoryCreate;
 use Basketin\Dashboard\Http\Livewire\Catalog\Categories\CategoryEdit;
@@ -77,6 +79,9 @@ class BasketinDashboardServiceProvider extends ServiceProvider
         Livewire::component('catalog-categories-index', CategoriesIndex::class);
         Livewire::component('catalog-categories-create', CategoryCreate::class);
         Livewire::component('catalog-categories-edit', CategoryEdit::class);
+
+        Livewire::component('admin-permissions-admins-create', AdminCreate::class);
+        Livewire::component('admin-permissions-admins-update', AdminUpdate::class);
 
         // $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');

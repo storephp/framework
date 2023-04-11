@@ -2,14 +2,15 @@
 
 namespace Basketin\Dashboard\Builder;
 
-use Livewire\Component;
 use Basketin\Dashboard\Builder\Contracts\hasGenerateFields;
 use Basketin\Dashboard\Builder\Contracts\hasGenerateTabs;
 use Basketin\Dashboard\Builder\Form\Fields;
 use Basketin\Dashboard\Builder\Form\Tabs;
+use Basketin\Dashboard\Views\Layouts\AdminLayout;
 use Basketin\Dashboard\Views\Layouts\DashboardLayout;
-use Basketin\Modules\Catalog\Events\AddFieldsToCategoryCreate;
 use Basketin\Models\Store;
+use Basketin\Modules\Catalog\Events\AddFieldsToCategoryCreate;
+use Livewire\Component;
 
 class FormBuilder extends Component
 {
@@ -21,6 +22,7 @@ class FormBuilder extends Component
     protected $submitLabel = 'Submit';
     protected $generatePath = null;
     protected $selectStoreView = false;
+    protected $layout = 'dashboard';
 
     private $form = null;
     private $tabs = null;
@@ -87,6 +89,8 @@ class FormBuilder extends Component
 
         // dd($stores);
 
+        $layout = ($this->layout == 'dashboard') ? DashboardLayout::class : AdminLayout::class;
+
         return view('basketin::builder.form', [
             'setup' => [
                 'selectStoreView' => $this->selectStoreView,
@@ -98,7 +102,7 @@ class FormBuilder extends Component
             'stores' => $stores,
             'from_tabs' => $this->formTabs,
             // 'fileds' => $this->formFields,
-        ])->layout(DashboardLayout::class);
+        ])->layout($layout);
     }
 
     protected function pageTitle()

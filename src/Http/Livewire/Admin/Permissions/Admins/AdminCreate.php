@@ -1,10 +1,10 @@
 <?php
 
-namespace Basketin\Dashboard\Http\Livewire\Admin\Permissions\Admins;
+namespace Store\Dashboard\Http\Livewire\Admin\Permissions\Admins;
 
-use Basketin\Dashboard\Builder\Contracts\hasGenerateFields;
-use Basketin\Dashboard\Builder\FormBuilder;
-use Basketin\Dashboard\Models\Admin;
+use Store\Dashboard\Builder\Contracts\hasGenerateFields;
+use Store\Dashboard\Builder\FormBuilder;
+use Store\Dashboard\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use OutMart\Team\Models\Rule;

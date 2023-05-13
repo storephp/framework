@@ -1,11 +1,11 @@
 <?php
 
-namespace Basketin\Dashboard\Builder;
+namespace Store\Dashboard\Builder;
 
 use Livewire\Component;
-use Basketin\Dashboard\Builder\Grad\Table;
-use Basketin\Dashboard\Views\Layouts\DashboardLayout;
-use Basketin\Models\Product\Category;
+use Store\Dashboard\Builder\Grad\Table;
+use Store\Dashboard\Views\Layouts\DashboardLayout;
+use Store\Models\Product\Category;
 
 class GradBuilder extends Component
 {
@@ -23,9 +23,9 @@ class GradBuilder extends Component
     {
         $this->table = new Table;
 
-        config(['basketin.dashboard.core.fields.' . $this->pathFields => []]);
+        config(['store.dashboard.core.fields.' . $this->pathFields => []]);
 
-        $columns = config('basketin.dashboard.core.fields.' . $this->pathFields);
+        $columns = config('store.dashboard.core.fields.' . $this->pathFields);
 
         // if ($this instanceof hasCreateFields) {
         $this->headers();
@@ -88,7 +88,7 @@ class GradBuilder extends Component
         //     dd($column);
         // }
 
-        return view('basketin::builder.grad', [
+        return view('store::builder.grad', [
             'meta' => [
                 'pageTitle' => $this->pageTitle(),
             ],

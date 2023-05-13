@@ -1,11 +1,11 @@
 <?php
 
-namespace Basketin\Modules\Customers\Models;
+namespace Store\Modules\Customers\Models;
 
-use Basketin\Models\Customer as OurMartCustomer;
-use Basketin\Traits\Customer\WithBasket;
+use Store\Models\Customer as OurMartCustomer;
+use Store\Traits\Customer\WithBasket;
 
-// use Basketin\Traits\Customer\Initialize\WithUserData;
+// use Store\Traits\Customer\Initialize\WithUserData;
 
 final class Customer extends OurMartCustomer
 {

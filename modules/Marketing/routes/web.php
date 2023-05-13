@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Basketin\Modules\Marketing\Http\Livewire\Coupons\CouponCreate;
-use Basketin\Modules\Marketing\Http\Livewire\Coupons\CouponsIndex;
-use Basketin\Modules\Marketing\Http\Livewire\Coupons\CouponUpdate;
+use Store\Modules\Marketing\Http\Livewire\Coupons\CouponCreate;
+use Store\Modules\Marketing\Http\Livewire\Coupons\CouponsIndex;
+use Store\Modules\Marketing\Http\Livewire\Coupons\CouponUpdate;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +16,7 @@ use Basketin\Modules\Marketing\Http\Livewire\Coupons\CouponUpdate;
 |
  */
 Route::prefix('coupons')->group(function () {
-    Route::get('/', CouponsIndex::class)->name('basketin.dashboard.marketing.coupons.index');
-    Route::get('/create', CouponCreate::class)->name('basketin.dashboard.marketing.coupons.create');
-    Route::get('/{id}/update', CouponUpdate::class)->name('basketin.dashboard.marketing.coupons.update');
+    Route::get('/', CouponsIndex::class)->name('store.dashboard.marketing.coupons.index');
+    Route::get('/create', CouponCreate::class)->name('store.dashboard.marketing.coupons.create');
+    Route::get('/{id}/update', CouponUpdate::class)->name('store.dashboard.marketing.coupons.update');
 });

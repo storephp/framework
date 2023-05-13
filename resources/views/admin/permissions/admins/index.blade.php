@@ -15,7 +15,7 @@
                 <!-- Page title actions -->
                 <div class="col-auto ms-auto d-print-none">
                     <div class="btn-list">
-                        <a href="{{ route('basketin.dashboard.admin-area.permissions.admins.create') }}"
+                        <a href="{{ route('store.dashboard.admin-area.permissions.admins.create') }}"
                             class="btn btn-primary d-none d-sm-inline-block">
                             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -27,7 +27,7 @@
                             </svg>
                             Create new admin
                         </a>
-                        <a href="{{ route('basketin.dashboard.admin-area.permissions.admins.create') }}"
+                        <a href="{{ route('store.dashboard.admin-area.permissions.admins.create') }}"
                             class="btn btn-primary d-sm-none btn-icon">
                             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -82,7 +82,7 @@
                                             </td>
                                             <td>
                                                 <div class="btn-list flex-nowrap">
-                                                    <a href="{{ route('basketin.dashboard.admin-area.permissions.admins.update', [$admin]) }}"
+                                                    <a href="{{ route('store.dashboard.admin-area.permissions.admins.update', [$admin]) }}"
                                                         class="btn">
                                                         Edit
                                                     </a>

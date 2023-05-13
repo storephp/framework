@@ -1,12 +1,12 @@
 <?php
 
-namespace Basketin\Modules\System\Configuration\Providers;
+namespace Store\Modules\System\Configuration\Providers;
 
 use Livewire\Livewire;
-use Basketin\Dashboard\Support\ServiceProvider;
-use Basketin\Modules\System\Configuration\Http\Livewire\Configurations;
+use Store\Dashboard\Support\ServiceProvider;
+use Store\Modules\System\Configuration\Http\Livewire\Configurations;
 
-class BasketinConfigurationServiceProvider extends ServiceProvider
+class StoreConfigurationServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -33,7 +33,7 @@ class BasketinConfigurationServiceProvider extends ServiceProvider
     public function boot()
     {
         // config([
-        //     'basketin.system.configurations.tabs' => array_merge([
+        //     'store.system.configurations.tabs' => array_merge([
         //         'general' => [
         //             'name' => 'General',
         //             'sub_tabs' => [
@@ -71,16 +71,16 @@ class BasketinConfigurationServiceProvider extends ServiceProvider
         //                 ],
         //             ],
         //         ],
-        //     ], config('basketin.system.configurations.tabs', [])),
+        //     ], config('store.system.configurations.tabs', [])),
         // ]);
 
         // dd(config(''));
 
-        $this->appendToMenu('basketin_system', [
+        $this->appendToMenu('store_system', [
             $this->addLink(
                 icon:'adjustments-alt',
                 name:'Configurations',
-                route:'basketin.dashboard.system.configurations',
+                route:'store.dashboard.system.configurations',
                 order:10,
             ),
         ]);
@@ -88,6 +88,6 @@ class BasketinConfigurationServiceProvider extends ServiceProvider
         $this->loadRoutes(__DIR__ . '/..', 'system');
         $this->loadAppViews(__DIR__ . '/..', 'configurations');
 
-        Livewire::component('basketin-system-configurations', Configurations::class);
+        Livewire::component('store-system-configurations', Configurations::class);
     }
 }

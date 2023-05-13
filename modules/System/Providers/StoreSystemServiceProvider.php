@@ -1,10 +1,10 @@
 <?php
 
-namespace Basketin\Modules\System\Providers;
+namespace Store\Modules\System\Providers;
 
-use Basketin\Dashboard\Support\ServiceProvider;
+use Store\Dashboard\Support\ServiceProvider;
 
-class BasketinSystemServiceProvider extends ServiceProvider
+class StoreSystemServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -14,9 +14,9 @@ class BasketinSystemServiceProvider extends ServiceProvider
     public function register()
     {
         config([
-            'basketin.system.configurations' => array_merge([
+            'store.system.configurations' => array_merge([
                 'tabs' => [],
-            ], config('basketin.system.configurations', [])),
+            ], config('store.system.configurations', [])),
         ]);
     }
 
@@ -32,6 +32,6 @@ class BasketinSystemServiceProvider extends ServiceProvider
             'name' => 'System',
             'slug' => 'system',
             'order' => 1000,
-        ], 'basketin_system');
+        ], 'store_system');
     }
 }

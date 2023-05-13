@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Basketin\Modules\Customers\Http\Livewire\Categories\CustomerCreate;
-use Basketin\Modules\Customers\Http\Livewire\Categories\CustomersIndex;
+use Store\Modules\Customers\Http\Livewire\Categories\CustomerCreate;
+use Store\Modules\Customers\Http\Livewire\Categories\CustomersIndex;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +15,6 @@ use Basketin\Modules\Customers\Http\Livewire\Categories\CustomersIndex;
 |
  */
 Route::prefix('/')->group(function () {
-    Route::get('/', CustomersIndex::class)->name('basketin.dashboard.customers.index');
-    Route::get('/create', CustomerCreate::class)->name('basketin.dashboard.customers.create');
+    Route::get('/', CustomersIndex::class)->name('store.dashboard.customers.index');
+    Route::get('/create', CustomerCreate::class)->name('store.dashboard.customers.create');
 });

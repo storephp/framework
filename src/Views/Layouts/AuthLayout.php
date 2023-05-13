@@ -1,6 +1,6 @@
 <?php
 
-namespace Basketin\Dashboard\Views\Layouts;
+namespace Store\Dashboard\Views\Layouts;
 
 use Illuminate\View\Component;
 use Illuminate\View\View;
@@ -31,6 +31,6 @@ class AuthLayout extends Component
      */
     public function render(): View
     {
-        return view('basketin::layouts.auth');
+        return view('store::layouts.auth');
     }
 }

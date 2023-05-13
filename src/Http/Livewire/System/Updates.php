@@ -1,6 +1,6 @@
 <?php
 
-namespace Basketin\Dashboard\Http\Livewire\System;
+namespace Store\Dashboard\Http\Livewire\System;
 
 use Livewire\Component;
 

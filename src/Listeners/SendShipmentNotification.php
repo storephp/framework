@@ -1,8 +1,8 @@
 <?php
 
-namespace Basketin\Dashboard\Listeners;
+namespace Store\Dashboard\Listeners;
 
-use Basketin\Modules\Catalog\Events\AddFieldsToCategoryCreate;
+use Store\Modules\Catalog\Events\AddFieldsToCategoryCreate;
 
 class SendShipmentNotification
 {

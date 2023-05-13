@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Basketin\Modules\System\Configuration\Http\Livewire\Configurations;
+use Store\Modules\System\Configuration\Http\Livewire\Configurations;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +14,5 @@ use Basketin\Modules\System\Configuration\Http\Livewire\Configurations;
 |
  */
 Route::prefix('configurations')->group(function () {
-    Route::get('/{currentTab?}/{currentSubTab?}', Configurations::class)->name('basketin.dashboard.system.configurations');
+    Route::get('/{currentTab?}/{currentSubTab?}', Configurations::class)->name('store.dashboard.system.configurations');
 });

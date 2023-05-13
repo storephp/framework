@@ -1,11 +1,11 @@
 <?php
 
-namespace Basketin\Modules\Sales\Http\Livewire\Orders;
+namespace Store\Modules\Sales\Http\Livewire\Orders;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use Basketin\Dashboard\Views\Layouts\DashboardLayout;
-use Basketin\Models\Order;
+use Store\Dashboard\Views\Layouts\DashboardLayout;
+use Store\Models\Order;
 
 class OrdersIndex extends Component
 {
@@ -26,7 +26,7 @@ class OrdersIndex extends Component
 
         // dd($orders);
 
-        return view('basketinSales::orders.index', [
+        return view('storeSales::orders.index', [
             'orders' => $orders,
         ])->layout(DashboardLayout::class);
     }

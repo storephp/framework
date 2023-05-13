@@ -1,12 +1,12 @@
 <?php
 
-namespace Basketin\Modules\Catalog\Http\Livewire\Products;
+namespace Store\Modules\Catalog\Http\Livewire\Products;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use Basketin\Dashboard\Views\Layouts\DashboardLayout;
-// use Basketin\Modules\Catalog\Models\Product;
-use Basketin\Support\Facades\Product;
+use Store\Dashboard\Views\Layouts\DashboardLayout;
+// use Store\Modules\Catalog\Models\Product;
+use Store\Support\Facades\Product;
 
 class ProductsIndex extends Component
 {
@@ -25,7 +25,7 @@ class ProductsIndex extends Component
             }
         })->paginate(15);
 
-        return view('basketinCatalog::products.index', [
+        return view('storeCatalog::products.index', [
             'products' => $products,
         ])->layout(DashboardLayout::class);
     }

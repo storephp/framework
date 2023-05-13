@@ -1,15 +1,15 @@
 <?php
 
-namespace Basketin\Modules\Catalog\Http\Livewire\Products;
+namespace Store\Modules\Catalog\Http\Livewire\Products;
 
-use Basketin\Dashboard\Builder\Contracts\hasGenerateFields;
-use Basketin\Dashboard\Builder\Contracts\hasGenerateTabs;
-use Basketin\Dashboard\Builder\FormBuilder;
-use Basketin\Models\Product\Category;
-use Basketin\Modules\Catalog\Events\AddFieldsToUpdatingProduct;
-use Basketin\Modules\Catalog\Events\ProductUpdating;
-use Basketin\Modules\Catalog\Models\Product;
-use Basketin\Modules\Catalog\Support\AddFieldToProduct;
+use Store\Dashboard\Builder\Contracts\hasGenerateFields;
+use Store\Dashboard\Builder\Contracts\hasGenerateTabs;
+use Store\Dashboard\Builder\FormBuilder;
+use Store\Models\Product\Category;
+use Store\Modules\Catalog\Events\AddFieldsToUpdatingProduct;
+use Store\Modules\Catalog\Events\ProductUpdating;
+use Store\Modules\Catalog\Models\Product;
+use Store\Modules\Catalog\Support\AddFieldToProduct;
 use Illuminate\Support\Str;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;
@@ -47,7 +47,7 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
         $this->discount_price = $this->product->discount_price;
         $this->status = $this->product->status;
 
-        foreach (config('basketin.catalog.products.external_fillable_entry') as $entry) {
+        foreach (config('store.catalog.products.external_fillable_entry') as $entry) {
             $this->{$entry} = $this->product->{$entry};
         }
     }

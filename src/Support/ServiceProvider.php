@@ -1,11 +1,11 @@
 <?php
 
-namespace Basketin\Dashboard\Support;
+namespace Store\Dashboard\Support;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 use Illuminate\Support\Str;
-use Basketin\Dashboard\Http\Middleware\GlobalConfigMiddleware;
+use Store\Dashboard\Http\Middleware\GlobalConfigMiddleware;
 
 abstract class ServiceProvider extends IlluminateServiceProvider
 {
@@ -14,7 +14,7 @@ abstract class ServiceProvider extends IlluminateServiceProvider
 
     protected function bootModuleAPP($moduleDir, $moduleData, $moduleMenuId = null, $moduleMenu = null)
     {
-        $modules = config('basketin.dashboard.core.modules');
+        $modules = config('store.dashboard.core.modules');
 
         $modules[$moduleMenuId] = [
             'icon' => $moduleData['icon'] ?? 'puzzle',
@@ -45,7 +45,7 @@ abstract class ServiceProvider extends IlluminateServiceProvider
             return $module;
         }, $modules);
 
-        config(['basketin.dashboard.core.modules' => $modules]);
+        config(['store.dashboard.core.modules' => $modules]);
 
         $this->moduleDir = $moduleDir;
         $this->moduleData = $modules[$moduleMenuId];
@@ -54,31 +54,31 @@ abstract class ServiceProvider extends IlluminateServiceProvider
         $this->loadAppViews($moduleDir, $moduleData['slug']);
         $this->loadAppTranslations();
 
-        // dd(config('basketin.dashboard.core.modules.' . $moduleMenuId . '.menu'));
+        // dd(config('store.dashboard.core.modules.' . $moduleMenuId . '.menu'));
 
-        // array_push(config('basketin.dashboard.core.modules.' . $moduleMenuId . '.menu'), []);
+        // array_push(config('store.dashboard.core.modules.' . $moduleMenuId . '.menu'), []);
     }
 
-    // $this->appendToMenu('basketin_catalog', [
+    // $this->appendToMenu('store_catalog', [
     //     'icon' => 'user',
     //     'name' => 'User',
     //     'route' => 'route',
     // ]);
     protected function appendToMenu($moduleMenuId, $addMenu)
     {
-        $menu = config('basketin.dashboard.core.modules.' . $moduleMenuId . '.menu');
+        $menu = config('store.dashboard.core.modules.' . $moduleMenuId . '.menu');
 
         // dd(gettype($addMenu), $addMenu);
 
         $menu = array_merge($menu, $addMenu);
 
-        config(['basketin.dashboard.core.modules.' . $moduleMenuId . '.menu' => $menu]);
+        config(['store.dashboard.core.modules.' . $moduleMenuId . '.menu' => $menu]);
     }
 
     // $this->addLink(
     //     icon: 'category',
-    //     name: 'BasketinCatalog::menu.categories',
-    //     route: 'basketin.dashboard.catalog.categories.index',
+    //     name: 'StoreCatalog::menu.categories',
+    //     route: 'store.dashboard.catalog.categories.index',
     //     order: 100,
     // ),
     // $this->addLink(
@@ -86,14 +86,14 @@ abstract class ServiceProvider extends IlluminateServiceProvider
     //     submenu: [
     //         $this->addLink(
     //             icon: 'category',
-    //             name: 'BasketinCatalog::menu.categories',
-    //             route: 'basketin.dashboard.catalog.categories.index',
+    //             name: 'StoreCatalog::menu.categories',
+    //             route: 'store.dashboard.catalog.categories.index',
     //             order: 2,
     //         ),
     //         $this->addLink(
     //             icon: 'category',
     //             name: '123546',
-    //             route: 'basketin.dashboard.catalog.categories.index',
+    //             route: 'store.dashboard.catalog.categories.index',
     //             order: 1,
     //         ),
     //     ],
@@ -123,24 +123,24 @@ abstract class ServiceProvider extends IlluminateServiceProvider
     protected function configurationCreateTab($tabKey, $tabName)
     {
         config([
-            'basketin.system.configurations.tabs' => array_merge([
+            'store.system.configurations.tabs' => array_merge([
                 $tabKey => [
                     'name' => $tabName,
                     'sub_tabs' => [],
                 ],
-            ], config('basketin.system.configurations.tabs')),
+            ], config('store.system.configurations.tabs')),
         ]);
     }
 
     protected function configurationCreateSubTab($tabKey, $subTabKey, $subTabName, $fields = [])
     {
         config([
-            'basketin.system.configurations.tabs.' . $tabKey . '.sub_tabs' => array_merge([
+            'store.system.configurations.tabs.' . $tabKey . '.sub_tabs' => array_merge([
                 $subTabKey => [
                     'name' => $subTabName,
                     'fields' => $fields,
                 ],
-            ], config('basketin.system.configurations.tabs.' . $tabKey . '.sub_tabs')),
+            ], config('store.system.configurations.tabs.' . $tabKey . '.sub_tabs')),
         ]);
     }
 
@@ -161,7 +161,7 @@ abstract class ServiceProvider extends IlluminateServiceProvider
         if (file_exists($moduleDir . '/routes/web.php')) {
             $prefix = Str::slug($this->moduleData['slug'] ?? $prefix);
             Route::middleware(['web', 'martTeam', GlobalConfigMiddleware::class])
-                ->prefix('basketin/' . $prefix)
+                ->prefix('store/' . $prefix)
                 ->group(function () use ($moduleDir) {
                     $this->loadRoutesFrom($moduleDir . '/routes/web.php');
                 });
@@ -171,14 +171,14 @@ abstract class ServiceProvider extends IlluminateServiceProvider
     protected function loadAppViews($moduleDir, $prefix = null)
     {
         if (is_dir($moduleDir . '/resources/views')) {
-            $this->loadViewsFrom($moduleDir . '/resources/views', 'basketin' . Str::ucfirst($prefix));
+            $this->loadViewsFrom($moduleDir . '/resources/views', 'store' . Str::ucfirst($prefix));
         }
     }
 
     private function loadAppTranslations()
     {
         if (is_dir($this->moduleDir . '/lang')) {
-            $this->loadTranslationsFrom($this->moduleDir . '/lang', 'basketin' . Str::ucfirst($this->moduleData['slug']));
+            $this->loadTranslationsFrom($this->moduleDir . '/lang', 'store' . Str::ucfirst($this->moduleData['slug']));
         }
     }
 }

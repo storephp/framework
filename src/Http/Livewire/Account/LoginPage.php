@@ -1,10 +1,10 @@
 <?php
 
-namespace Basketin\Dashboard\Http\Livewire\Account;
+namespace Store\Dashboard\Http\Livewire\Account;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use Basketin\Dashboard\Views\Layouts\AuthLayout;
+use Store\Dashboard\Views\Layouts\AuthLayout;
 
 class LoginPage extends Component
 {
@@ -23,15 +23,15 @@ class LoginPage extends Component
 
     public function render()
     {
-        return view('basketin::account.login')->layout(AuthLayout::class);
+        return view('store::account.login')->layout(AuthLayout::class);
     }
 
     public function submit()
     {
         $validatedData = $this->validate();
 
-        if (Auth::guard('basketin')->attempt(['email' => $validatedData['email'], 'password' => $validatedData['password']], $validatedData['remember'])) {
-            return redirect(route('basketin.dashboard.home'));
+        if (Auth::guard('store')->attempt(['email' => $validatedData['email'], 'password' => $validatedData['password']], $validatedData['remember'])) {
+            return redirect(route('store.dashboard.home'));
         }
     }
 }

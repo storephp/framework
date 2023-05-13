@@ -1,17 +1,17 @@
 <?php
 
-namespace Basketin\Modules\Catalog\Providers;
+namespace Store\Modules\Catalog\Providers;
 
 use Livewire\Livewire;
-use Basketin\Dashboard\Support\ServiceProvider;
-use Basketin\Modules\Catalog\Http\Livewire\Categories\CategoriesIndex;
-use Basketin\Modules\Catalog\Http\Livewire\Categories\CategoryCreate;
-use Basketin\Modules\Catalog\Http\Livewire\Categories\CategoryEdit;
-use Basketin\Modules\Catalog\Http\Livewire\Products\ProductCreate;
-use Basketin\Modules\Catalog\Http\Livewire\Products\ProductEdit;
-use Basketin\Modules\Catalog\Http\Livewire\Products\ProductsIndex;
+use Store\Dashboard\Support\ServiceProvider;
+use Store\Modules\Catalog\Http\Livewire\Categories\CategoriesIndex;
+use Store\Modules\Catalog\Http\Livewire\Categories\CategoryCreate;
+use Store\Modules\Catalog\Http\Livewire\Categories\CategoryEdit;
+use Store\Modules\Catalog\Http\Livewire\Products\ProductCreate;
+use Store\Modules\Catalog\Http\Livewire\Products\ProductEdit;
+use Store\Modules\Catalog\Http\Livewire\Products\ProductsIndex;
 
-class BasketinCatalogServiceProvider extends ServiceProvider
+class StoreCatalogServiceProvider extends ServiceProvider
 {
     protected $moduleName = 'NAme';
 
@@ -24,19 +24,19 @@ class BasketinCatalogServiceProvider extends ServiceProvider
     {
         $this->bootModuleAPP(__DIR__ . '/..', [
             'icon' => 'clipboard-list',
-            'name' => 'BasketinCatalog::menu.catalog',
+            'name' => 'StoreCatalog::menu.catalog',
             'slug' => 'catalog'
-        ], 'basketin_catalog', [
+        ], 'store_catalog', [
             $this->addLink(
                 icon: 'category',
-                name: 'BasketinCatalog::menu.categories',
-                route: 'basketin.dashboard.catalog.categories.index',
+                name: 'StoreCatalog::menu.categories',
+                route: 'store.dashboard.catalog.categories.index',
                 order: 10,
             ),
             $this->addLink(
                 icon: 'packages',
                 name: 'Products',
-                route: 'basketin.dashboard.catalog.products.index',
+                route: 'store.dashboard.catalog.products.index',
                 order: 20,
             ),
         ]);
@@ -49,6 +49,6 @@ class BasketinCatalogServiceProvider extends ServiceProvider
         Livewire::component('catalog-products-create', ProductCreate::class);
         Livewire::component('catalog-products-edit', ProductEdit::class);
 
-        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'BasketinCatalog');
+        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'StoreCatalog');
     }
 }

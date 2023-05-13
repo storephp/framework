@@ -1,14 +1,14 @@
 <?php
 
-namespace Basketin\Dashboard\Http\Livewire;
+namespace Store\Dashboard\Http\Livewire;
 
 use Livewire\Component;
-use Basketin\Dashboard\Views\Layouts\DashboardLayout;
+use Store\Dashboard\Views\Layouts\DashboardLayout;
 
 class Home extends Component
 {
     public function render()
     {
-        return view('basketin::home')->layout(DashboardLayout::class);
+        return view('store::home')->layout(DashboardLayout::class);
     }
 }

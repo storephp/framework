@@ -1,11 +1,11 @@
 <?php
 
-namespace Basketin\Modules\Marketing\Http\Livewire\Coupons;
+namespace Store\Modules\Marketing\Http\Livewire\Coupons;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use Basketin\Dashboard\Views\Layouts\DashboardLayout;
-use Basketin\Support\Facades\Coupon;
+use Store\Dashboard\Views\Layouts\DashboardLayout;
+use Store\Support\Facades\Coupon;
 
 class CouponsIndex extends Component
 {
@@ -19,7 +19,7 @@ class CouponsIndex extends Component
     {
         $coupons = Coupon::getList();
 
-        return view('basketinMarketing::coupons.index', [
+        return view('storeMarketing::coupons.index', [
             'coupons' => $coupons,
         ])->layout(DashboardLayout::class);
     }

@@ -67,33 +67,33 @@
                                 <h2 class="mb-4">{{ $from_tab['name'] }}</h2>
                                 @foreach ($from_tab['fields'] as $field)
                                     @if ($field['type'] == 'select')
-                                        <x-basketin-select label="{{ $field['label'] }}"
+                                        <x-store-select label="{{ $field['label'] }}"
                                             model="{{ $field['model'] }}" :options="$field['options']" :hint="$field['hint']"
                                             :required="str_contains($field['rules'], 'required')" :multiple="$field['multiple']" />
                                     @endif
 
                                     @if ($field['type'] == 'text')
-                                        <x-basketin-input-text label="{{ $field['label'] }}"
+                                        <x-store-input-text label="{{ $field['label'] }}"
                                             model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
                                     @endif
 
                                     @if ($field['type'] == 'textarea')
-                                        <x-basketin-input-textarea label="{{ $field['label'] }}"
+                                        <x-store-input-textarea label="{{ $field['label'] }}"
                                             model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
                                     @endif
 
                                     @if ($field['type'] == 'price')
-                                        <x-basketin-input-price label="{{ $field['label'] }}"
+                                        <x-store-input-price label="{{ $field['label'] }}"
                                             model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
                                     @endif
 
                                     @if ($field['type'] == 'date')
-                                        <x-basketin-input-date label="{{ $field['label'] }}"
+                                        <x-store-input-date label="{{ $field['label'] }}"
                                             model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
                                     @endif
 
                                     @if ($field['type'] == 'file')
-                                        <x-basketin-input-file label="{{ $field['label'] }}"
+                                        <x-store-input-file label="{{ $field['label'] }}"
                                             model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
                                     @endif
                                 @endforeach
@@ -106,7 +106,7 @@
                                 <h2 class="mb-4">Basic info dd</h2>
                                 @foreach ($fileds as $filed)
                                     @if ($filed['type'] == 'text')
-                                        <x-basketin-input-text label="{{ $filed['label'] }}" model="{{ $filed['model'] }}" />
+                                        <x-store-input-text label="{{ $filed['label'] }}" model="{{ $filed['model'] }}" />
                                     @endif
                                 @endforeach
                             </div>

@@ -1,14 +1,14 @@
 <?php
 
-namespace Basketin\Dashboard\Console;
+namespace Store\Dashboard\Console;
 
-use Basketin\Dashboard\Models\Admin;
+use Store\Dashboard\Models\Admin;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 
 class CreateNewAdmin extends Command
 {
-    protected $signature = 'basketin:admin:new';
+    protected $signature = 'store:admin:new';
 
     protected $description = 'Create a new administrator';
 

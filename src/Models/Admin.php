@@ -1,6 +1,6 @@
 <?php
 
-namespace Basketin\Dashboard\Models;
+namespace Store\Dashboard\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -30,6 +30,6 @@ class Admin extends Authenticatable
     {
         parent::__construct($attributes);
 
-        $this->setTable(config('basketin.database.table_prefix') . $this->getTable());
+        $this->setTable(config('store.database.table_prefix') . $this->getTable());
     }
 }

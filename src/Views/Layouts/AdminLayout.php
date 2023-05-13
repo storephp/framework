@@ -1,6 +1,6 @@
 <?php
 
-namespace Basketin\Dashboard\Views\Layouts;
+namespace Store\Dashboard\Views\Layouts;
 
 use Illuminate\View\Component;
 use Illuminate\View\View;
@@ -24,10 +24,10 @@ class AdminLayout extends Component
      */
     public function render(): View
     {
-        // $modules = config('basketin.dashboard.core.modules');
+        // $modules = config('store.dashboard.core.modules');
 
         // dd($modules);
 
-        return view('basketin::layouts.admin');
+        return view('store::layouts.admin');
     }
 }

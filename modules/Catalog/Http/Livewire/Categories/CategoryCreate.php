@@ -1,12 +1,12 @@
 <?php
 
-namespace Basketin\Modules\Catalog\Http\Livewire\Categories;
+namespace Store\Modules\Catalog\Http\Livewire\Categories;
 
 use Illuminate\Support\Str;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Basketin\Dashboard\Builder\Contracts\hasGenerateFields;
-use Basketin\Dashboard\Builder\FormBuilder;
-use Basketin\Models\Product\Category;
+use Store\Dashboard\Builder\Contracts\hasGenerateFields;
+use Store\Dashboard\Builder\FormBuilder;
+use Store\Models\Product\Category;
 
 class CategoryCreate extends FormBuilder implements hasGenerateFields
 {
@@ -93,6 +93,6 @@ class CategoryCreate extends FormBuilder implements hasGenerateFields
 
     protected function pageTitle()
     {
-        return __('BasketinCatalog::category.create');
+        return __('StoreCatalog::category.create');
     }
 }

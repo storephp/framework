@@ -1,12 +1,12 @@
 <?php
 
-namespace Basketin\Modules\Sales\Providers;
+namespace Store\Modules\Sales\Providers;
 
 use Livewire\Livewire;
-use Basketin\Dashboard\Support\ServiceProvider;
-use Basketin\Modules\Sales\Http\Livewire\Orders\OrderCreate;
+use Store\Dashboard\Support\ServiceProvider;
+use Store\Modules\Sales\Http\Livewire\Orders\OrderCreate;
 
-class BasketinSalesServiceProvider extends ServiceProvider
+class StoreSalesServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap services.
@@ -19,15 +19,15 @@ class BasketinSalesServiceProvider extends ServiceProvider
             'icon' => 'currency-pound',
             'name' => 'Sales',
             'slug' => 'sales',
-        ], 'basketin_orders', [
+        ], 'store_orders', [
             $this->addLink(
                 icon:'truck',
                 name:'Orders',
-                route:'basketin.dashboard.sales.orders.index',
+                route:'store.dashboard.sales.orders.index',
                 order:10,
             ),
         ]);
 
-        Livewire::component('basketin-sales-order-create', OrderCreate::class);
+        Livewire::component('store-sales-order-create', OrderCreate::class);
     }
 }

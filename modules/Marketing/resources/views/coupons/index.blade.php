@@ -15,7 +15,7 @@
                 <!-- Page title actions -->
                 <div class="col-auto ms-auto d-print-none">
                     <div class="btn-list">
-                        <a href="{{ route('basketin.dashboard.marketing.coupons.create') }}"
+                        <a href="{{ route('store.dashboard.marketing.coupons.create') }}"
                             class="btn btn-primary d-none d-sm-inline-block">
                             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -27,7 +27,7 @@
                             </svg>
                             Create new coupon
                         </a>
-                        <a href="{{ route('basketin.dashboard.marketing.coupons.create') }}"
+                        <a href="{{ route('store.dashboard.marketing.coupons.create') }}"
                             class="btn btn-primary d-sm-none btn-icon">
                             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -49,9 +49,9 @@
             <div class="row row-deck row-cards">
                 <div class="col-12">
                     @if ($coupons->isEmpty())
-                        <x-basketin-widget-empty-data icon="ticket-off" title="There are no coupons"
+                        <x-store-widget-empty-data icon="ticket-off" title="There are no coupons"
                             subtitle="You can create new coupons"
-                            actionRoute="{{ route('basketin.dashboard.marketing.coupons.create') }}" />
+                            actionRoute="{{ route('store.dashboard.marketing.coupons.create') }}" />
                     @endif
 
                     @if (!$coupons->isEmpty())
@@ -98,7 +98,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="btn-list flex-nowrap">
-                                                        <a href="{{ route('basketin.dashboard.marketing.coupons.update', [$coupon]) }}"
+                                                        <a href="{{ route('store.dashboard.marketing.coupons.update', [$coupon]) }}"
                                                             class="btn btn-info">
                                                             Edit
                                                         </a>

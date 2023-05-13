@@ -1,8 +1,8 @@
 <?php
 
-namespace Basketin\Modules\Catalog\Support;
+namespace Store\Modules\Catalog\Support;
 
-use Basketin\Dashboard\Builder\Form\Fields;
+use Store\Dashboard\Builder\Form\Fields;
 
 class AddFieldToProduct
 {
@@ -33,8 +33,8 @@ class AddFieldToProduct
         }
 
         config([
-            'basketin.catalog.products.external_fillable_entry' =>
-            array_merge($fillables, config('basketin.catalog.products.external_fillable_entry', [])),
+            'store.catalog.products.external_fillable_entry' =>
+            array_merge($fillables, config('store.catalog.products.external_fillable_entry', [])),
         ]);
 
         static::$fields = array_merge(static::$fields, $fields->getFields());

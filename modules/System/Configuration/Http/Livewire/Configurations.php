@@ -1,11 +1,11 @@
 <?php
 
-namespace Basketin\Modules\System\Configuration\Http\Livewire;
+namespace Store\Modules\System\Configuration\Http\Livewire;
 
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
-use Basketin\Dashboard\Views\Layouts\DashboardLayout;
-use Basketin\Facades\Configuration;
+use Store\Dashboard\Views\Layouts\DashboardLayout;
+use Store\Facades\Configuration;
 
 class Configurations extends Component
 {
@@ -18,7 +18,7 @@ class Configurations extends Component
 
     public function mount($currentTab = 'general', $currentSubTab = 'public')
     {
-        $configuration = config('basketin.system.configurations.tabs.' . $currentTab . '.sub_tabs.' . $currentSubTab);
+        $configuration = config('store.system.configurations.tabs.' . $currentTab . '.sub_tabs.' . $currentSubTab);
 
         if (!$configuration) {
             abort(404);
@@ -33,11 +33,11 @@ class Configurations extends Component
 
     public function render()
     {
-        $tabs = config('basketin.system.configurations.tabs');
+        $tabs = config('store.system.configurations.tabs');
 
-        return view('basketinConfigurations::configurations', [
+        return view('storeConfigurations::configurations', [
             'tabs' => $tabs,
-            'currentTabName' => config('basketin.system.configurations.tabs.' . $this->currentTab . '.sub_tabs.' . $this->currentSubTab . '.name'),
+            'currentTabName' => config('store.system.configurations.tabs.' . $this->currentTab . '.sub_tabs.' . $this->currentSubTab . '.name'),
             'fields' => $this->fields,
         ])->layout(DashboardLayout::class);
     }

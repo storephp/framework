@@ -1,11 +1,11 @@
 <?php
 
-namespace Basketin\Modules\Catalog\Http\Livewire\Categories;
+namespace Store\Modules\Catalog\Http\Livewire\Categories;
 
-use Basketin\Models\Product\Category;
+use Store\Models\Product\Category;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Basketin\Dashboard\Views\Layouts\DashboardLayout;
+use Store\Dashboard\Views\Layouts\DashboardLayout;
 
 class CategoriesIndex extends Component
 {
@@ -17,7 +17,7 @@ class CategoriesIndex extends Component
     {
         $categories = Category::paginate(15);
 
-        return view('basketin::catalog.categories.index', [
+        return view('store::catalog.categories.index', [
             'categories' => $categories,
         ])->layout(DashboardLayout::class);
     }

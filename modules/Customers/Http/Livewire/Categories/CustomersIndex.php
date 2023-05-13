@@ -1,12 +1,12 @@
 <?php
 
-namespace Basketin\Modules\Customers\Http\Livewire\Categories;
+namespace Store\Modules\Customers\Http\Livewire\Categories;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use Basketin\Dashboard\Views\Layouts\DashboardLayout;
-use Basketin\Models\Product\Category;
-use Basketin\Modules\Customers\Models\Customer;
+use Store\Dashboard\Views\Layouts\DashboardLayout;
+use Store\Models\Product\Category;
+use Store\Modules\Customers\Models\Customer;
 
 class CustomersIndex extends Component
 {
@@ -18,7 +18,7 @@ class CustomersIndex extends Component
     {
         $customers = Customer::query()->paginate(15);
 
-        return view('basketinCustomers::customers.index', [
+        return view('storeCustomers::customers.index', [
             'customers' => $customers,
         ])->layout(DashboardLayout::class);
     }

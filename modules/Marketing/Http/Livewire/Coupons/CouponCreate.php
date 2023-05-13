@@ -1,13 +1,13 @@
 <?php
 
-namespace Basketin\Modules\Marketing\Http\Livewire\Coupons;
+namespace Store\Modules\Marketing\Http\Livewire\Coupons;
 
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Basketin\Dashboard\Builder\Contracts\hasGenerateFields;
-use Basketin\Dashboard\Builder\Contracts\hasGenerateTabs;
-use Basketin\Dashboard\Builder\FormBuilder;
-use Basketin\Services\Exceptions\Coupon\CouponAlreadyExists;
-use Basketin\Support\Facades\Coupon;
+use Store\Dashboard\Builder\Contracts\hasGenerateFields;
+use Store\Dashboard\Builder\Contracts\hasGenerateTabs;
+use Store\Dashboard\Builder\FormBuilder;
+use Store\Services\Exceptions\Coupon\CouponAlreadyExists;
+use Store\Support\Facades\Coupon;
 
 class CouponCreate extends FormBuilder implements hasGenerateTabs, hasGenerateFields
 {
@@ -31,7 +31,7 @@ class CouponCreate extends FormBuilder implements hasGenerateTabs, hasGenerateFi
         $tabs->addTab([
             'id' => 'Report',
             'name' => 'Report',
-            'render' => 'basketinMarketing::coupons.coubon'
+            'render' => 'storeMarketing::coupons.coubon'
         ]);
     }
 

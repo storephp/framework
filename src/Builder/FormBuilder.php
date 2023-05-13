@@ -1,15 +1,15 @@
 <?php
 
-namespace Basketin\Dashboard\Builder;
+namespace Store\Dashboard\Builder;
 
-use Basketin\Dashboard\Builder\Contracts\hasGenerateFields;
-use Basketin\Dashboard\Builder\Contracts\hasGenerateTabs;
-use Basketin\Dashboard\Builder\Form\Fields;
-use Basketin\Dashboard\Builder\Form\Tabs;
-use Basketin\Dashboard\Views\Layouts\AdminLayout;
-use Basketin\Dashboard\Views\Layouts\DashboardLayout;
-use Basketin\Models\Store;
-use Basketin\Modules\Catalog\Events\AddFieldsToCategoryCreate;
+use Store\Dashboard\Builder\Contracts\hasGenerateFields;
+use Store\Dashboard\Builder\Contracts\hasGenerateTabs;
+use Store\Dashboard\Builder\Form\Fields;
+use Store\Dashboard\Builder\Form\Tabs;
+use Store\Dashboard\Views\Layouts\AdminLayout;
+use Store\Dashboard\Views\Layouts\DashboardLayout;
+use Store\Models\Store;
+use Store\Modules\Catalog\Events\AddFieldsToCategoryCreate;
 use Livewire\Component;
 
 class FormBuilder extends Component
@@ -91,7 +91,7 @@ class FormBuilder extends Component
 
         $layout = ($this->layout == 'dashboard') ? DashboardLayout::class : AdminLayout::class;
 
-        return view('basketin::builder.form', [
+        return view('store::builder.form', [
             'setup' => [
                 'selectStoreView' => $this->selectStoreView,
             ],

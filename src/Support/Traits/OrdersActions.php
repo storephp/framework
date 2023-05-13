@@ -1,18 +1,18 @@
 <?php
 
-namespace Basketin\Dashboard\Support\Traits;
+namespace Store\Dashboard\Support\Traits;
 
 trait OrdersActions
 {
     public function addOrderAction($component, $statuses = [])
     {
         config([
-            'basketin.dashboard.orders.actions' => array_merge([
+            'store.dashboard.orders.actions' => array_merge([
                 [
                     'component' => $component,
                     'statuses' => $statuses,
                 ],
-            ], config('basketin.dashboard.orders.actions', [])),
+            ], config('store.dashboard.orders.actions', [])),
         ]);
     }
 }

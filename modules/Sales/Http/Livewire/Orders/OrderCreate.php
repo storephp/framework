@@ -1,18 +1,18 @@
 <?php
 
-namespace Basketin\Modules\Sales\Http\Livewire\Orders;
+namespace Store\Modules\Sales\Http\Livewire\Orders;
 
 use Illuminate\Support\Facades\Cache;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
-use Basketin\Dashboard\Views\Layouts\DashboardLayout;
-use Basketin\Models\Basket\Quote;
-use Basketin\Models\Customer\Address;
-use Basketin\Modules\Catalog\Models\Product;
-use Basketin\Modules\Customers\Models\Customer;
-use Basketin\Services\BasketService;
-use Basketin\Services\CustomerService;
-use Basketin\Services\OrderService;
+use Store\Dashboard\Views\Layouts\DashboardLayout;
+use Store\Models\Basket\Quote;
+use Store\Models\Customer\Address;
+use Store\Modules\Catalog\Models\Product;
+use Store\Modules\Customers\Models\Customer;
+use Store\Services\BasketService;
+use Store\Services\CustomerService;
+use Store\Services\OrderService;
 
 class OrderCreate extends Component
 {
@@ -88,7 +88,7 @@ class OrderCreate extends Component
 
         $products = Product::get();
 
-        return view('basketinSales::orders.create', [
+        return view('storeSales::orders.create', [
             'customers' => $customers,
             'products' => $products,
         ])->layout(DashboardLayout::class);
@@ -191,6 +191,6 @@ class OrderCreate extends Component
         Cache::delete($this->keyCache);
         $order = $orderPlaced->getOrder();
 
-        return redirect()->route('basketin.dashboard.sales.orders.show', [$order]);
+        return redirect()->route('store.dashboard.sales.orders.show', [$order]);
     }
 }

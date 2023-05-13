@@ -1,9 +1,9 @@
 <?php
 
-namespace Basketin\Dashboard\Http\Livewire\Admin\Permissions\Admins;
+namespace Store\Dashboard\Http\Livewire\Admin\Permissions\Admins;
 
-use Basketin\Dashboard\Models\Admin;
-use Basketin\Dashboard\Views\Layouts\AdminLayout;
+use Store\Dashboard\Models\Admin;
+use Store\Dashboard\Views\Layouts\AdminLayout;
 use Livewire\Component;
 
 class AdminsIndex extends Component
@@ -12,7 +12,7 @@ class AdminsIndex extends Component
     {
         $admins = Admin::paginate(20);
 
-        return view('basketin::admin.permissions.admins.index', [
+        return view('store::admin.permissions.admins.index', [
             'admins' => $admins,
         ])->layout(AdminLayout::class);
     }

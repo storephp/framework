@@ -1,6 +1,6 @@
 <?php
 
-namespace Basketin\Modules\Catalog\Events;
+namespace Store\Modules\Catalog\Events;
 
 use Illuminate\Foundation\Events\Dispatchable;
 

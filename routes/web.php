@@ -1,12 +1,12 @@
 <?php
 
-use Basketin\Dashboard\Http\Livewire\Account\LoginPage;
-use Basketin\Dashboard\Http\Livewire\Admin\Home as AdminHome;
-use Basketin\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminCreate;
-use Basketin\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminsIndex;
-use Basketin\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminUpdate;
-use Basketin\Dashboard\Http\Livewire\Home;
-use Basketin\Dashboard\Http\Middleware\GlobalConfigMiddleware;
+use Store\Dashboard\Http\Livewire\Account\LoginPage;
+use Store\Dashboard\Http\Livewire\Admin\Home as AdminHome;
+use Store\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminCreate;
+use Store\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminsIndex;
+use Store\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminUpdate;
+use Store\Dashboard\Http\Livewire\Home;
+use Store\Dashboard\Http\Middleware\GlobalConfigMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,19 +20,19 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::prefix('basketin')->middleware(['web', GlobalConfigMiddleware::class])->group(function () {
-    Route::get('/login', LoginPage::class)->name('basketin.admin.login');
+Route::prefix('storephp')->middleware(['web', GlobalConfigMiddleware::class])->group(function () {
+    Route::get('/login', LoginPage::class)->name('store.admin.login');
     Route::middleware(['martTeam'])->group(function () {
-        Route::get('/', Home::class)->name('basketin.dashboard.home');
+        Route::get('/', Home::class)->name('store.dashboard.home');
 
         Route::prefix('admin-area')->group(function () {
-            Route::get('/', AdminHome::class)->name('basketin.dashboard.admin-area.home');
+            Route::get('/', AdminHome::class)->name('store.dashboard.admin-area.home');
 
             Route::prefix('permissions')->group(function () {
                 Route::prefix('admins')->group(function () {
-                    Route::get('/', AdminsIndex::class)->name('basketin.dashboard.admin-area.permissions.admins');
-                    Route::get('/create', AdminCreate::class)->name('basketin.dashboard.admin-area.permissions.admins.create');
-                    Route::get('/update/{admin}', AdminUpdate::class)->name('basketin.dashboard.admin-area.permissions.admins.update');
+                    Route::get('/', AdminsIndex::class)->name('store.dashboard.admin-area.permissions.admins');
+                    Route::get('/create', AdminCreate::class)->name('store.dashboard.admin-area.permissions.admins.create');
+                    Route::get('/update/{admin}', AdminUpdate::class)->name('store.dashboard.admin-area.permissions.admins.update');
                 });
             });
         });

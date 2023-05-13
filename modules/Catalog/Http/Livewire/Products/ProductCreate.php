@@ -1,16 +1,16 @@
 <?php
 
-namespace Basketin\Modules\Catalog\Http\Livewire\Products;
+namespace Store\Modules\Catalog\Http\Livewire\Products;
 
-use Basketin\Dashboard\Builder\Contracts\hasGenerateFields;
-use Basketin\Dashboard\Builder\Contracts\hasGenerateTabs;
-use Basketin\Dashboard\Builder\FormBuilder;
-use Basketin\Enums\Catalog\ProductType;
-use Basketin\Models\Product\Category;
-use Basketin\Modules\Catalog\Events\AddFieldsToCreatingProduct;
-use Basketin\Modules\Catalog\Events\ProductCreated;
-use Basketin\Modules\Catalog\Support\AddFieldToProduct;
-use Basketin\Support\Facades\Product;
+use Store\Dashboard\Builder\Contracts\hasGenerateFields;
+use Store\Dashboard\Builder\Contracts\hasGenerateTabs;
+use Store\Dashboard\Builder\FormBuilder;
+use Store\Enums\Catalog\ProductType;
+use Store\Models\Product\Category;
+use Store\Modules\Catalog\Events\AddFieldsToCreatingProduct;
+use Store\Modules\Catalog\Events\ProductCreated;
+use Store\Modules\Catalog\Support\AddFieldToProduct;
+use Store\Support\Facades\Product;
 use Illuminate\Support\Str;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;

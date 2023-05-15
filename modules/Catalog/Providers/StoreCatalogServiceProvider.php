@@ -10,10 +10,38 @@ use Store\Modules\Catalog\Http\Livewire\Categories\CategoryEdit;
 use Store\Modules\Catalog\Http\Livewire\Products\ProductCreate;
 use Store\Modules\Catalog\Http\Livewire\Products\ProductEdit;
 use Store\Modules\Catalog\Http\Livewire\Products\ProductsIndex;
+use Store\Modules\Catalog\Libs\Builder\AddFieldToCategory;
+use Store\Modules\Catalog\Libs\Builder\AddFieldToProduct;
+use Store\Modules\Catalog\Libs\Builder\AddTabToCategory;
+use Store\Modules\Catalog\Libs\Builder\AddTabToProduct;
 
 class StoreCatalogServiceProvider extends ServiceProvider
 {
     protected $moduleName = 'NAme';
+
+    /**
+     * Register services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->app->singleton('addTabToCategory', function () {
+            return new AddTabToCategory();
+        });
+
+        $this->app->singleton('addTabToProduct', function () {
+            return new AddTabToProduct();
+        });
+
+        $this->app->singleton('addFieldToCategory', function () {
+            return new AddFieldToCategory();
+        });
+
+        $this->app->singleton('addFieldToProduct', function () {
+            return new AddFieldToProduct();
+        });
+    }
 
     /**
      * Bootstrap services.

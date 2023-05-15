@@ -13,6 +13,11 @@ class Tabs
         $this->tabs[] = $attributes;
     }
 
+    public function mergeTabs($tabs)
+    {
+        $this->tabs = array_merge($this->tabs, $tabs);
+    }
+
     /**
      * Get the value of fields
      */

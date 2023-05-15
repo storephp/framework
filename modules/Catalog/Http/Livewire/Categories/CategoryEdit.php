@@ -5,10 +5,13 @@ namespace Store\Modules\Catalog\Http\Livewire\Categories;
 use Illuminate\Support\Str;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Store\Dashboard\Builder\Contracts\hasGenerateFields;
+use Store\Dashboard\Builder\Contracts\hasGenerateTabs;
 use Store\Dashboard\Builder\FormBuilder;
 use Store\Models\Product\Category;
+use Store\Modules\Catalog\Support\Facades\CategoryForm;
+use Store\Modules\Catalog\Support\Facades\CategoryFormTabs;
 
-class CategoryEdit extends FormBuilder implements hasGenerateFields
+class CategoryEdit extends FormBuilder implements hasGenerateTabs, hasGenerateFields
 {
     use LivewireAlert;
 
@@ -35,6 +38,10 @@ class CategoryEdit extends FormBuilder implements hasGenerateFields
         $this->parent_id = $this->category->parent_id;
         $this->name = $this->category->name;
         $this->slug = $this->category->slug;
+
+        foreach (CategoryForm::getFields() as $field) {
+            $this->{$field['model']} = $this->category->{$field['model']};
+        }
     }
 
     public function changeStoreViewId()
@@ -42,6 +49,16 @@ class CategoryEdit extends FormBuilder implements hasGenerateFields
         $this->category = $this->category->setStoreViewId($this->storeViewId);
 
         $this->name = $this->category->name;
+    }
+
+    public function generateTabs($tabs)
+    {
+        $tabs->addTab([
+            'id' => 'basic',
+            'name' => 'Basic info',
+        ]);
+
+        $tabs->mergeTabs(CategoryFormTabs::getTabs());
     }
 
     public function generateFields($form)
@@ -77,6 +94,8 @@ class CategoryEdit extends FormBuilder implements hasGenerateFields
             'rules' => 'required',
             'order' => 20,
         ]);
+
+        $form->mergeFields(CategoryForm::getFields());
 
         // AddFieldsToCategoryCreate::dispatch($this->form);
     }

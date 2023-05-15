@@ -2,6 +2,9 @@
 
 namespace Store\Modules\Catalog\Http\Livewire\Products;
 
+use Illuminate\Support\Str;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Livewire\WithFileUploads;
 use Store\Dashboard\Builder\Contracts\hasGenerateFields;
 use Store\Dashboard\Builder\Contracts\hasGenerateTabs;
 use Store\Dashboard\Builder\FormBuilder;
@@ -9,10 +12,8 @@ use Store\Models\Product\Category;
 use Store\Modules\Catalog\Events\AddFieldsToUpdatingProduct;
 use Store\Modules\Catalog\Events\ProductUpdating;
 use Store\Modules\Catalog\Models\Product;
-use Store\Modules\Catalog\Support\AddFieldToProduct;
-use Illuminate\Support\Str;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\WithFileUploads;
+use Store\Modules\Catalog\Support\Facades\ProductForm;
+use Store\Modules\Catalog\Support\Facades\ProductFormTabs;
 
 class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateTabs
 {
@@ -82,6 +83,8 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
             'id' => 'images',
             'name' => 'Images',
         ]);
+
+        $tabs->mergeTabs(ProductFormTabs::getTabs());
     }
 
     public function generateFields($form)
@@ -179,7 +182,7 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
             'hint' => 'dsf dsf dsff',
         ]);
 
-        $form->mergeFields(AddFieldToProduct::getFields());
+        $form->mergeFields(ProductForm::getFields());
 
         AddFieldsToUpdatingProduct::dispatch($form);
     }
@@ -200,7 +203,7 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
         $product->discount_price = $validatedData['discount_price'];
         $product->status = $validatedData['status'];
 
-        foreach (AddFieldToProduct::getFields() as $field) {
+        foreach (ProductForm::getFields() as $field) {
             $product->{$field['model']} = $this->{$field['model']};
         }
 

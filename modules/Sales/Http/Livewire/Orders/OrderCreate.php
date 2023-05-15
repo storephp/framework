@@ -10,9 +10,9 @@ use Store\Models\Basket\Quote;
 use Store\Models\Customer\Address;
 use Store\Modules\Catalog\Models\Product;
 use Store\Modules\Customers\Models\Customer;
-use Store\Services\BasketService;
-use Store\Services\CustomerService;
-use Store\Services\OrderService;
+use Basketin\Support\Services\BasketService;
+use Basketin\Support\Services\CustomerService;
+use Basketin\Support\Services\OrderService;
 
 class OrderCreate extends Component
 {

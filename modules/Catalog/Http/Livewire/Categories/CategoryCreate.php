@@ -5,10 +5,13 @@ namespace Store\Modules\Catalog\Http\Livewire\Categories;
 use Illuminate\Support\Str;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Store\Dashboard\Builder\Contracts\hasGenerateFields;
+use Store\Dashboard\Builder\Contracts\hasGenerateTabs;
 use Store\Dashboard\Builder\FormBuilder;
 use Store\Models\Product\Category;
+use Store\Modules\Catalog\Support\Facades\CategoryForm;
+use Store\Modules\Catalog\Support\Facades\CategoryFormTabs;
 
-class CategoryCreate extends FormBuilder implements hasGenerateFields
+class CategoryCreate extends FormBuilder implements hasGenerateTabs, hasGenerateFields
 {
     use LivewireAlert;
 
@@ -35,6 +38,16 @@ class CategoryCreate extends FormBuilder implements hasGenerateFields
     //     //     'name' => 'basic info',
     //     // ]);
     // }
+
+    public function generateTabs($tabs)
+    {
+        $tabs->addTab([
+            'id' => 'basic',
+            'name' => 'Basic info',
+        ]);
+
+        $tabs->mergeTabs(CategoryFormTabs::getTabs());
+    }
 
     public function generateFields($form)
     {
@@ -70,6 +83,8 @@ class CategoryCreate extends FormBuilder implements hasGenerateFields
             'order' => 20,
         ]);
 
+        $form->mergeFields(CategoryForm::getFields());
+
         // AddFieldsToCategoryCreate::dispatch($this->form);
     }
 
@@ -84,6 +99,11 @@ class CategoryCreate extends FormBuilder implements hasGenerateFields
             'slug' => $validatedData['slug'],
         ]);
         $category->name = $validatedData['name'];
+
+        foreach (CategoryForm::getFields() as $field) {
+            $category->{$field['model']} = $this->{$field['model']};
+        }
+
         $category->save();
 
         // CategoryCreated::dispatch($category, $this->form);

@@ -11,7 +11,7 @@ use Store\Dashboard\Builder\FormBuilder;
 use Store\Models\Product\Category;
 use Store\Modules\Catalog\Events\AddFieldsToUpdatingProduct;
 use Store\Modules\Catalog\Events\ProductUpdating;
-use Store\Modules\Catalog\Models\Product;
+use Store\Models\Product;
 use Store\Modules\Catalog\Support\Facades\ProductForm;
 use Store\Modules\Catalog\Support\Facades\ProductFormTabs;
 

@@ -150,7 +150,7 @@ class ProductCreate extends FormBuilder implements hasGenerateFields, hasGenerat
             'label' => 'Product discount price',
             'model' => 'discount_price',
             'rules' => 'nullable',
-            'order' => 10,
+            'order' => 20,
             'hint' => 'dsf dsf dsff',
         ]);
 

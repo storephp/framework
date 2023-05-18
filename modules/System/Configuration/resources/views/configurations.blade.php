@@ -22,7 +22,8 @@
                     <div class="col-3 d-none d-md-block border-end">
                         <div class="card-body">
                             @foreach ($tabs as $tabKey => $tab)
-                                <h4 class="subheader @if(!$loop->first) mt-3 @endif">{{ $tab['name'] }}</h4>
+                                <h4 class="subheader @if (!$loop->first) mt-3 @endif">{{ $tab['name'] }}
+                                </h4>
                                 <div class="list-group list-group-transparent">
                                     @foreach ($tab['sub_tabs'] as $_tabKey => $_tab)
                                         <a href="{{ route('store.dashboard.system.configurations', [$tabKey, $_tabKey]) }}"
@@ -34,8 +35,7 @@
                     </div>
                     <div class="col d-flex flex-column">
                         <div class="card-body">
-                            <h2 class="mb-4">{{ $currentTabName ?? 'df' }}</h2>
-                            {{-- <h3 class="card-title">{{ $configurations['name'] ?? 'df' }}</h3> --}}
+                            <h2 class="mb-4">{{ $currentTabName ?? 'Default' }}</h2>
 
                             @foreach ($fields as $field)
                                 @if ($field['type'] == 'string')

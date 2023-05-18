@@ -12,7 +12,6 @@ class InputPrice extends Component
         public $model = 'set name',
         public $hint = null,
         public $required = false,
-        public $currency = 'USD',
     ) {
     }
 

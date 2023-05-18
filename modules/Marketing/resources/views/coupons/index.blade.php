@@ -48,14 +48,23 @@
         <div class="container-xl">
             <div class="row row-deck row-cards">
                 <div class="col-12">
-                    @if ($coupons->isEmpty())
-                        <x-store-widget-empty-data icon="ticket-off" title="There are no coupons"
-                            subtitle="You can create new coupons"
-                            actionRoute="{{ route('store.dashboard.marketing.coupons.create') }}" />
-                    @endif
+                    <div class="card">
 
-                    @if (!$coupons->isEmpty())
-                        <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Coupons list</h3>
+                            <div class="card-actions">
+                                <input type="text" class="form-control" placeholder="Search Name, Code"
+                                    wire:model="search" />
+                            </div>
+                        </div>
+
+                        @if ($coupons->isEmpty())
+                            <x-store-widget-empty-data icon="ticket-off" title="There are no coupons"
+                                subtitle="You can create new coupons"
+                                actionRoute="{{ route('store.dashboard.marketing.coupons.create') }}" />
+                        @endif
+
+                        @if (!$coupons->isEmpty())
                             <div class="table-responsive">
                                 <table class="table table-vcenter table-mobile-md card-table">
                                     <thead>
@@ -109,8 +118,9 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                    @endif
+                        @endif
+
+                    </div>
                 </div>
 
                 {{ $coupons->links() }}

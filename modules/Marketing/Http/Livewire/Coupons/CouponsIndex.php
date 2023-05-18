@@ -17,7 +17,7 @@ class CouponsIndex extends Component
 
     public function render()
     {
-        $coupons = Coupon::getList();
+        $coupons = Coupon::getListWithSearch($this->search ?? null);
 
         return view('storeMarketing::coupons.index', [
             'coupons' => $coupons,

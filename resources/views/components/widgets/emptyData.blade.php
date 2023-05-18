@@ -1,4 +1,4 @@
-<div class="card">
+
     <div class="empty">
         <div class="empty-icon">
             @svg('tabler-' . $icon)
@@ -18,4 +18,3 @@
             </div>
         @endif
     </div>
-</div>

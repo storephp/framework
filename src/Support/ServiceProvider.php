@@ -157,11 +157,10 @@ abstract class ServiceProvider extends IlluminateServiceProvider
 
     protected function loadRoutes($moduleDir, $prefix = null)
     {
-        // dd($dir);
         if (file_exists($moduleDir . '/routes/web.php')) {
             $prefix = Str::slug($this->moduleData['slug'] ?? $prefix);
-            Route::middleware(['web', 'martTeam', GlobalConfigMiddleware::class])
-                ->prefix('store/' . $prefix)
+            Route::middleware(array_merge(config('store.dashboard.routes.middlewares', []), ['web', 'martTeam', GlobalConfigMiddleware::class]))
+                ->prefix(config('store.dashboard.routes.prefix', 'storephp') . '/' . $prefix)
                 ->group(function () use ($moduleDir) {
                     $this->loadRoutesFrom($moduleDir . '/routes/web.php');
                 });

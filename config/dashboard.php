@@ -2,7 +2,12 @@
 
 return [
     'version' => '1.0.0',
-    
+
+    'routes' => [
+        'prefix' => 'storephp',
+        'middlewares' => [],
+    ],
+
     'core' => [
         'fields' => [
             'catalog' => [

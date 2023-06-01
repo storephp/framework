@@ -4,6 +4,7 @@ namespace Store\Modules\Catalog\Http\Livewire\Categories;
 
 use Illuminate\Support\Str;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Livewire\WithFileUploads;
 use Store\Dashboard\Builder\Contracts\hasGenerateFields;
 use Store\Dashboard\Builder\Contracts\hasGenerateTabs;
 use Store\Dashboard\Builder\FormBuilder;
@@ -14,6 +15,7 @@ use Store\Modules\Catalog\Support\Facades\CategoryFormTabs;
 class CategoryEdit extends FormBuilder implements hasGenerateTabs, hasGenerateFields
 {
     use LivewireAlert;
+    use WithFileUploads;
 
     protected $pagePretitle = 'Catalog';
     protected $pageTitle = 'Update this category';
@@ -109,13 +111,20 @@ class CategoryEdit extends FormBuilder implements hasGenerateTabs, hasGenerateFi
     {
         $validatedData = $this->validate();
 
-        $validatedData['slug'] = Str::slug($validatedData['slug'], '-');
+        $category = $this->category;
+
+        $category->name = $validatedData['name'];
+        $category->slug = Str::slug($validatedData['slug'], '-');
 
         if ($validatedData['parent_id'] == 'remove') {
             $validatedData['parent_id'] = null;
         }
 
-        $this->category->update($validatedData);
+        foreach (CategoryForm::getFields() as $field) {
+            $category->{$field['model']} = $this->{$field['model']};
+        }
+
+        $category->save();
 
         return $this->alert('success', 'Updated!');
     }

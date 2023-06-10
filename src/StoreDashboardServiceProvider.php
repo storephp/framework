@@ -91,6 +91,10 @@ class StoreDashboardServiceProvider extends ServiceProvider
         $this->loadViewComponentsAs('store', $this->viewComponents());
 
         if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../public/assets' => public_path('vendor/storephp'),
+            ], 'storephp');
+
             $this->appendCommandToSetup(CreateNewAdmin::class);
 
             $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');

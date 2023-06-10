@@ -8,12 +8,18 @@
     <title>Dashboard - Store</title>
     <!-- CSS files -->
     @if ($langDirection != 'rtl')
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
+        <link rel="stylesheet" href="{{ asset('/vendor/storephp/tabler.min.css') }}">
     @endif
+
     @if ($langDirection == 'rtl')
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.rtl.min.css">
+        <link rel="stylesheet" href="{{ asset('/vendor/storephp/tabler.rtl.min.css') }}">
     @endif
+
     @livewireStyles
+
+    <link rel="stylesheet" href="{{ asset('/vendor/storephp/sweetalert2.min.css') }}">
+
+    <script src="{{ asset('/vendor/storephp/alpinejs.min.js') }}" defer></script>
 </head>
 
 <body>
@@ -234,8 +240,8 @@
     </div>
 </body>
 
-<script src="//cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('/vendor/storephp/tabler.min.js') }}"></script>
+<script src="{{ asset('/vendor/storephp/sweetalert2.min.js') }}"></script>
 
 @livewireScripts
 <x-livewire-alert::scripts />

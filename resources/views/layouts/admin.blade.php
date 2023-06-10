@@ -8,16 +8,19 @@
     <title>Dashboard - Store</title>
     <!-- CSS files -->
     @if ($langDirection != 'rtl')
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
+        <link rel="stylesheet" href="{{ asset('/vendor/storephp/tabler.min.css') }}">
     @endif
+
     @if ($langDirection == 'rtl')
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.rtl.min.css">
+        <link rel="stylesheet" href="{{ asset('/vendor/storephp/tabler.rtl.min.css') }}">
     @endif
+
+    <link rel="stylesheet" href="{{ asset('/vendor/storephp/sweetalert2.min.css') }}">
+
     @livewireStyles
 </head>
 
 <body class="layout-boxed">
-    <script src="./dist/js/demo-theme.min.js?1674944402"></script>
     <div class="page">
         <!-- Navbar -->
         <header class="navbar navbar-expand-md navbar-light d-print-none">
@@ -305,8 +308,8 @@
     </div>
 </body>
 
-<script src="//cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('/vendor/storephp/tabler.min.js') }}"></script>
+<script src="{{ asset('/vendor/storephp/sweetalert2.min.js') }}"></script>
 
 @livewireScripts
 <x-livewire-alert::scripts />

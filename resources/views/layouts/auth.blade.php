@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Store - Admin</title>
     <!-- CSS files -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
+    <link rel="stylesheet" href="{{ asset('/vendor/storephp/tabler.min.css') }}">
 
     @livewireStyles
 

@@ -19,7 +19,7 @@
     <div class="page-body">
         <div class="container-xl">
 
-            <form class="card" wire:submit.prevent="submit">
+            <form class="card" wire:submit.prevent="submit" x-data="{ tab: 'basic' }">
                 <div class="card-header">
                     <h3 class="card-title">Enter the data</h3>
                     @if ($setup['selectStoreView'])
@@ -43,9 +43,9 @@
                             <h4 class="subheader">Tabs</h4>
                             <div class="list-group list-group-transparent">
                                 @foreach ($from_tabs as $from_tab)
-                                    <a href="#"
+                                    <a href="#" @click="tab = '{{ $from_tab['id'] }}'"
                                         class="list-group-item list-group-item-action d-flex align-items-center @if ($from_tab['id'] == $selectedTab) active @endif"
-                                        wire:click="setTab('{{ $from_tab['id'] }}')">
+                                        :class="{ 'active': tab == '{{ $from_tab['id'] }}' }">
                                         {{ $from_tab['name'] }}
 
                                         @foreach ($from_tab['tabs_validate'] as $item)
@@ -62,55 +62,43 @@
                 <div class="col d-flex flex-column">
 
                     @foreach ($from_tabs as $from_tab)
-                        @if ($selectedTab == $from_tab['id'])
-                            <div class="card-body">
-                                <h2 class="mb-4">{{ $from_tab['name'] }}</h2>
-                                @foreach ($from_tab['fields'] as $field)
-                                    @if ($field['type'] == 'select')
-                                        <x-store-select label="{{ $field['label'] }}"
-                                            model="{{ $field['model'] }}" :options="$field['options']" :hint="$field['hint']"
-                                            :required="str_contains($field['rules'], 'required')" :multiple="$field['multiple']" />
-                                    @endif
+                        {{-- @if ($selectedTab == $from_tab['id']) --}}
+                        <div class="card-body" x-show="tab == '{{ $from_tab['id'] }}'">
+                            <h2 class="mb-4">{{ $from_tab['name'] }}</h2>
+                            @foreach ($from_tab['fields'] as $field)
+                                @if ($field['type'] == 'select')
+                                    <x-store-select label="{{ $field['label'] }}" model="{{ $field['model'] }}"
+                                        :options="$field['options']" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" :multiple="$field['multiple']" />
+                                @endif
 
-                                    @if ($field['type'] == 'text')
-                                        <x-store-input-text label="{{ $field['label'] }}"
-                                            model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
-                                    @endif
+                                @if ($field['type'] == 'text')
+                                    <x-store-input-text label="{{ $field['label'] }}"
+                                        model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
+                                @endif
 
-                                    @if ($field['type'] == 'textarea')
-                                        <x-store-input-textarea label="{{ $field['label'] }}"
-                                            model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
-                                    @endif
+                                @if ($field['type'] == 'textarea')
+                                    <x-store-input-textarea label="{{ $field['label'] }}"
+                                        model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
+                                @endif
 
-                                    @if ($field['type'] == 'price')
-                                        <x-store-input-price label="{{ $field['label'] }}"
-                                            model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
-                                    @endif
+                                @if ($field['type'] == 'price')
+                                    <x-store-input-price label="{{ $field['label'] }}"
+                                        model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
+                                @endif
 
-                                    @if ($field['type'] == 'date')
-                                        <x-store-input-date label="{{ $field['label'] }}"
-                                            model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
-                                    @endif
+                                @if ($field['type'] == 'date')
+                                    <x-store-input-date label="{{ $field['label'] }}"
+                                        model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
+                                @endif
 
-                                    @if ($field['type'] == 'file')
-                                        <x-store-input-file label="{{ $field['label'] }}"
-                                            model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
-                                    @endif
-                                @endforeach
-                            </div>
-                        @endif
+                                @if ($field['type'] == 'file')
+                                    <x-store-input-file label="{{ $field['label'] }}"
+                                        model="{{ $field['model'] }}" :hint="$field['hint']" :required="str_contains($field['rules'], 'required')" />
+                                @endif
+                            @endforeach
+                        </div>
+                        {{-- @endif --}}
                     @endforeach
-
-                    {{-- @if ($tab == 'dd')
-                            <div class="card-body">
-                                <h2 class="mb-4">Basic info dd</h2>
-                                @foreach ($fileds as $filed)
-                                    @if ($filed['type'] == 'text')
-                                        <x-store-input-text label="{{ $filed['label'] }}" model="{{ $filed['model'] }}" />
-                                    @endif
-                                @endforeach
-                            </div>
-                        @endif --}}
 
                     <div class="card-footer bg-transparent mt-auto">
                         <div class="btn-list justify-content-end">

@@ -2,6 +2,7 @@
 
 namespace Store\Dashboard\Builder;
 
+use Livewire\Component;
 use Store\Dashboard\Builder\Contracts\hasGenerateFields;
 use Store\Dashboard\Builder\Contracts\hasGenerateTabs;
 use Store\Dashboard\Builder\Form\Fields;
@@ -10,7 +11,6 @@ use Store\Dashboard\Views\Layouts\AdminLayout;
 use Store\Dashboard\Views\Layouts\DashboardLayout;
 use Store\Models\Store;
 use Store\Modules\Catalog\Events\AddFieldsToCategoryCreate;
-use Livewire\Component;
 
 class FormBuilder extends Component
 {
@@ -27,7 +27,6 @@ class FormBuilder extends Component
     private $form = null;
     private $tabs = null;
     private $formTabs = [];
-    private $formFields = [];
 
     public function boot()
     {
@@ -40,43 +39,42 @@ class FormBuilder extends Component
 
         if ($this instanceof hasGenerateFields) {
             $this->generateFields($this->form);
-            $fields = $this->form->getFields();
 
             if ($this->generatePath) {
                 AddFieldsToCategoryCreate::dispatch($this->generatePath, $this->form);
             }
         }
 
-        $collection = collect($fields);
-        $sorted = $collection->sortBy('order');
-        $this->formFields = $sorted->values()->all();
+        // $collection = collect($fields);
+        // $sorted = $collection->sortBy('order');
+        // $this->formFields = $sorted->values()->all();
 
-        foreach ($this->formFields as $field) {
+        foreach ($this->form->getFields() as $field) {
             $this->{$field['model']} = $field['value'] ?? null;
         }
 
-        $this->formTabs = $this->tabs->getTabs();
+        // $this->formTabs = $this->tabs->getTabs();
 
-        $formTabs = [];
-        foreach ($this->formTabs as $formTab) {
-            $fields = collect($this->formFields)->where('tab', $formTab['id']);
+        // $formTabs = [];
+        // foreach ($this->formTabs as $formTab) {
+        //     $fields = collect($this->formFields)->where('tab', $formTab['id']);
 
-            $formTabs[] = [
-                'id' => $formTab['id'],
-                'name' => $formTab['name'],
-                'fields' => $fields->all(),
-                'tabs_validate' => $fields->pluck('model')->all(),
-            ];
-        }
+        //     $formTabs[] = [
+        //         'id' => $formTab['id'],
+        //         'name' => $formTab['name'],
+        //         'fields' => $fields->all(),
+        //         'tabs_validate' => $fields->pluck('model')->all(),
+        //     ];
+        // }
 
-        $this->formTabs = $formTabs;
+        // $this->formTabs = $formTabs;
     }
 
     protected function rules()
     {
         $data = [];
 
-        foreach ($this->formFields as $field) {
+        foreach ($this->form->getFields() as $field) {
             $data[$field['model']] = $field['rules'];
         }
 
@@ -87,9 +85,25 @@ class FormBuilder extends Component
     {
         $stores = Store::with('views')->get();
 
-        // dd($stores);
-
         $layout = ($this->layout == 'dashboard') ? DashboardLayout::class : AdminLayout::class;
+
+        $this->formTabs = $this->tabs->getTabs();
+
+        $collection = collect($this->form->getFields());
+        $sorted = $collection->sortBy('order');
+        $formFields = $sorted->values()->all();
+
+        $formTabs = [];
+        foreach ($this->formTabs as $formTab) {
+            $fields = collect($formFields)->where('tab', $formTab['id']);
+
+            $formTabs[] = [
+                'id' => $formTab['id'],
+                'name' => $formTab['name'],
+                'fields' => $fields->all(),
+                'tabs_validate' => $fields->pluck('model')->all(),
+            ];
+        }
 
         return view('store::builder.form', [
             'setup' => [
@@ -100,8 +114,7 @@ class FormBuilder extends Component
                 'submitLabel' => $this->submitLabel,
             ],
             'stores' => $stores,
-            'from_tabs' => $this->formTabs,
-            // 'fileds' => $this->formFields,
+            'from_tabs' => $formTabs,
         ])->layout($layout);
     }
 

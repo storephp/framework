@@ -5,6 +5,7 @@ namespace Store\Dashboard\Views\Layouts;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 use Illuminate\View\View;
+use Store\Dashboard\Builder\Modules\GenerateSidebar;
 
 class DashboardLayout extends Component
 {
@@ -25,7 +26,15 @@ class DashboardLayout extends Component
     public function __construct()
     {
         $permissions = Auth::guard('store')->user()->membership->rule->permissions;
-        $modules = collect(config('store.dashboard.core.modules'))->sortBy('order')->all();
+
+        GenerateSidebar::appendSidebar(config('store.dashboard.core.modules'));
+
+        if (class_exists(\StorePHP\StoreWays\Gather::class)) {
+            GenerateSidebar::appendSidebar(\StorePHP\StoreWays\Gather::getSidebar());
+        }
+
+        $modules = collect(GenerateSidebar::getSidebar())->sortBy('order')->all();
+
         $this->modules = array_filter($modules, function ($module) use ($permissions) {
             if (!in_array('*', $permissions)) {
                 if (in_array($module['rule'], $permissions)) {

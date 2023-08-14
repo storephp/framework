@@ -5,7 +5,7 @@ namespace Store\Modules\Sales\Http\Livewire\Orders;
 use Illuminate\Support\Facades\Cache;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
-use Store\Dashboard\Views\Layouts\DashboardLayout;
+use StorePHP\Dashboard\Views\Layouts\DashboardLayout;
 use Store\Models\Basket\Quote;
 use Store\Models\Customer\Address;
 use Store\Modules\Catalog\Models\Product;
@@ -13,13 +13,15 @@ use Store\Modules\Customers\Models\Customer;
 use Store\Support\Services\BasketService;
 use Store\Support\Services\CustomerService;
 use Store\Support\Services\OrderService;
+use Store\Support\Facades\Basket;
+use Store\Support\Facades\Order;
+use Store\Support\Facades\Customer as CustomerFacades;
 
 class OrderCreate extends Component
 {
     use LivewireAlert;
 
     private $basket = null;
-    private $orderService = null;
     private $customerService = null;
 
     public $customer_id = null;
@@ -51,21 +53,19 @@ class OrderCreate extends Component
         });
     }
 
-    public function booted(BasketService $basketService, OrderService $orderService, CustomerService $customerService)
+    public function booted()
     {
         $this->keyCache = md5($this->customer_id);
         $this->basketUlid = Cache::get($this->keyCache, null);
 
-        $this->basket = $basketService->initBasket($this->basketUlid);
+        $this->basket = Basket::initBasket($this->basketUlid);
         if (is_null($this->basketUlid)) {
             Cache::put($this->keyCache, $this->basket->getUlid());
         }
 
         $this->UpdateBasket($this->basket);
 
-        $this->orderService = $orderService;
-        $this->customerService = $customerService;
-        $this->customerService->setCustomerId($this->customer_id);
+        $this->customerService = CustomerFacades::setCustomerId($this->customer_id);
 
         // dd($this->basket->getUlid());
 
@@ -184,7 +184,7 @@ class OrderCreate extends Component
             'customerIntreAddresses.telephone_number' => 'required',
         ]);
 
-        $initOrder = $this->orderService->initOrder($this->basket, $this->customerService);
+        $initOrder = Order::initOrder($this->basket, $this->customerService);
 
         $orderPlaced = $initOrder->placeOrder();
         $orderPlaced->updateStatus('pending');

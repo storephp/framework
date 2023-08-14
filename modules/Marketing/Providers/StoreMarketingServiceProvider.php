@@ -3,7 +3,7 @@
 namespace Store\Modules\Marketing\Providers;
 
 use Livewire\Livewire;
-use Store\Dashboard\Support\ServiceProvider;
+use StorePHP\Dashboard\Support\ServiceProvider;
 use Store\Modules\Marketing\Http\Livewire\Coupons\CouponCreate;
 use Store\Modules\Marketing\Http\Livewire\Coupons\CouponsIndex;
 use Store\Modules\Marketing\Http\Livewire\Coupons\CouponUpdate;

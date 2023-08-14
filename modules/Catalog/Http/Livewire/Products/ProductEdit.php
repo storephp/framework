@@ -5,9 +5,9 @@ namespace Store\Modules\Catalog\Http\Livewire\Products;
 use Illuminate\Support\Str;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;
-use Store\Dashboard\Builder\Contracts\hasGenerateFields;
-use Store\Dashboard\Builder\Contracts\hasGenerateTabs;
-use Store\Dashboard\Builder\FormBuilder;
+use StorePHP\Dashboard\Builder\Contracts\hasGenerateFields;
+use StorePHP\Dashboard\Builder\Contracts\hasGenerateTabs;
+use StorePHP\Dashboard\Builder\FormBuilder;
 use Store\Models\Product\Category;
 use Store\Modules\Catalog\Events\AddFieldsToUpdatingProduct;
 use Store\Modules\Catalog\Events\ProductUpdating;
@@ -31,7 +31,8 @@ class ProductEdit extends FormBuilder implements hasGenerateFields, hasGenerateT
     public $price;
     public $discount_price;
     public $status;
-
+    
+    protected $selectStoreView = true;
     protected $pagePretitle = 'Catalog';
     protected $pageTitle = 'Update product';
 

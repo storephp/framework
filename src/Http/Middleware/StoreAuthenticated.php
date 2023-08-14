@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Dashboard\Http\Middleware;
+namespace StorePHP\Dashboard\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;

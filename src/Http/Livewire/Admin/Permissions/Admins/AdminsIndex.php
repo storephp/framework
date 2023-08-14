@@ -1,9 +1,9 @@
 <?php
 
-namespace Store\Dashboard\Http\Livewire\Admin\Permissions\Admins;
+namespace StorePHP\Dashboard\Http\Livewire\Admin\Permissions\Admins;
 
-use Store\Dashboard\Models\Admin;
-use Store\Dashboard\Views\Layouts\AdminLayout;
+use StorePHP\Dashboard\Models\Admin;
+use StorePHP\Dashboard\Views\Layouts\AdminLayout;
 use Livewire\Component;
 
 class AdminsIndex extends Component

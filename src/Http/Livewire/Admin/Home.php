@@ -1,8 +1,8 @@
 <?php
 
-namespace Store\Dashboard\Http\Livewire\Admin;
+namespace StorePHP\Dashboard\Http\Livewire\Admin;
 
-use Store\Dashboard\Views\Layouts\AdminLayout;
+use StorePHP\Dashboard\Views\Layouts\AdminLayout;
 use Livewire\Component;
 
 class Home extends Component

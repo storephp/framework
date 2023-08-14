@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Dashboard\Builder\Modules;
+namespace StorePHP\Dashboard\Builder\Modules;
 
 class GenerateSidebar
 {

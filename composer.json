@@ -26,7 +26,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Store\\Dashboard\\": "src/",
+            "StorePHP\\Dashboard\\": "src/",
             "Store\\Modules\\": "modules/"
         }
     },
@@ -36,7 +36,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Store\\Dashboard\\StoreDashboardServiceProvider",
+                "StorePHP\\Dashboard\\StoreDashboardServiceProvider",
                 "Store\\Modules\\Catalog\\Providers\\StoreCatalogServiceProvider",
                 "Store\\Modules\\Sales\\Providers\\StoreSalesServiceProvider",
                 "Store\\Modules\\Customers\\Providers\\StoreCustomersServiceProvider",

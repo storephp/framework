@@ -1,11 +1,11 @@
 <?php
 
-namespace Store\Dashboard\Support;
+namespace StorePHP\Dashboard\Support;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 use Illuminate\Support\Str;
-use Store\Dashboard\Http\Middleware\GlobalConfigMiddleware;
+use StorePHP\Dashboard\Http\Middleware\GlobalConfigMiddleware;
 
 abstract class ServiceProvider extends IlluminateServiceProvider
 {

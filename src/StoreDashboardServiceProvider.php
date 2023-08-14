@@ -1,24 +1,24 @@
 <?php
 
-namespace Store\Dashboard;
+namespace StorePHP\Dashboard;
 
-use Store\Dashboard\Console\CreateNewAdmin;
-use Store\Dashboard\Http\Livewire\Account\LoginPage;
-use Store\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminCreate;
-use Store\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminUpdate;
-use Store\Dashboard\Http\Livewire\Catalog\Categories\CategoriesIndex;
-use Store\Dashboard\Http\Livewire\Catalog\Categories\CategoryCreate;
-use Store\Dashboard\Http\Livewire\Catalog\Categories\CategoryEdit;
-use Store\Dashboard\Http\Livewire\System\Updates;
-use Store\Dashboard\Http\Middleware\StoreAuthenticated;
-use Store\Dashboard\Views\Components\Widgets\WidgetEmptyData;
-use Store\Dashboard\Views\Form\InputDate;
-use Store\Dashboard\Views\Form\InputFile;
-use Store\Dashboard\Views\Form\InputPrice;
-use Store\Dashboard\Views\Form\InputText;
-use Store\Dashboard\Views\Form\InputTextarea;
-use Store\Dashboard\Views\Form\Select;
-use Store\Dashboard\Views\Layouts\DashboardLayout;
+use StorePHP\Dashboard\Console\CreateNewAdmin;
+use StorePHP\Dashboard\Http\Livewire\Account\LoginPage;
+use StorePHP\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminCreate;
+use StorePHP\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminUpdate;
+use StorePHP\Dashboard\Http\Livewire\Catalog\Categories\CategoriesIndex;
+use StorePHP\Dashboard\Http\Livewire\Catalog\Categories\CategoryCreate;
+use StorePHP\Dashboard\Http\Livewire\Catalog\Categories\CategoryEdit;
+use StorePHP\Dashboard\Http\Livewire\System\Updates;
+use StorePHP\Dashboard\Http\Middleware\StoreAuthenticated;
+use StorePHP\Dashboard\Views\Components\Widgets\WidgetEmptyData;
+use StorePHP\Dashboard\Views\Form\InputDate;
+use StorePHP\Dashboard\Views\Form\InputFile;
+use StorePHP\Dashboard\Views\Form\InputPrice;
+use StorePHP\Dashboard\Views\Form\InputText;
+use StorePHP\Dashboard\Views\Form\InputTextarea;
+use StorePHP\Dashboard\Views\Form\Select;
+use StorePHP\Dashboard\Views\Layouts\DashboardLayout;
 use Store\Support\Traits\HasSetupStore;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Auth;
@@ -48,7 +48,7 @@ class StoreDashboardServiceProvider extends ServiceProvider
         config([
             'auth.providers.store' => array_merge([
                 'driver' => 'eloquent',
-                'model' => \Store\Dashboard\Models\Admin::class,
+                'model' => \StorePHP\Dashboard\Models\Admin::class,
             ], config('auth.providers.store', [])),
         ]);
 

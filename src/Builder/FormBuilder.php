@@ -1,14 +1,14 @@
 <?php
 
-namespace Store\Dashboard\Builder;
+namespace StorePHP\Dashboard\Builder;
 
 use Livewire\Component;
-use Store\Dashboard\Builder\Contracts\hasGenerateFields;
-use Store\Dashboard\Builder\Contracts\hasGenerateTabs;
-use Store\Dashboard\Builder\Form\Fields;
-use Store\Dashboard\Builder\Form\Tabs;
-use Store\Dashboard\Views\Layouts\AdminLayout;
-use Store\Dashboard\Views\Layouts\DashboardLayout;
+use StorePHP\Dashboard\Builder\Contracts\hasGenerateFields;
+use StorePHP\Dashboard\Builder\Contracts\hasGenerateTabs;
+use StorePHP\Dashboard\Builder\Form\Fields;
+use StorePHP\Dashboard\Builder\Form\Tabs;
+use StorePHP\Dashboard\Views\Layouts\AdminLayout;
+use StorePHP\Dashboard\Views\Layouts\DashboardLayout;
 use Store\Models\Store;
 use Store\Modules\Catalog\Events\AddFieldsToCategoryCreate;
 
@@ -24,8 +24,9 @@ class FormBuilder extends Component
     protected $selectStoreView = false;
     protected $layout = 'dashboard';
 
-    private $form = null;
-    private $tabs = null;
+    protected $form = null;
+    protected $tabs = null;
+
     private $formTabs = [];
 
     public function boot()

@@ -5,7 +5,7 @@ namespace Store\Modules\Catalog\Http\Livewire\Categories;
 use Store\Models\Product\Category;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Store\Dashboard\Views\Layouts\DashboardLayout;
+use StorePHP\Dashboard\Views\Layouts\DashboardLayout;
 
 class CategoriesIndex extends Component
 {

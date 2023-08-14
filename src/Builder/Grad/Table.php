@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Dashboard\Builder\Grad;
+namespace StorePHP\Dashboard\Builder\Grad;
 
 class Table
 {

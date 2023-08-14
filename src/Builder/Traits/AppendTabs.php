@@ -1,8 +1,8 @@
 <?php
 
-namespace Store\Dashboard\Builder\Traits;
+namespace StorePHP\Dashboard\Builder\Traits;
 
-use Store\Dashboard\Builder\Form\Tabs;
+use StorePHP\Dashboard\Builder\Form\Tabs;
 
 trait AppendTabs
 {

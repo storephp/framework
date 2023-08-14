@@ -4,9 +4,9 @@ namespace Store\Modules\Catalog\Http\Livewire\Categories;
 
 use Illuminate\Support\Str;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Store\Dashboard\Builder\Contracts\hasGenerateFields;
-use Store\Dashboard\Builder\Contracts\hasGenerateTabs;
-use Store\Dashboard\Builder\FormBuilder;
+use StorePHP\Dashboard\Builder\Contracts\hasGenerateFields;
+use StorePHP\Dashboard\Builder\Contracts\hasGenerateTabs;
+use StorePHP\Dashboard\Builder\FormBuilder;
 use Store\Models\Product\Category;
 use Store\Modules\Catalog\Support\Facades\CategoryForm;
 use Store\Modules\Catalog\Support\Facades\CategoryFormTabs;

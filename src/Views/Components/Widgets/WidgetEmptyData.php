@@ -1,5 +1,5 @@
 <?php
-namespace Store\Dashboard\Views\Components\Widgets;
+namespace StorePHP\Dashboard\Views\Components\Widgets;
 
 use Illuminate\View\Component;
 

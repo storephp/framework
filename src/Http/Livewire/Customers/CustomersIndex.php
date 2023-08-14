@@ -1,9 +1,9 @@
 <?php
 
-namespace Store\Dashboard\Http\Livewire\Customers;
+namespace StorePHP\Dashboard\Http\Livewire\Customers;
 
 use Livewire\Component;
-use Store\Dashboard\Models\Customer;
+use StorePHP\Dashboard\Models\Customer;
 
 class CustomersIndex extends Component
 {

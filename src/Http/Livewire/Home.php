@@ -1,9 +1,9 @@
 <?php
 
-namespace Store\Dashboard\Http\Livewire;
+namespace StorePHP\Dashboard\Http\Livewire;
 
 use Livewire\Component;
-use Store\Dashboard\Views\Layouts\DashboardLayout;
+use StorePHP\Dashboard\Views\Layouts\DashboardLayout;
 
 class Home extends Component
 {

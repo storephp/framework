@@ -2,7 +2,7 @@
 
 namespace Store\Modules\Catalog\Libs\Builder;
 
-use Store\Dashboard\Builder\Abstracts\AppendFields;
+use StorePHP\Dashboard\Builder\Abstracts\AppendFields;
 
 class AddFieldToCategory extends AppendFields
 {

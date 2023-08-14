@@ -2,7 +2,7 @@
 
 namespace Store\Modules\System\Providers;
 
-use Store\Dashboard\Support\ServiceProvider;
+use StorePHP\Dashboard\Support\ServiceProvider;
 
 class StoreSystemServiceProvider extends ServiceProvider
 {

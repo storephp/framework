@@ -4,7 +4,7 @@ namespace Store\Modules\System\Configuration\Http\Livewire;
 
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
-use Store\Dashboard\Views\Layouts\DashboardLayout;
+use StorePHP\Dashboard\Views\Layouts\DashboardLayout;
 use Store\Facades\Configuration;
 
 class Configurations extends Component

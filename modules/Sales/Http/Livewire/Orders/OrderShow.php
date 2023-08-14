@@ -4,7 +4,7 @@ namespace Store\Modules\Sales\Http\Livewire\Orders;
 
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
-use Store\Dashboard\Views\Layouts\DashboardLayout;
+use StorePHP\Dashboard\Views\Layouts\DashboardLayout;
 use Store\Models\Order;
 
 class OrderShow extends Component

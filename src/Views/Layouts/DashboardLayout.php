@@ -1,11 +1,11 @@
 <?php
 
-namespace Store\Dashboard\Views\Layouts;
+namespace StorePHP\Dashboard\Views\Layouts;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 use Illuminate\View\View;
-use Store\Dashboard\Builder\Modules\GenerateSidebar;
+use StorePHP\Dashboard\Builder\Modules\GenerateSidebar;
 
 class DashboardLayout extends Component
 {

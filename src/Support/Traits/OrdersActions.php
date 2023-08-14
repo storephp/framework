@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Dashboard\Support\Traits;
+namespace StorePHP\Dashboard\Support\Traits;
 
 trait OrdersActions
 {

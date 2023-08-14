@@ -1,8 +1,8 @@
 <?php
 
-namespace Store\Dashboard\Builder\Abstracts;
+namespace StorePHP\Dashboard\Builder\Abstracts;
 
-use Store\Dashboard\Builder\Form\Tabs;
+use StorePHP\Dashboard\Builder\Form\Tabs;
 
 abstract class AppendTabs
 {

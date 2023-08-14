@@ -1,8 +1,8 @@
 <?php
 
-namespace Store\Dashboard\Console;
+namespace StorePHP\Dashboard\Console;
 
-use Store\Dashboard\Models\Admin;
+use StorePHP\Dashboard\Models\Admin;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 

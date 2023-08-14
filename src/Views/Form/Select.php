@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Dashboard\Views\Form;
+namespace StorePHP\Dashboard\Views\Form;
 
 use Illuminate\View\Component;
 

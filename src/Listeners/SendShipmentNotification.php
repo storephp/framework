@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Dashboard\Listeners;
+namespace StorePHP\Dashboard\Listeners;
 
 use Store\Modules\Catalog\Events\AddFieldsToCategoryCreate;
 

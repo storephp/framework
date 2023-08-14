@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Dashboard\Builder\Contracts;
+namespace StorePHP\Dashboard\Builder\Contracts;
 
 interface hasGenerateFields
 {

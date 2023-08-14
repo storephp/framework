@@ -4,7 +4,7 @@ namespace Store\Modules\Marketing\Http\Livewire\Coupons;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use Store\Dashboard\Views\Layouts\DashboardLayout;
+use StorePHP\Dashboard\Views\Layouts\DashboardLayout;
 use Store\Support\Facades\Coupon;
 
 class CouponsIndex extends Component

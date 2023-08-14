@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Store\Dashboard\Http\Livewire\Account\LoginPage;
-use Store\Dashboard\Http\Livewire\Admin\Home as AdminHome;
-use Store\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminCreate;
-use Store\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminsIndex;
-use Store\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminUpdate;
-use Store\Dashboard\Http\Livewire\Home;
-use Store\Dashboard\Http\Middleware\GlobalConfigMiddleware;
+use StorePHP\Dashboard\Http\Livewire\Account\LoginPage;
+use StorePHP\Dashboard\Http\Livewire\Admin\Home as AdminHome;
+use StorePHP\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminCreate;
+use StorePHP\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminsIndex;
+use StorePHP\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminUpdate;
+use StorePHP\Dashboard\Http\Livewire\Home;
+use StorePHP\Dashboard\Http\Middleware\GlobalConfigMiddleware;
 
 /*
 |--------------------------------------------------------------------------

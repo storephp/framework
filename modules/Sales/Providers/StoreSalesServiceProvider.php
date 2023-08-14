@@ -3,7 +3,7 @@
 namespace Store\Modules\Sales\Providers;
 
 use Livewire\Livewire;
-use Store\Dashboard\Support\ServiceProvider;
+use StorePHP\Dashboard\Support\ServiceProvider;
 use Store\Modules\Sales\Http\Livewire\Orders\OrderCreate;
 
 class StoreSalesServiceProvider extends ServiceProvider

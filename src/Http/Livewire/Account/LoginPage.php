@@ -1,10 +1,10 @@
 <?php
 
-namespace Store\Dashboard\Http\Livewire\Account;
+namespace StorePHP\Dashboard\Http\Livewire\Account;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use Store\Dashboard\Views\Layouts\AuthLayout;
+use StorePHP\Dashboard\Views\Layouts\AuthLayout;
 
 class LoginPage extends Component
 {

@@ -3,7 +3,7 @@
 namespace Store\Modules\Catalog\Providers;
 
 use Livewire\Livewire;
-use Store\Dashboard\Support\ServiceProvider;
+use StorePHP\Dashboard\Support\ServiceProvider;
 use Store\Modules\Catalog\Http\Livewire\Categories\CategoriesIndex;
 use Store\Modules\Catalog\Http\Livewire\Categories\CategoryCreate;
 use Store\Modules\Catalog\Http\Livewire\Categories\CategoryEdit;

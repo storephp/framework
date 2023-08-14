@@ -4,7 +4,7 @@ namespace Store\Modules\Sales\Http\Livewire\Orders;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use Store\Dashboard\Views\Layouts\DashboardLayout;
+use StorePHP\Dashboard\Views\Layouts\DashboardLayout;
 use Store\Models\Order;
 
 class OrdersIndex extends Component

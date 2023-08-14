@@ -1,10 +1,10 @@
 <?php
 
-namespace Store\Dashboard\Builder;
+namespace StorePHP\Dashboard\Builder;
 
 use Livewire\Component;
-use Store\Dashboard\Builder\Grad\Table;
-use Store\Dashboard\Views\Layouts\DashboardLayout;
+use StorePHP\Dashboard\Builder\Grad\Table;
+use StorePHP\Dashboard\Views\Layouts\DashboardLayout;
 use Store\Models\Product\Category;
 
 class GradBuilder extends Component

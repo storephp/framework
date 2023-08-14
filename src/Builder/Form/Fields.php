@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Dashboard\Builder\Form;
+namespace StorePHP\Dashboard\Builder\Form;
 
 use Exception;
 

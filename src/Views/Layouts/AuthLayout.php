@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Dashboard\Views\Layouts;
+namespace StorePHP\Dashboard\Views\Layouts;
 
 use Illuminate\View\Component;
 use Illuminate\View\View;

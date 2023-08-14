@@ -1,8 +1,8 @@
 <?php
 
-namespace Store\Dashboard\Builder\Abstracts;
+namespace StorePHP\Dashboard\Builder\Abstracts;
 
-use Store\Dashboard\Builder\Form\Fields;
+use StorePHP\Dashboard\Builder\Form\Fields;
 
 class AppendFields
 {

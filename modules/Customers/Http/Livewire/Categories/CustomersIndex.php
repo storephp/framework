@@ -4,7 +4,7 @@ namespace Store\Modules\Customers\Http\Livewire\Categories;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use Store\Dashboard\Views\Layouts\DashboardLayout;
+use StorePHP\Dashboard\Views\Layouts\DashboardLayout;
 use Store\Models\Product\Category;
 use Store\Modules\Customers\Models\Customer;
 

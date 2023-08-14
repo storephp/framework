@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Dashboard\Models;
+namespace StorePHP\Dashboard\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;

@@ -3,8 +3,8 @@
 namespace Store\Modules\Customers\Http\Livewire\Categories;
 
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Store\Dashboard\Builder\Contracts\hasGenerateFields;
-use Store\Dashboard\Builder\FormBuilder;
+use StorePHP\Dashboard\Builder\Contracts\hasGenerateFields;
+use StorePHP\Dashboard\Builder\FormBuilder;
 use Store\Modules\Customers\Models\Customer;
 
 class CustomerCreate extends FormBuilder implements hasGenerateFields

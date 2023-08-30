@@ -17,6 +17,7 @@
     ],
     "require": {
         "php": "^8.1",
+        "storephp/bundler": "*",
         "jantinnerezo/livewire-alert": "^2.2",
         "laravel/framework": "^10.0",
         "livewire/livewire": "^2.10",
@@ -36,13 +37,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "StorePHP\\Dashboard\\StoreDashboardServiceProvider",
-                "Store\\Modules\\Catalog\\Providers\\StoreCatalogServiceProvider",
-                "Store\\Modules\\Sales\\Providers\\StoreSalesServiceProvider",
-                "Store\\Modules\\Customers\\Providers\\StoreCustomersServiceProvider",
-                "Store\\Modules\\Marketing\\Providers\\StoreMarketingServiceProvider",
-                "Store\\Modules\\System\\Providers\\StoreSystemServiceProvider",
-                "Store\\Modules\\System\\Configuration\\Providers\\StoreConfigurationServiceProvider"
+                "StorePHP\\Dashboard\\StoreDashboardServiceProvider"
             ]
         }
     },

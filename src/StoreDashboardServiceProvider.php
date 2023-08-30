@@ -2,6 +2,14 @@
 
 namespace StorePHP\Dashboard;
 
+use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
+use Store\Support\Traits\HasSetupStore;
+use StorePHP\Bundler\BundlesDirectory;
 use StorePHP\Dashboard\Console\CreateNewAdmin;
 use StorePHP\Dashboard\Http\Livewire\Account\LoginPage;
 use StorePHP\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminCreate;
@@ -19,13 +27,6 @@ use StorePHP\Dashboard\Views\Form\InputText;
 use StorePHP\Dashboard\Views\Form\InputTextarea;
 use StorePHP\Dashboard\Views\Form\Select;
 use StorePHP\Dashboard\Views\Layouts\DashboardLayout;
-use Store\Support\Traits\HasSetupStore;
-use Illuminate\Routing\Router;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\ServiceProvider;
-use Livewire\Livewire;
 
 class StoreDashboardServiceProvider extends ServiceProvider
 {
@@ -53,6 +54,8 @@ class StoreDashboardServiceProvider extends ServiceProvider
         ]);
 
         $this->mergeConfigFrom(__DIR__ . '/../config/dashboard.php', 'store.dashboard');
+
+        BundlesDirectory::setDirectoryPath(__DIR__ . './../modules');
     }
 
     /**

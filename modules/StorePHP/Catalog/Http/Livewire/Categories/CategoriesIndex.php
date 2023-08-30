@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Modules\Catalog\Http\Livewire\Categories;
+namespace Modules\StorePHP\Catalog\Http\Livewire\Categories;
 
 use Store\Models\Product\Category;
 use Livewire\Component;

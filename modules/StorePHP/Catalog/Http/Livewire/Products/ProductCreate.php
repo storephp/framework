@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Modules\Catalog\Http\Livewire\Products;
+namespace Modules\StorePHP\Catalog\Http\Livewire\Products;
 
 use Illuminate\Support\Str;
 use Jantinnerezo\LivewireAlert\LivewireAlert;

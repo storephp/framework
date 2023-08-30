@@ -1,11 +1,10 @@
 <?php
 
-namespace Store\Modules\Catalog\Http\Livewire\Products;
+namespace Modules\StorePHP\Catalog\Http\Livewire\Products;
 
 use Livewire\Component;
 use Livewire\WithPagination;
 use StorePHP\Dashboard\Views\Layouts\DashboardLayout;
-// use Store\Modules\Catalog\Models\Product;
 use Store\Support\Facades\Product;
 
 class ProductsIndex extends Component

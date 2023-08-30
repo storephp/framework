@@ -8,6 +8,7 @@ use StorePHP\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminsIndex;
 use StorePHP\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminUpdate;
 use StorePHP\Dashboard\Http\Livewire\Home;
 use StorePHP\Dashboard\Http\Middleware\GlobalConfigMiddleware;
+use StorePHP\Bundler\Facades\Bundles;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,5 +39,17 @@ Route::middleware(config('store.dashboard.routes.middlewares', []))->group(funct
                 });
             });
         });
+
+        try {
+            foreach (Bundles::getRoutes() as $routePath) {
+                Route::middleware(array_merge(config('store.dashboard.routes.middlewares', []), ['martTeam']))
+                    ->group($routePath);
+            }
+        } catch (\Throwable $th) {
+            if (!app()->runningInConsole()) {
+                throw $th;
+            }
+        }
+
     });
 });

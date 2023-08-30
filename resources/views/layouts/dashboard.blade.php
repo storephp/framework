@@ -85,7 +85,34 @@
                             </a>
                         </li>
 
-                        @foreach ($modules as $module)
+                        @foreach ($sidebar as $menu)
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
+                                    data-bs-auto-close="false" role="button" aria-expanded="false">
+                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                        @svg('tabler-' . $menu['info']['icon'])
+                                    </span>
+                                    <span class="nav-link-title">
+                                        {{ str_contains($menu['info']['label'], '::') ? __($menu['info']['label']) : $menu['info']['label'] }}
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <div class="dropdown-menu-columns">
+                                        <div class="dropdown-menu-column">
+                                            @foreach ($menu['links'] as $link)
+                                                <a class="dropdown-item" href="{{ route($link['href']) }}">
+                                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                        @svg('tabler-' . $link['icon'])
+                                                    </span>
+                                                    {{ str_contains($link['label'], '::') ? __($link['label']) : $link['label'] }}
+                                                </a>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
+                        {{-- @foreach ($modules as $module)
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
                                     data-bs-auto-close="false" role="button" aria-expanded="false">
@@ -136,7 +163,7 @@
                                     </div>
                                 </div>
                             </li>
-                        @endforeach
+                        @endforeach --}}
 
                     </ul>
                 </div>
@@ -145,9 +172,8 @@
         <!-- Navbar -->
         <header class="navbar navbar-expand-md navbar-light d-none d-lg-flex d-print-none">
             <div class="container-xl">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu"
+                    aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-nav flex-row order-md-last">

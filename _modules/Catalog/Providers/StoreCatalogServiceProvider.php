@@ -50,25 +50,6 @@ class StoreCatalogServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->bootModuleAPP(__DIR__ . '/..', [
-            'icon' => 'clipboard-list',
-            'name' => 'StoreCatalog::menu.catalog',
-            'slug' => 'catalog'
-        ], 'store_catalog', [
-            $this->addLink(
-                icon: 'category',
-                name: 'StoreCatalog::menu.categories',
-                route: 'store.dashboard.catalog.categories.index',
-                order: 10,
-            ),
-            $this->addLink(
-                icon: 'packages',
-                name: 'Products',
-                route: 'store.dashboard.catalog.products.index',
-                order: 20,
-            ),
-        ]);
-
         Livewire::component('catalog-categories-index', CategoriesIndex::class);
         Livewire::component('catalog-categories-create', CategoryCreate::class);
         Livewire::component('catalog-categories-edit', CategoryEdit::class);

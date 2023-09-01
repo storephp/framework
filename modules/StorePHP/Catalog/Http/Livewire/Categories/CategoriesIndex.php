@@ -1,33 +1,19 @@
 <?php
 
-namespace Modules\StorePHP\Catalog\Http\Livewire\Categories;
+namespace Store\Modules\StorePHP\Catalog\Http\Livewire\Categories;
 
-use Store\Models\Product\Category;
-use Livewire\Component;
-use Livewire\WithPagination;
+use StorePHP\Bundler\Abstracts\GridAbstract;
 use StorePHP\Dashboard\Views\Layouts\DashboardLayout;
 
-class CategoriesIndex extends Component
+class CategoriesIndex extends GridAbstract
 {
-    use WithPagination;
+    public $gridId = 'storephp_catalog_categories_index';
 
-    protected $paginationTheme = 'bootstrap';
+    protected $pretitle = 'Catalog';
+    protected $title = 'Categories listing';
 
-    public function render()
+    public function layout()
     {
-        $categories = Category::paginate(15);
-
-        return view('store::catalog.categories.index', [
-            'categories' => $categories,
-        ])->layout(DashboardLayout::class);
-    }
-
-    public function deleteIt(Category $category, $checkChildren = true)
-    {
-        if ($checkChildren) {
-            return ($category->hasChildren()) ? 'hasChildren' : 'notHasChildren';
-        }
-
-        return ($category->delete()) ? 'done' : 'error';
+        return DashboardLayout::class;
     }
 }

@@ -1,118 +1,37 @@
 <?php
 
-namespace Modules\StorePHP\Catalog\Http\Livewire\Categories;
+namespace Store\Modules\StorePHP\Catalog\Http\Livewire\Categories;
 
 use Illuminate\Support\Str;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
-use StorePHP\Dashboard\Builder\Contracts\hasGenerateFields;
-use StorePHP\Dashboard\Builder\Contracts\hasGenerateTabs;
-use StorePHP\Dashboard\Builder\FormBuilder;
 use Store\Models\Product\Category;
-use Store\Modules\Catalog\Support\Facades\CategoryForm;
-use Store\Modules\Catalog\Support\Facades\CategoryFormTabs;
+use StorePHP\Bundler\Abstracts\FromAbstract;
+use StorePHP\Dashboard\Views\Layouts\DashboardLayout;
 
-class CategoryCreate extends FormBuilder implements hasGenerateTabs, hasGenerateFields
+class CategoryCreate extends FromAbstract
 {
-    use LivewireAlert;
+    public $formId = 'storephp_catalog_categories_form';
 
-    public $pagePretitle = 'Catalog';
-    // public $pageTitle = 'Create new category';
+    protected $pretitle = 'Catalog';
+    protected $title = 'Create new category';
 
-    // protected $generatePath = 'catalog.categories.create';
-
-    public $slug;
-
-    // public $form;
-
-    // public $defaultTab = 'basic.id';
-
-    // public function buildSlug()
-    // {
-    //     $this->slug = Str::slug($this->name, '-');
-    // }
-
-    // protected function generateTabs($tabs)
-    // {
-    //     // $tabs->addTab([
-    //     //     'id' => 'basic.id',
-    //     //     'name' => 'basic info',
-    //     // ]);
-    // }
-
-    public function generateTabs($tabs)
+    public function layout()
     {
-        $tabs->addTab([
-            'id' => 'basic',
-            'name' => 'Basic info',
-        ]);
-
-        $tabs->mergeTabs(CategoryFormTabs::getTabs());
-    }
-
-    public function generateFields($form)
-    {
-        $form->addField('select', [
-            // 'tab' => 'basic.id',
-            'label' => 'Parent category',
-            'model' => 'parent_id',
-            'options' => Category::get()->map(function ($category) {
-                return [
-                    'label' => $category->name,
-                    'value' => $category->id,
-                ];
-            }),
-            'rules' => 'nullable',
-            'order' => 1,
-            'hint' => 'You can not select.',
-        ]);
-
-        $form->addField('text', [
-            // 'tab' => 'basic.id',
-            'label' => 'Name category',
-            'model' => 'name',
-            'rules' => 'required',
-            'order' => 10,
-            'hint' => 'dsf dsf dsff',
-        ]);
-
-        $form->addField('text', [
-            // 'tab' => 'basic.id',
-            'label' => 'Slug category',
-            'model' => 'slug',
-            'rules' => 'required',
-            'order' => 20,
-        ]);
-
-        $form->mergeFields(CategoryForm::getFields());
-
-        // AddFieldsToCategoryCreate::dispatch($this->form);
+        return DashboardLayout::class;
     }
 
     public function submit()
     {
-        $validatedData = $this->validate();
+        $validateData = $this->validate();
 
-        $validatedData['slug'] = Str::slug($validatedData['slug'], '-');
+        $validateData['slug'] = Str::slug($validateData['slug'], '-');
 
         $category = Category::create([
-            'parent_id' => $validatedData['parent_id'],
-            'slug' => $validatedData['slug'],
+            'parent_id' => $validateData['parent_id'],
+            'slug' => $validateData['slug'],
         ]);
-        $category->name = $validatedData['name'];
 
-        foreach (CategoryForm::getFields() as $field) {
-            $category->{$field['model']} = $this->{$field['model']};
-        }
+        $category->name = $validateData['name'];
 
         $category->save();
-
-        // CategoryCreated::dispatch($category, $this->form);
-
-        return $this->alert('success', 'Saved!');
-    }
-
-    protected function pageTitle()
-    {
-        return __('StoreCatalog::category.create');
     }
 }

@@ -30,9 +30,10 @@ class CategoryUpdate extends FromAbstract
     {
         $validateData = $this->validate();
 
-        $this->category->parent_id = $validateData['parent_id'];
-        $this->category->slug = $validateData['slug'];
-        $this->category->name = $validateData['name'];
+        foreach ($this->models() as $model) {
+            $this->category->{$model} = $validateData[$model];
+        }
+
         $this->category->save();
     }
 }

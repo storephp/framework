@@ -30,7 +30,9 @@ class CategoryCreate extends FromAbstract
             'slug' => $validateData['slug'],
         ]);
 
-        $category->name = $validateData['name'];
+        foreach ($this->models(['parent_id', 'slug']) as $model) {
+            $category->{$model} = $validateData[$model];
+        }
 
         $category->save();
     }

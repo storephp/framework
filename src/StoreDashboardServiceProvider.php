@@ -10,13 +10,11 @@ use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 use Store\Support\Traits\HasSetupStore;
 use StorePHP\Bundler\BundlesDirectory;
+use StorePHP\Bundler\Facades\Bundles;
 use StorePHP\Dashboard\Console\CreateNewAdmin;
 use StorePHP\Dashboard\Http\Livewire\Account\LoginPage;
 use StorePHP\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminCreate;
 use StorePHP\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminUpdate;
-use StorePHP\Dashboard\Http\Livewire\Catalog\Categories\CategoriesIndex;
-use StorePHP\Dashboard\Http\Livewire\Catalog\Categories\CategoryCreate;
-use StorePHP\Dashboard\Http\Livewire\Catalog\Categories\CategoryEdit;
 use StorePHP\Dashboard\Http\Livewire\System\Updates;
 use StorePHP\Dashboard\Http\Middleware\StoreAuthenticated;
 use StorePHP\Dashboard\Views\Components\Widgets\WidgetEmptyData;
@@ -79,19 +77,16 @@ class StoreDashboardServiceProvider extends ServiceProvider
 
         Livewire::component('store-account-login', LoginPage::class);
 
-        Livewire::component('catalog-categories-index', CategoriesIndex::class);
-        Livewire::component('catalog-categories-create', CategoryCreate::class);
-        Livewire::component('catalog-categories-edit', CategoryEdit::class);
-
         Livewire::component('admin-permissions-admins-create', AdminCreate::class);
         Livewire::component('admin-permissions-admins-update', AdminUpdate::class);
 
-        // $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'store');
 
         $this->loadViewComponentsAs('store', $this->viewComponents());
+
+        $this->registerProvoiders();
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -105,6 +100,13 @@ class StoreDashboardServiceProvider extends ServiceProvider
             $this->commands([
                 CreateNewAdmin::class,
             ]);
+        }
+    }
+
+    protected function registerProvoiders()
+    {
+        foreach (Bundles::getProvoiders() as $provider) {
+            $this->app->register($provider);
         }
     }
 

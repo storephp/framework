@@ -1,36 +1,19 @@
 <?php
 
-namespace Modules\StorePHP\Catalog\Http\Livewire\Products;
+namespace Store\Modules\StorePHP\Catalog\Http\Livewire\Products;
 
-use Livewire\Component;
-use Livewire\WithPagination;
+use StorePHP\Bundler\Abstracts\GridAbstract;
 use StorePHP\Dashboard\Views\Layouts\DashboardLayout;
-use Store\Support\Facades\Product;
 
-class ProductsIndex extends Component
+class ProductsIndex extends GridAbstract
 {
-    use WithPagination;
+    public $gridId = 'storephp_catalog_products_index';
 
-    public $search = '';
+    protected $pretitle = 'Catalog';
+    protected $title = 'Products listing';
 
-    protected $paginationTheme = 'bootstrap';
-
-    public function render()
+    public function layout()
     {
-        $products = Product::query()->where(function ($q) {
-            if ($this->search) {
-                $q->where('sku', 'like', '%' . $this->search . '%')
-                    ->orByEntry('name', 'like', '%' . $this->search . '%');
-            }
-        })->paginate(15);
-
-        return view('storeCatalog::products.index', [
-            'products' => $products,
-        ])->layout(DashboardLayout::class);
-    }
-
-    public function deleteIt(Product $product)
-    {
-        return ($product->delete()) ? 'done' : 'error';
+        return DashboardLayout::class;
     }
 }

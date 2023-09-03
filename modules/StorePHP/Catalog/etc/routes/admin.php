@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use Store\Modules\StorePHP\Catalog\Http\Livewire\Categories\CategoriesIndex;
 use Store\Modules\StorePHP\Catalog\Http\Livewire\Categories\CategoryCreate;
 use Store\Modules\StorePHP\Catalog\Http\Livewire\Categories\CategoryUpdate;
+use Store\Modules\StorePHP\Catalog\Http\Livewire\Products\ProductCreate;
+use Store\Modules\StorePHP\Catalog\Http\Livewire\Products\ProductsIndex;
+use Store\Modules\StorePHP\Catalog\Http\Livewire\Products\ProductUpdate;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +24,12 @@ Route::prefix('catalog')->group(function () {
         Route::get('/', CategoriesIndex::class)->name('store.dashboard.catalog.categories.index');
         Route::get('/create', CategoryCreate::class)->name('store.dashboard.catalog.categories.create');
         Route::get('/{category}/update', CategoryUpdate::class)->name('store.dashboard.catalog.categories.update');
+    });
+
+
+    Route::prefix('products')->group(function () {
+        Route::get('/', ProductsIndex::class)->name('store.dashboard.catalog.products.index');
+        Route::get('/create', ProductCreate::class)->name('store.dashboard.catalog.products.create');
+        Route::get('/{product}/update', ProductUpdate::class)->name('store.dashboard.catalog.products.update');
     });
 });

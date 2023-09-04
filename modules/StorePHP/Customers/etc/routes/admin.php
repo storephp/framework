@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Store\Modules\Customers\Http\Livewire\Categories\CustomerCreate;
-use Store\Modules\Customers\Http\Livewire\Categories\CustomersIndex;
+use Store\Modules\StorePHP\Customers\Http\Livewire\CustomerCreate;
+use Store\Modules\StorePHP\Customers\Http\Livewire\CustomersIndex;
+use Store\Modules\StorePHP\Customers\Http\Livewire\CustomerUpdate;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,9 @@ use Store\Modules\Customers\Http\Livewire\Categories\CustomersIndex;
 | contains the "web" middleware group. Now create something great!
 |
  */
-Route::prefix('/')->group(function () {
+
+Route::prefix('/customers')->group(function () {
     Route::get('/', CustomersIndex::class)->name('store.dashboard.customers.index');
     Route::get('/create', CustomerCreate::class)->name('store.dashboard.customers.create');
+    Route::get('/{customer}/update', CustomerUpdate::class)->name('store.dashboard.customers.update');
 });

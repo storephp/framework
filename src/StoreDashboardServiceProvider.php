@@ -53,7 +53,7 @@ class StoreDashboardServiceProvider extends ServiceProvider
 
         $this->mergeConfigFrom(__DIR__ . '/../config/dashboard.php', 'store.dashboard');
 
-        BundlesDirectory::setDirectoryPath(__DIR__ . './../modules');
+        BundlesDirectory::setDirectoryPath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'modules');
     }
 
     /**

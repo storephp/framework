@@ -8,7 +8,11 @@ return new class
 {
     public function menu(Menu $menu)
     {
-        $menu->info('users', 'Customers');
+        $menu->info(
+            icon: 'users',
+            label: 'Customers',
+            order: 30,
+        );
     }
 
     public function links(Links $links)

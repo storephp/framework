@@ -8,7 +8,11 @@ return new class
 {
     public function menu(Menu $menu)
     {
-        $menu->info('clipboard-list', 'Catalog');
+        $menu->info(
+            icon: 'clipboard-list',
+            label: 'Catalog',
+            order: 20,
+        );
     }
 
     public function links(Links $links)

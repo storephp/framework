@@ -4,19 +4,15 @@ namespace StorePHP\Dashboard\Views\Layouts;
 
 use Illuminate\View\Component;
 use Illuminate\View\View;
+use StorePHP\Bundler\Facades\Bundles;
 
 class AdminLayout extends Component
 {
-    /**
-     * Create the component instance.
-     *
-     * @param  string  $type
-     * @param  string  $message
-     * @return void
-     */
+    public $sidebar;
+
     public function __construct()
     {
-        //
+        $this->sidebar = Bundles::getAdminSidebar();
     }
 
     /**
@@ -26,7 +22,7 @@ class AdminLayout extends Component
     {
         // $modules = config('store.dashboard.core.modules');
 
-        // dd($modules);
+        // dd($this->sidebar);
 
         return view('store::layouts.admin');
     }

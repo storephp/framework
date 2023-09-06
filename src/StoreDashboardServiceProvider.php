@@ -13,8 +13,6 @@ use StorePHP\Bundler\BundlesDirectory;
 use StorePHP\Bundler\Facades\Bundles;
 use StorePHP\Dashboard\Console\CreateNewAdmin;
 use StorePHP\Dashboard\Http\Livewire\Account\LoginPage;
-use StorePHP\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminCreate;
-use StorePHP\Dashboard\Http\Livewire\Admin\Permissions\Admins\AdminUpdate;
 use StorePHP\Dashboard\Http\Livewire\System\Updates;
 use StorePHP\Dashboard\Http\Middleware\StoreAuthenticated;
 use StorePHP\Dashboard\Views\Components\Widgets\WidgetEmptyData;
@@ -76,9 +74,6 @@ class StoreDashboardServiceProvider extends ServiceProvider
         Livewire::component('store-system-updates', Updates::class);
 
         Livewire::component('store-account-login', LoginPage::class);
-
-        Livewire::component('admin-permissions-admins-create', AdminCreate::class);
-        Livewire::component('admin-permissions-admins-update', AdminUpdate::class);
 
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 

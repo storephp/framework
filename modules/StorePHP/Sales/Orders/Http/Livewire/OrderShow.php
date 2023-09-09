@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Modules\Sales\Http\Livewire\Orders;
+namespace Store\Modules\StorePHP\Sales\Orders\Http\Livewire;
 
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
@@ -26,7 +26,7 @@ class OrderShow extends Component
 
         // dd($components);
 
-        return view('storeSales::orders.show', [
+        return view('storephp-sales-orders::show', [
             'order' => $this->order,
             'componentButtonActions' => $components,
         ])->layout(DashboardLayout::class);

@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Modules\Sales\Http\Livewire\Orders;
+namespace Store\Modules\StorePHP\Sales\Orders\Http\Livewire;
 
 use Illuminate\Support\Facades\Cache;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -9,13 +9,9 @@ use StorePHP\Dashboard\Views\Layouts\DashboardLayout;
 use Store\Models\Basket\Quote;
 use Store\Models\Customer\Address;
 use Store\Modules\Catalog\Models\Product;
-use Store\Modules\Customers\Models\Customer;
-use Store\Support\Services\BasketService;
-use Store\Support\Services\CustomerService;
-use Store\Support\Services\OrderService;
 use Store\Support\Facades\Basket;
 use Store\Support\Facades\Order;
-use Store\Support\Facades\Customer as CustomerFacades;
+use Store\Support\Facades\Customer;
 
 class OrderCreate extends Component
 {
@@ -39,8 +35,10 @@ class OrderCreate extends Component
     public $basketDiscountTotal = 0.00;
     public $basketTotal = 0.00;
 
-    public function mount(Customer $customer)
+    public function mount($customer = null)
     {
+        $customer = Customer::setCustomerId($customer)->getData();
+
         $this->customer_id = $customer->id;
 
         $this->customer = $customer;
@@ -65,7 +63,7 @@ class OrderCreate extends Component
 
         $this->UpdateBasket($this->basket);
 
-        $this->customerService = CustomerFacades::setCustomerId($this->customer_id);
+        $this->customerService = Customer::setCustomerId($this->customer_id);
 
         // dd($this->basket->getUlid());
 
@@ -88,7 +86,7 @@ class OrderCreate extends Component
 
         $products = Product::get();
 
-        return view('storeSales::orders.create', [
+        return view('storephp-sales-orders::create', [
             'customers' => $customers,
             'products' => $products,
         ])->layout(DashboardLayout::class);

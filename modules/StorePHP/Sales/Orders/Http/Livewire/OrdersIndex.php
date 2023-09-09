@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Modules\Sales\Http\Livewire\Orders;
+namespace Store\Modules\StorePHP\Sales\Orders\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -26,7 +26,7 @@ class OrdersIndex extends Component
 
         // dd($orders);
 
-        return view('storeSales::orders.index', [
+        return view('storephp-sales-orders::index', [
             'orders' => $orders,
         ])->layout(DashboardLayout::class);
     }

@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="{{ asset('/vendor/storephp/sweetalert2.min.css') }}">
 
     @livewireStyles
+
+    <link rel="stylesheet" href="{{ asset('/vendor/storephp/sweetalert2.min.css') }}">
+
+    <script src="{{ asset('/vendor/storephp/alpinejs.min.js') }}" defer></script>
 </head>
 
 <body class="layout-boxed">

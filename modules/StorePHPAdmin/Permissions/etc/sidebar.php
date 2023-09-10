@@ -24,7 +24,7 @@ return new class
         $links->link(
             icon: 'user-check',
             label: 'Roles',
-            href: 'store.dashboard.permissions.admins.index',
+            href: 'store.dashboard.permissions.roles.index',
         );
     }
 };

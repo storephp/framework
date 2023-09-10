@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Store\Modules\System\Configuration\Http\Livewire\Configurations;
+use Store\Modules\StorePHP\System\Configuration\Http\Livewire\Configurations;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +13,9 @@ use Store\Modules\System\Configuration\Http\Livewire\Configurations;
 | contains the "web" middleware group. Now create something great!
 |
  */
-Route::prefix('configurations')->group(function () {
-    Route::get('/{currentTab?}/{currentSubTab?}', Configurations::class)->name('store.dashboard.system.configurations');
+
+Route::prefix('system')->group(function () {
+    Route::prefix('configurations')->group(function () {
+        Route::get('/{currentTab?}/{currentSubTab?}', Configurations::class)->name('store.dashboard.system.configurations');
+    });
 });

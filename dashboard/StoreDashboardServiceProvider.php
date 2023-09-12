@@ -75,8 +75,6 @@ class StoreDashboardServiceProvider extends ServiceProvider
 
         Livewire::component('store-account-login', LoginPage::class);
 
-        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
-
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'store');
 
         $this->loadViewComponentsAs('store', $this->viewComponents());

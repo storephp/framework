@@ -28,6 +28,7 @@
     "autoload": {
         "psr-4": {
             "": "modules/",
+            "StorePHP\\": "src/",
             "StorePHP\\Dashboard\\": "dashboard/"
         }
     },

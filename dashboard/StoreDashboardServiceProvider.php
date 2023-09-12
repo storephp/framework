@@ -100,8 +100,14 @@ class StoreDashboardServiceProvider extends ServiceProvider
 
     protected function registerProvoiders()
     {
-        foreach (Bundles::getProvoiders() as $provider) {
-            $this->app->register($provider);
+        try {
+            foreach (Bundles::getProvoiders() as $provider) {
+                $this->app->register($provider);
+            }
+        } catch (\Throwable $th) {
+            if (!$this->app->runningInConsole()) {
+                throw $th;
+            }
         }
     }
 

@@ -27,8 +27,8 @@
     },
     "autoload": {
         "psr-4": {
-            "StorePHP\\Dashboard\\": "src/",
-            "": "modules/"
+            "": "modules/",
+            "StorePHP\\Dashboard\\": "dashboard/"
         }
     },
     "extra": {

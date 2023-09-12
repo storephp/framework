@@ -1,5 +1,5 @@
 {
-    "name": "storephp/dashboard",
+    "name": "storephp/framework",
     "description": "eCommerce dashboard to help you manage your eCommerce based on laravel.",
     "type": "library",
     "license": "MIT",
@@ -17,35 +17,26 @@
     ],
     "require": {
         "php": "^8.1",
+        "storephp/bundler": "*",
         "jantinnerezo/livewire-alert": "^2.2",
         "laravel/framework": "^10.0",
         "livewire/livewire": "^2.10",
-        "storephp/core": "^1.0",
+        "storephp/core": "dev-develop",
         "outmart/team": "dev-main",
         "ryangjchandler/blade-tabler-icons": "^2.0"
     },
     "autoload": {
         "psr-4": {
-            "StorePHP\\Dashboard\\": "src/",
-            "Store\\Modules\\": "modules/"
+            "": "modules/",
+            "StorePHP\\": "src/",
+            "StorePHP\\Dashboard\\": "dashboard/"
         }
-    },
-    "config": {
-        "sort-packages": true
     },
     "extra": {
         "laravel": {
             "providers": [
-                "StorePHP\\Dashboard\\StoreDashboardServiceProvider",
-                "Store\\Modules\\Catalog\\Providers\\StoreCatalogServiceProvider",
-                "Store\\Modules\\Sales\\Providers\\StoreSalesServiceProvider",
-                "Store\\Modules\\Customers\\Providers\\StoreCustomersServiceProvider",
-                "Store\\Modules\\Marketing\\Providers\\StoreMarketingServiceProvider",
-                "Store\\Modules\\System\\Providers\\StoreSystemServiceProvider",
-                "Store\\Modules\\System\\Configuration\\Providers\\StoreConfigurationServiceProvider"
+                "StorePHP\\Dashboard\\StoreDashboardServiceProvider"
             ]
         }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }

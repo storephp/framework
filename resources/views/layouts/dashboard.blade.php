@@ -66,78 +66,48 @@
                 </div>
                 <div class="collapse navbar-collapse" id="sidebar-menu">
                     <ul class="navbar-nav pt-lg-3">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('store.dashboard.home') }}">
-                                <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="icon icon-tabler icon-tabler-dashboard" width="24" height="24"
-                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                        stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M12 13m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-                                        <path d="M13.45 11.55l2.05 -2.05"></path>
-                                        <path d="M6.4 20a9 9 0 1 1 11.2 0z"></path>
-                                    </svg>
-                                </span>
-                                <span class="nav-link-title">
-                                    Dashboard
-                                </span>
-                            </a>
-                        </li>
+                        @foreach ($sidebar as $menu)
+                            @if (!is_null($menu['info']['href']))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route($menu['info']['href']) }}">
+                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                            @svg('tabler-' . $menu['info']['icon'])
+                                        </span>
+                                        <span class="nav-link-title">
+                                            {{ str_contains($menu['info']['label'], '::') ? __($menu['info']['label']) : $menu['info']['label'] }}
+                                        </span>
+                                    </a>
+                                </li>
+                            @endif
 
-                        @foreach ($modules as $module)
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
-                                    data-bs-auto-close="false" role="button" aria-expanded="false">
-                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                        @svg('tabler-' . $module['icon'])
-                                    </span>
-                                    <span class="nav-link-title">
-                                        {{ str_contains($module['name'], '::') ? __($module['name']) : $module['name'] }}
-                                    </span>
-                                </a>
-                                <div class="dropdown-menu">
-                                    <div class="dropdown-menu-columns">
-                                        <div class="dropdown-menu-column">
-                                            @foreach ($module['menu'] as $link)
-                                                @if (isset($link['route']))
-                                                    <a class="dropdown-item" href="{{ route($link['route']) }}">
+                            @if (is_null($menu['info']['href']))
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
+                                        data-bs-auto-close="false" role="button" aria-expanded="false">
+                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                            @svg('tabler-' . $menu['info']['icon'])
+                                        </span>
+                                        <span class="nav-link-title">
+                                            {{ str_contains($menu['info']['label'], '::') ? __($menu['info']['label']) : $menu['info']['label'] }}
+                                        </span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <div class="dropdown-menu-columns">
+                                            <div class="dropdown-menu-column">
+                                                @foreach ($menu['links'] as $link)
+                                                    <a class="dropdown-item" href="{{ route($link['href']) }}">
                                                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                                                             @svg('tabler-' . $link['icon'])
                                                         </span>
-                                                        {{ str_contains($link['name'], '::') ? __($link['name']) : $link['name'] }}
+                                                        {{ str_contains($link['label'], '::') ? __($link['label']) : $link['label'] }}
                                                     </a>
-                                                @endif
-
-                                                @if (isset($link['submenu']))
-                                                    <a class="dropdown-item dropdown-toggle" href="#"
-                                                        data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                                        role="button" aria-expanded="false">
-                                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                                            @svg('tabler-' . $link['icon'])
-                                                        </span>
-                                                        {{ str_contains($link['name'], '::') ? __($link['name']) : $link['name'] }}
-                                                    </a>
-                                                    <div class="dropdown-menu">
-                                                        @foreach ($link['submenu'] as $_link)
-                                                            <a href="{{ route($_link['route']) }}"
-                                                                class="dropdown-item">
-                                                                <span
-                                                                    class="nav-link-icon d-md-none d-lg-inline-block">
-                                                                    @svg('tabler-' . $link['icon'])
-                                                                </span>
-                                                                {{ str_contains($_link['name'], '::') ? __($_link['name']) : $_link['name'] }}
-                                                            </a>
-                                                        @endforeach
-                                                    </div>
-                                                @endif
-                                            @endforeach
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
+                            @endif
                         @endforeach
-
                     </ul>
                 </div>
             </div>
@@ -145,20 +115,18 @@
         <!-- Navbar -->
         <header class="navbar navbar-expand-md navbar-light d-none d-lg-flex d-print-none">
             <div class="container-xl">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu"
+                    aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-nav flex-row order-md-last">
                     <div class="nav-item d-none d-md-flex me-3">
                         <div class="btn-list">
-                            <a href="{{ route('store.dashboard.admin-area.home') }}" class="btn"
-                                rel="noreferrer">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="icon icon-tabler icon-tabler-user-circle" width="24" height="24"
-                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                            <a href="{{ route('store.dashboard.admin-area.home') }}" class="btn" rel="noreferrer">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle"
+                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" fill="none" stroke-linecap="round"
+                                    stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                     <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
                                     <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>

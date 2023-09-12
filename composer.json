@@ -1,5 +1,5 @@
 {
-    "name": "storephp/dashboard",
+    "name": "storephp/framework",
     "description": "eCommerce dashboard to help you manage your eCommerce based on laravel.",
     "type": "library",
     "license": "MIT",

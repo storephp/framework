@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Modules\StorePHPAdmin\Permissions\Http\Livewire\Admins;
+namespace StorePHPAdmin\Permissions\Http\Livewire\Admins;
 
 use Illuminate\Support\Facades\Hash;
 use StorePHP\Bundler\Abstracts\FromAbstract;

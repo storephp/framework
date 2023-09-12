@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Store\Modules\StorePHP\Customers\Http\Livewire\CustomerCreate;
-use Store\Modules\StorePHP\Customers\Http\Livewire\CustomersIndex;
-use Store\Modules\StorePHP\Customers\Http\Livewire\CustomerUpdate;
+use StorePHP\Customers\Http\Livewire\CustomerCreate;
+use StorePHP\Customers\Http\Livewire\CustomersIndex;
+use StorePHP\Customers\Http\Livewire\CustomerUpdate;
 
 /*
 |--------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 <?php
 
-use Store\Modules\StorePHP\Marketing\Coupons\Providers\StoreMarketingCouponsServiceProvider;
+use StorePHP\Marketing\Coupons\Providers\StoreMarketingCouponsServiceProvider;
 use StorePHP\Bundler\Lib\Module;
 
 return new class

@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Modules\StorePHP\Marketing\Coupons\Http\Livewire;
+namespace StorePHP\Marketing\Coupons\Http\Livewire;
 
 use Store\Support\Exceptions\Coupon\CouponAlreadyExists;
 use Store\Support\Facades\Coupon;

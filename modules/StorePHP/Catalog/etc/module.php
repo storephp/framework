@@ -1,7 +1,7 @@
 <?php
 
-use Store\Modules\StorePHP\Catalog\Providers\StoreCatalogServiceProvider;
 use StorePHP\Bundler\Lib\Module;
+use StorePHP\Catalog\Providers\StoreCatalogServiceProvider;
 
 return new class
 {

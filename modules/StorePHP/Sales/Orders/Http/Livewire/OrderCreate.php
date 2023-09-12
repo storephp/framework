@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Modules\StorePHP\Sales\Orders\Http\Livewire;
+namespace StorePHP\Sales\Orders\Http\Livewire;
 
 use Illuminate\Support\Facades\Cache;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -8,7 +8,7 @@ use Livewire\Component;
 use StorePHP\Dashboard\Views\Layouts\DashboardLayout;
 use Store\Models\Basket\Quote;
 use Store\Models\Customer\Address;
-use Store\Modules\Catalog\Models\Product;
+use Catalog\Models\Product;
 use Store\Support\Facades\Basket;
 use Store\Support\Facades\Order;
 use Store\Support\Facades\Customer;

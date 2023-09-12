@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Modules\StorePHP\Catalog\Http\Livewire\Categories;
+namespace StorePHP\Catalog\Http\Livewire\Categories;
 
 use StorePHP\Bundler\Abstracts\GridAbstract;
 use StorePHP\Dashboard\Views\Layouts\DashboardLayout;

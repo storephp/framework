@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Modules\StorePHP\Customers\Http\Livewire;
+namespace StorePHP\Customers\Http\Livewire;
 
 use StorePHP\Bundler\Abstracts\GridAbstract;
 use StorePHP\Dashboard\Views\Layouts\DashboardLayout;

@@ -1,12 +1,12 @@
 <?php
 
-namespace Store\Modules\StorePHP\Customers\Providers;
+namespace StorePHP\Customers\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
-use Store\Modules\StorePHP\Customers\Http\Livewire\CustomerCreate;
-use Store\Modules\StorePHP\Customers\Http\Livewire\CustomersIndex;
-use Store\Modules\StorePHP\Customers\Http\Livewire\CustomerUpdate;
+use StorePHP\Customers\Http\Livewire\CustomerCreate;
+use StorePHP\Customers\Http\Livewire\CustomersIndex;
+use StorePHP\Customers\Http\Livewire\CustomerUpdate;
 
 class StorePHPCustomersServiceProvider extends ServiceProvider
 {

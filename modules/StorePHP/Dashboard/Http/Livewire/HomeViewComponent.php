@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Modules\StorePHP\Dashboard\Http\Livewire;
+namespace StorePHP\Dashboard\Http\Livewire;
 
 use Livewire\Component;
 use StorePHP\Dashboard\Views\Layouts\DashboardLayout;

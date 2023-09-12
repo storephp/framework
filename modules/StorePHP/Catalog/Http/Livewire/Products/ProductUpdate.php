@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Modules\StorePHP\Catalog\Http\Livewire\Products;
+namespace StorePHP\Catalog\Http\Livewire\Products;
 
 use Livewire\WithFileUploads;
 use Store\Models\Product;

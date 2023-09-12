@@ -28,11 +28,8 @@
     "autoload": {
         "psr-4": {
             "StorePHP\\Dashboard\\": "src/",
-            "Store\\Modules\\": "modules/"
+            "": "modules/"
         }
-    },
-    "config": {
-        "sort-packages": true
     },
     "extra": {
         "laravel": {
@@ -40,7 +37,5 @@
                 "StorePHP\\Dashboard\\StoreDashboardServiceProvider"
             ]
         }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }

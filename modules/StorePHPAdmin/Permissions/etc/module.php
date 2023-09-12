@@ -1,6 +1,6 @@
 <?php
 
-use Store\Modules\StorePHPAdmin\Permissions\Providers\StorePHPPermissionsServiceProvider;
+use StorePHPAdmin\Permissions\Providers\StorePHPPermissionsServiceProvider;
 use StorePHP\Bundler\Lib\Module;
 
 return new class

@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Modules\StorePHP\Marketing\Coupons\Http\Livewire;
+namespace StorePHP\Marketing\Coupons\Http\Livewire;
 
 use StorePHP\Bundler\Abstracts\GridAbstract;
 use StorePHP\Dashboard\Views\Layouts\DashboardLayout;

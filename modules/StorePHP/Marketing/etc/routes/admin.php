@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Store\Modules\StorePHP\Marketing\Coupons\Http\Livewire\CouponCreate;
-use Store\Modules\StorePHP\Marketing\Coupons\Http\Livewire\CouponsIndex;
-use Store\Modules\StorePHP\Marketing\Coupons\Http\Livewire\CouponUpdate;
+use StorePHP\Marketing\Coupons\Http\Livewire\CouponCreate;
+use StorePHP\Marketing\Coupons\Http\Livewire\CouponsIndex;
+use StorePHP\Marketing\Coupons\Http\Livewire\CouponUpdate;
 
 /*
 |--------------------------------------------------------------------------

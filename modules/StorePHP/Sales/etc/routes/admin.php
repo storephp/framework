@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Store\Modules\StorePHP\Sales\Orders\Http\Livewire\OrderCreate;
-use Store\Modules\StorePHP\Sales\Orders\Http\Livewire\OrderShow;
-use Store\Modules\StorePHP\Sales\Orders\Http\Livewire\OrdersIndex;
+use StorePHP\Sales\Orders\Http\Livewire\OrderCreate;
+use StorePHP\Sales\Orders\Http\Livewire\OrderShow;
+use StorePHP\Sales\Orders\Http\Livewire\OrdersIndex;
 
 /*
 |--------------------------------------------------------------------------

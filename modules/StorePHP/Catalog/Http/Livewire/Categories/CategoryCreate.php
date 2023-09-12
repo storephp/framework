@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Modules\StorePHP\Catalog\Http\Livewire\Categories;
+namespace StorePHP\Catalog\Http\Livewire\Categories;
 
 use Illuminate\Support\Str;
 use Store\Models\Product\Category;

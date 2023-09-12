@@ -1,10 +1,10 @@
 <?php
 
-namespace Store\Modules\StorePHP\System\Configuration\Providers;
+namespace StorePHP\System\Configuration\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
-use Store\Modules\StorePHP\System\Configuration\Http\Livewire\Configurations;
+use StorePHP\System\Configuration\Http\Livewire\Configurations;
 
 class StoreSystemConfigurationServiceProvider extends ServiceProvider
 {

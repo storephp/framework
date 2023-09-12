@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Modules\StorePHP\Customers\Http\Livewire;
+namespace StorePHP\Customers\Http\Livewire;
 
 use Store\Support\Facades\Product;
 use StorePHP\Bundler\Abstracts\FromAbstract;

@@ -1,14 +1,14 @@
 <?php
 
-namespace Store\Modules\StorePHP\Catalog\Providers;
+namespace StorePHP\Catalog\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
-use Store\Modules\StorePHP\Catalog\Http\Livewire\Categories\CategoriesIndex;
-use Store\Modules\StorePHP\Catalog\Http\Livewire\Categories\CategoryCreate;
-use Store\Modules\StorePHP\Catalog\Http\Livewire\Categories\CategoryUpdate;
-use Store\Modules\StorePHP\Catalog\Http\Livewire\Products\ProductCreate;
-use Store\Modules\StorePHP\Catalog\Http\Livewire\Products\ProductUpdate;
+use StorePHP\Catalog\Http\Livewire\Categories\CategoriesIndex;
+use StorePHP\Catalog\Http\Livewire\Categories\CategoryCreate;
+use StorePHP\Catalog\Http\Livewire\Categories\CategoryUpdate;
+use StorePHP\Catalog\Http\Livewire\Products\ProductCreate;
+use StorePHP\Catalog\Http\Livewire\Products\ProductUpdate;
 
 class StoreCatalogServiceProvider extends ServiceProvider
 {

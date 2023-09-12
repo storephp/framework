@@ -1,6 +1,6 @@
 <?php
 
-use Store\Modules\StorePHP\Sales\Orders\Providers\StoreSalesOrdersServiceProvider;
+use StorePHP\Sales\Orders\Providers\StoreSalesOrdersServiceProvider;
 use StorePHP\Bundler\Lib\Module;
 
 return new class

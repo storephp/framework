@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Store\Modules\StorePHPAdmin\Permissions\Http\Livewire\Admins\AdminCreate;
-use Store\Modules\StorePHPAdmin\Permissions\Http\Livewire\Admins\AdminsIndex;
-use Store\Modules\StorePHPAdmin\Permissions\Http\Livewire\Admins\AdminUpdate;
-use Store\Modules\StorePHPAdmin\Permissions\Http\Livewire\Roles\RoleCreate;
-use Store\Modules\StorePHPAdmin\Permissions\Http\Livewire\Roles\RolesIndex;
-use Store\Modules\StorePHPAdmin\Permissions\Http\Livewire\Roles\RoleUpdate;
+use StorePHPAdmin\Permissions\Http\Livewire\Admins\AdminCreate;
+use StorePHPAdmin\Permissions\Http\Livewire\Admins\AdminsIndex;
+use StorePHPAdmin\Permissions\Http\Livewire\Admins\AdminUpdate;
+use StorePHPAdmin\Permissions\Http\Livewire\Roles\RoleCreate;
+use StorePHPAdmin\Permissions\Http\Livewire\Roles\RolesIndex;
+use StorePHPAdmin\Permissions\Http\Livewire\Roles\RoleUpdate;
 
 /*
 |--------------------------------------------------------------------------

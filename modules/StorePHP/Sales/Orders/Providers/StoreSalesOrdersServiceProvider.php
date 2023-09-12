@@ -1,10 +1,10 @@
 <?php
 
-namespace Store\Modules\StorePHP\Sales\Orders\Providers;
+namespace StorePHP\Sales\Orders\Providers;
 
 use Livewire\Livewire;
 use Illuminate\Support\ServiceProvider;
-use Store\Modules\StorePHP\Sales\Orders\Http\Livewire\OrderCreate;
+use StorePHP\Sales\Orders\Http\Livewire\OrderCreate;
 
 class StoreSalesOrdersServiceProvider extends ServiceProvider
 {

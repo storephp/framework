@@ -1,6 +1,6 @@
 <?php
 
-use Store\Modules\StorePHP\Dashboard\Providers\StorePHPDashboardServiceProvider;
+use StorePHP\Dashboard\Providers\StorePHPDashboardServiceProvider;
 use StorePHP\Bundler\Lib\Module;
 
 return new class

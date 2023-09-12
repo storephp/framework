@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Modules\StorePHPAdmin\Permissions\Http\Livewire\Roles;
+namespace StorePHPAdmin\Permissions\Http\Livewire\Roles;
 
 use StorePHP\Bundler\Abstracts\FromAbstract;
 use OutMart\Team\Models\Rule;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Modules\StorePHPAdmin\Permissions\Http\Livewire\Roles;
+namespace StorePHPAdmin\Permissions\Http\Livewire\Roles;
 
 use StorePHP\Bundler\Abstracts\GridAbstract;
 use StorePHP\Dashboard\Views\Layouts\AdminLayout;

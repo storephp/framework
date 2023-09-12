@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Store\Modules\StorePHP\System\Configuration\Http\Livewire\Configurations;
+use StorePHP\System\Configuration\Http\Livewire\Configurations;
 
 /*
 |--------------------------------------------------------------------------

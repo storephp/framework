@@ -1,6 +1,6 @@
 <?php
 
-use Store\Modules\StorePHP\System\Configuration\Providers\StoreSystemConfigurationServiceProvider;
+use StorePHP\System\Configuration\Providers\StoreSystemConfigurationServiceProvider;
 use StorePHP\Bundler\Lib\Module;
 
 return new class

@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Modules\StorePHP\System\Configuration\Http\Livewire;
+namespace StorePHP\System\Configuration\Http\Livewire;
 
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;

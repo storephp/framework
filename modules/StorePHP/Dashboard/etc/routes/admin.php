@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Store\Modules\StorePHP\Dashboard\Http\Livewire\HomeViewComponent;
+use StorePHP\Dashboard\Http\Livewire\HomeViewComponent;
 
 /*
 |--------------------------------------------------------------------------

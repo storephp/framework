@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Modules\StorePHP\Sales\Orders\Http\Livewire;
+namespace StorePHP\Sales\Orders\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;

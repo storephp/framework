@@ -1,6 +1,6 @@
 <?php
 
-namespace Store\Modules\StorePHP\Catalog\Http\Livewire\Categories;
+namespace StorePHP\Catalog\Http\Livewire\Categories;
 
 use Store\Models\Product\Category;
 use StorePHP\Bundler\Abstracts\FromAbstract;

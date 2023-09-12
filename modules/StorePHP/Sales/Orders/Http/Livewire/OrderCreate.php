@@ -8,7 +8,7 @@ use Livewire\Component;
 use StorePHP\Dashboard\Views\Layouts\DashboardLayout;
 use Store\Models\Basket\Quote;
 use Store\Models\Customer\Address;
-use Catalog\Models\Product;
+use Store\Models\Product;
 use Store\Support\Facades\Basket;
 use Store\Support\Facades\Order;
 use Store\Support\Facades\Customer;
@@ -48,7 +48,7 @@ class OrderCreate extends Component
                 'value' => $address->id,
                 'label' => '#' . $address->label . ' - ' . $address->street_line_1,
             ];
-        });
+        })->toArray();
     }
 
     public function booted()
@@ -64,30 +64,13 @@ class OrderCreate extends Component
         $this->UpdateBasket($this->basket);
 
         $this->customerService = Customer::setCustomerId($this->customer_id);
-
-        // dd($this->basket->getUlid());
-
-        // $this->basket->setShippingTotal(30);
-
-        // $this->total = $this->basket->getTotal();
-        // $this->subTotal = $this->basket->getSubTotal();
-        // $this->discountTotal = $this->basket->getDiscountTotal();
-        // $this->shippingTotal = $this->basket->getShippingTotal();
     }
 
     public function render()
     {
-        $customers = Customer::get()->map(function ($customer) {
-            return [
-                'value' => $customer->id,
-                'label' => '#' . $customer->id . ' - ' . $customer->first_name . ' ' . $customer->last_name,
-            ];
-        });
-
         $products = Product::get();
 
         return view('storephp-sales-orders::create', [
-            'customers' => $customers,
             'products' => $products,
         ])->layout(DashboardLayout::class);
     }
@@ -127,22 +110,9 @@ class OrderCreate extends Component
         $this->UpdateBasket($this->basket);
     }
 
-    public function selectCustomer()
-    {
-        $this->customerAddresses = Address::where('customer_id', $this->customer_id)->get()->map(function ($address) {
-            return [
-                'value' => $address->id,
-                'label' => '#' . $address->label . ' - ' . $address->street_line_1,
-            ];
-        });
-    }
-
     public function selectAddress()
     {
-        // dd($this->customerAddress);
         $addt = Address::find($this->customerAddress);
-
-        // dd($addt->label);
 
         $this->customerIntreAddresses = [
             'label' => $addt->label,
@@ -153,10 +123,6 @@ class OrderCreate extends Component
             'street_line_2' => $addt->street_line_2,
             'telephone_number' => $addt->telephone_number,
         ];
-
-        // dd($this->customerAddresses);
-
-        // customerIntreAddresses
     }
 
     public function increase(Quote $quote)

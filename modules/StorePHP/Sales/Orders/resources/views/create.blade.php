@@ -124,42 +124,33 @@
                 <div class="col-8">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Customer info</h3>
-                        </div>
-                        <div class="card-body">
-                            <x-store-select label="Customer name" model="customer_id" :options="$customers"
-                                :required="true" wire:change="selectCustomer()" />
-                        </div>
-                    </div>
-                    <div class="card mt-3">
-                        <div class="card-header">
                             <h3 class="card-title">Customer Address</h3>
                         </div>
                         <div class="card-body">
-                            <x-store-select label="Select Address" model="customerAddress" :options="$customerAddresses"
+                            <x-store-php-select-field label="Select Address" model="customerAddress" :options="$customerAddresses"
                                 :required="true" wire:change="selectAddress()" />
 
                             <div class="hr-text">Shhping also</div>
 
-                            <x-store-input-text label="label" model="customerIntreAddresses.label"
+                            <x-store-php-text-field label="label" model="customerIntreAddresses.label"
                                 :required="true" />
 
-                            <x-store-input-text label="country_code" model="customerIntreAddresses.country_code"
+                            <x-store-php-text-field label="country_code" model="customerIntreAddresses.country_code"
                                 :required="true" />
 
-                            <x-store-input-text label="city_id" model="customerIntreAddresses.city_id"
+                            <x-store-php-text-field label="city_id" model="customerIntreAddresses.city_id"
                                 :required="true" />
 
-                            <x-store-input-text label="postcode" model="customerIntreAddresses.postcode"
+                            <x-store-php-text-field label="postcode" model="customerIntreAddresses.postcode"
                                 :required="true" />
 
-                            <x-store-input-text label="street_line_1" model="customerIntreAddresses.street_line_1"
+                            <x-store-php-text-field label="street_line_1" model="customerIntreAddresses.street_line_1"
                                 :required="true" />
 
-                            <x-store-input-text label="street_line_2" model="customerIntreAddresses.street_line_2"
+                            <x-store-php-text-field label="street_line_2" model="customerIntreAddresses.street_line_2"
                                 :required="true" />
 
-                            <x-store-input-text label="telephone_number"
+                            <x-store-php-text-field label="telephone_number"
                                 model="customerIntreAddresses.telephone_number" :required="true" />
 
                             {{-- <input type="text" wire:model="customerIntreAddresses.label"> --}}

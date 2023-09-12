@@ -17,8 +17,10 @@ use StorePHP\Bundler\Facades\Bundles;
 |
  */
 
-Route::middleware(config('store.dashboard.routes.middlewares', []))->group(function () {
-    Route::prefix(config('store.dashboard.routes.prefix', 'storephp'))->middleware(['web', GlobalConfigMiddleware::class])->group(function () {
+$prefix = $prefix ?? config('store.dashboard.routes.prefix', 'storephp');
+
+Route::middleware(config('store.dashboard.routes.middlewares', []))->group(function () use ($prefix) {
+    Route::prefix($prefix)->middleware(['web', GlobalConfigMiddleware::class])->group(function () {
         Route::get('/login', LoginPage::class)->name('store.admin.login');
         Route::middleware(['martTeam'])->group(function () {
             Route::prefix('admin-area')->group(function () {

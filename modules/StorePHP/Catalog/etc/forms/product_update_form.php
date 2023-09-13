@@ -1,10 +1,12 @@
 <?php
 
+use Store\Models\Product\Category;
+use StorePHP\Bundler\Contracts\Form\FormHasFields;
+use StorePHP\Bundler\Contracts\Form\FormHasTabs;
 use StorePHP\Bundler\Lib\Form\Fields;
 use StorePHP\Bundler\Lib\Form\Tabs;
-use Store\Models\Product\Category;
 
-return new class
+return new class implements FormHasTabs, FormHasFields
 {
     public function tabs(Tabs $tabs)
     {

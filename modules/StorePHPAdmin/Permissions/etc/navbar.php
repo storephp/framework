@@ -1,9 +1,11 @@
 <?php
 
+use StorePHP\Bundler\Contracts\Navbar\HasMenu;
+use StorePHP\Bundler\Contracts\Navbar\HasLinks;
 use StorePHP\Bundler\Lib\Sidebar\Menu;
 use StorePHP\Bundler\Lib\Sidebar\Links;
 
-return new class
+return new class implements HasMenu, HasLinks
 {
     public function menu(Menu $menu)
     {

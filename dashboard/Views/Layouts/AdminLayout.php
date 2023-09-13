@@ -12,7 +12,7 @@ class AdminLayout extends Component
 
     public function __construct()
     {
-        $this->sidebar = Bundles::getAdminSidebar();
+        $this->sidebar = Bundles::getAdminNavbar();
     }
 
     /**
@@ -20,10 +20,6 @@ class AdminLayout extends Component
      */
     public function render(): View
     {
-        // $modules = config('store.dashboard.core.modules');
-
-        // dd($this->sidebar);
-
         return view('store::layouts.admin');
     }
 }

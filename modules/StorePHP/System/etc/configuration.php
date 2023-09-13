@@ -1,10 +1,11 @@
 <?php
 
+use StorePHP\Bundler\Contracts\Configuration\iConfiguration;
+use StorePHP\Bundler\Lib\Configuration\Fields;
 use StorePHP\Bundler\Lib\Configuration\SubTabs;
 use StorePHP\Bundler\Lib\Configuration\Tab;
-use StorePHP\Bundler\Lib\Configuration\Fields;
 
-return new class
+return new class implements iConfiguration
 {
     public function tab(Tab $tab)
     {

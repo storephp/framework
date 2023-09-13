@@ -1,8 +1,9 @@
 <?php
 
+use StorePHP\Bundler\Contracts\Sidebar\HasMenu;
 use StorePHP\Bundler\Lib\Sidebar\Menu;
 
-return new class
+return new class implements HasMenu
 {
     public function menu(Menu $menu)
     {

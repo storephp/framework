@@ -1,25 +1,17 @@
 <?php
 
+use StorePHP\Bundler\Contracts\Form\FormHasFields;
+use StorePHP\Bundler\Contracts\Form\FormHasTabs;
 use StorePHP\Bundler\Lib\Form\Fields;
 use StorePHP\Bundler\Lib\Form\Tabs;
 
-return new class
+return new class implements FormHasTabs, FormHasFields
 {
     public function tabs(Tabs $tabs)
     {
         $tabs->addTab('default', 'Coupon info');
         $tabs->addTab('action', 'Action');
     }
-
-    // coupon_name
-    // coupon_code
-    // discount_type
-    // discount_value
-    // condition
-    // condition_data
-    // start_at
-    // ends_at
-    // is_active
 
     public function fields(Fields $form)
     {

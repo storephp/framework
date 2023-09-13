@@ -1,9 +1,10 @@
 <?php
 
-use StorePHPAdmin\Permissions\Providers\StorePHPPermissionsServiceProvider;
+use StorePHP\Bundler\Contracts\Module\iModule;
 use StorePHP\Bundler\Lib\Module;
+use StorePHPAdmin\Permissions\Providers\StorePHPPermissionsServiceProvider;
 
-return new class
+return new class implements iModule
 {
     public function info(Module $module)
     {

@@ -1,12 +1,13 @@
 <?php
 
-use StorePHP\Bundler\Lib\Grid\{
-    CTA,
-    Table,
-    Bottom
-};
+use StorePHP\Bundler\Contracts\Grid\GridHasButtons;
+use StorePHP\Bundler\Contracts\Grid\GridHasCTA;
+use StorePHP\Bundler\Contracts\Grid\GridHasTable;
+use StorePHP\Bundler\Lib\Grid\Bottom;
+use StorePHP\Bundler\Lib\Grid\CTA;
+use StorePHP\Bundler\Lib\Grid\Table;
 
-return new class
+return new class implements GridHasTable, GridHasButtons, GridHasCTA
 {
     public function model()
     {
@@ -23,8 +24,6 @@ return new class
         $table->setColumn('#', 'id')
             ->setColumn('Name', 'name')
             ->setColumn('Slug', 'slug');
-        // ->setColumn('Type', 'type')
-        // ->setColumn('Mobile', 'mobile');
     }
 
     public function CTA(CTA $CTA)

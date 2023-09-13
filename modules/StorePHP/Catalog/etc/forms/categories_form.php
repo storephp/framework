@@ -1,16 +1,11 @@
 <?php
 
 use StorePHP\Bundler\Lib\Form\Fields;
-use StorePHP\Bundler\Lib\Form\Tabs;
 use Store\Models\Product\Category;
+use StorePHP\Bundler\Contracts\Form\FormHasFields;
 
-return new class
+return new class implements FormHasFields
 {
-    public function tabs(Tabs $tabs)
-    {
-        // $tabs->addTab('info', 'Info');
-    }
-
     public function fields(Fields $form)
     {
         $form->addField('select', [

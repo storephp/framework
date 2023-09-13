@@ -1,10 +1,11 @@
 <?php
 
-use StorePHP\Bundler\Lib\Sidebar\Menu;
+use StorePHP\Bundler\Contracts\Sidebar\HasMenu;
+use StorePHP\Bundler\Contracts\Sidebar\HasLinks;
 use StorePHP\Bundler\Lib\Sidebar\Links;
-// use StorePHP\Bundler\Lib\Sidebar\SubLinks;
+use StorePHP\Bundler\Lib\Sidebar\Menu;
 
-return new class
+return new class implements HasMenu, HasLinks
 {
     public function menu(Menu $menu)
     {
